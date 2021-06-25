@@ -1523,6 +1523,14 @@
                             <span class="h6 text-light">{{ $t('changeLog') }}</span>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.16.1 - 2021-06-25</div>
+                            <ul class="small">
+                                <li>FIX: power and defense star values</li>
+                                <li>FIX: +NAN/s value in resource production</li>
+                                <li>FIX: EMC negative value</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.16.0 - 2021-06-24</div>
                             <ul class="small">
                                 <li>FIX: calculator computed values</li>
@@ -1778,7 +1786,7 @@ export default {
             segmentModal: null,
             calcModal: null,
             
-            currentRelease: '1.16.0',
+            currentRelease: '1.17.0',
             ghLatestRelease: null,
             
             login: null,
