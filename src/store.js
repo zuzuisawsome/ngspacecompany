@@ -1187,6 +1187,11 @@ export const store = createStore({
             state.data['upgradeFaction'] =  { id:'upgradeFaction',  unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'darkmatter', count:49 }], notifs:['stargazeOverlordPane'], faction:'overlord', opinion:20, }
             /*----------------------------------------------------------------*/
             
+            // ULTRITE
+            /*----------------------------------------------------------------*/
+            state.data['ultrite'] = { id:'ultrite', unlocked:false, count:0, notifs:['ultritePane'], }
+            /*----------------------------------------------------------------*/
+            
             // ACHIEVEMENT LIST
             /*----------------------------------------------------------------*/
             state.achievements = [
@@ -1585,7 +1590,7 @@ export const store = createStore({
             state.resources.forEach(item => {
                 let tempBoost = boost
                 if (item.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count
-                if (temp[item.id].prod < 0.001) temp[item.id].prod = 0
+                if (temp[item.id].prod > 0 && temp[item.id].prod < 0.001) temp[item.id].prod = 0
                 commit('setDataProd', { id:item.id, prod:temp[item.id].prod })
                 commit('setDataBoost', { id:item.id, boost:(1 + tempBoost) * (1 + temp[item.id].boost) })
                 commit('setDataProduction', { id:item.id, production:temp[item.id].production })
