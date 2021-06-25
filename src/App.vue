@@ -1786,7 +1786,7 @@ export default {
             segmentModal: null,
             calcModal: null,
             
-            currentRelease: '1.17.0',
+            currentRelease: '1.16.1',
             ghLatestRelease: null,
             
             login: null,
