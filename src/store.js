@@ -1618,7 +1618,6 @@ export const store = createStore({
             
             let text = JSON.stringify(saveddata)
             let compressed = LZString.compressToBase64(text)
-            
             localStorage.setItem('ngsavecrypted', compressed)
         },
         /*--------------------------------------------------------------------*/

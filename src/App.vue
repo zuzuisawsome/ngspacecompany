@@ -1725,6 +1725,12 @@
                             <span class="h6 text-light">{{ $t('changeLog') }}</span>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.20.3 - 2021-07-01</div>
+                            <ul class="small">
+                                <li>FIX: fixed issue with data exporting</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.20.2 - 2021-07-01</div>
                             <ul class="small">
                                 <li>FIX: invading and absorbtion are initially allowed but invade chance is displayed when star is spyied only</li>
@@ -1966,8 +1972,6 @@
 </template>
 
 <script>
-import LZString from 'lz-string'
-
 import Header from './components/Header.vue'
 import Content from './components/Content.vue'
 import SidenavGroup from './components/SidenavGroup.vue'
@@ -2051,7 +2055,7 @@ export default {
             enlightenModal: null,
             enlightenSelected: null,
             
-            currentRelease: '1.20.2',
+            currentRelease: '1.20.3',
             ghLatestRelease: null,
             
             login: null,
@@ -2249,13 +2253,13 @@ export default {
         exportData() {
             
             let text = localStorage.getItem('ngsavecrypted')
-            this.compressed = LZString.compressToBase64(text)
+            this.compressed = text
         },
         importData() {
 
             if (!this.compressed || !this.compressed.trim()) return console.warn('No data to import')
             if (this.compressed.length % 4 !== 0) return console.warn('Data corrupted')
-
+            
             localStorage.setItem('ngsavecrypted', this.compressed)
 
             window.location.reload()
