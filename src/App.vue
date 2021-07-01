@@ -1724,6 +1724,14 @@
                             <span class="h6 text-light">{{ $t('changeLog') }}</span>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.20.1 - 2021-07-01</div>
+                            <ul class="small">
+                                <li>FIX: now auto storage upgrade ultrite upgrade is displayed after enlightenment</li>
+                                <li>FIX: typo in enlightenment modal</li>
+                                <li>FIX: dimensional rift is taken into account in timer computing</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.20.0 - 2021-06-30</div>
                             <ul class="small">
                                 <li>FIX: now segment and machine calculators take titans into account</li>
@@ -2035,7 +2043,7 @@ export default {
             enlightenModal: null,
             enlightenSelected: null,
             
-            currentRelease: '1.20.0',
+            currentRelease: '1.20.1',
             ghLatestRelease: null,
             
             login: null,
