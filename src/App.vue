@@ -1264,8 +1264,8 @@
                                         <div class="row g-0">
                                             <div class="col-12 mb-2">
                                                 <div class="row gx-2">
-                                                    <div class="col">
-                                                        <span class="h6 text-light d-inline w-100 text-truncate">{{ item.username }}</span>
+                                                    <div class="col text-truncate">
+                                                        <span class="h6 text-light">{{ item.username }}</span>
                                                     </div>
                                                     <div class="col-auto">
                                                         <span class="text-light d-inline w-100 text-truncate">{{ index + 1 }}</span>
@@ -1532,7 +1532,8 @@
                                 </div>
                                 <div class="col small">
                                     <div class="text-normal">{{ $t('chance') }}</div>
-                                    <div class="text-light">{{ getInvadeChance(activeStar) * 100 }}%</div>
+                                    <div v-if="data[activeStar].spy <= 2" class="text-light">???</div>
+                                    <div v-if="data[activeStar].spy > 2" class="text-light">{{ getInvadeChance(activeStar) * 100 }}%</div>
                                 </div>
                             </div>
                         </div>
@@ -1722,6 +1723,13 @@
                     <div class="row g-2">
                         <div class="col-12">
                             <span class="h6 text-light">{{ $t('changeLog') }}</span>
+                        </div>
+                        <div class="col-12 border-top">
+                            <div class="text-light">v1.20.2 - 2021-07-01</div>
+                            <ul class="small">
+                                <li>FIX: invading and absorbtion are initially allowed but invade chance is displayed when star is spyied only</li>
+                                <li>FIX: save in local storage a crypted copy of data</li>
+                            </ul>
                         </div>
                         <div class="col-12 border-top">
                             <div class="text-light">v1.20.1 - 2021-07-01</div>
@@ -2043,7 +2051,7 @@ export default {
             enlightenModal: null,
             enlightenSelected: null,
             
-            currentRelease: '1.20.1',
+            currentRelease: '1.20.2',
             ghLatestRelease: null,
             
             login: null,
@@ -2240,7 +2248,7 @@ export default {
         },
         exportData() {
             
-            let text = JSON.stringify(JSON.parse(localStorage.getItem('ngsave')))
+            let text = localStorage.getItem('ngsavecrypted')
             this.compressed = LZString.compressToBase64(text)
         },
         importData() {
@@ -2248,11 +2256,7 @@ export default {
             if (!this.compressed || !this.compressed.trim()) return console.warn('No data to import')
             if (this.compressed.length % 4 !== 0) return console.warn('Data corrupted')
 
-            let text = LZString.decompressFromBase64(this.compressed)
-            if (!text) return console.warn('Import failed')
-            
-            let impdata = JSON.parse(text)
-            localStorage.setItem('ngsave', JSON.stringify(impdata))
+            localStorage.setItem('ngsavecrypted', this.compressed)
 
             window.location.reload()
         },

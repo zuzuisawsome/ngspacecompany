@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
 
+import LZString from 'lz-string'
+
 /******************************************************************************/
 const pascal = function(n) {
     var add = 1, init = 0
@@ -1441,7 +1443,18 @@ export const store = createStore({
         /*--------------------------------------------------------------------*/
         load({ state, commit, dispatch }) {
         
-            var data = JSON.parse(localStorage.getItem('ngsave'))
+            var data = localStorage.getItem('ngsavecrypted')
+            if (data && data !== null && data.length % 4 == 0) {
+                
+                let text = LZString.decompressFromBase64(data)
+                if (!text) return console.warn('Load failed')
+                
+                data = JSON.parse(text)
+                
+                localStorage.removeItem('ngsave')
+            }
+            else data = JSON.parse(localStorage.getItem('ngsave'))
+            
             if (data && data !== null && data.version && data.version == state.version) {
             
                 state.locale = data.locale || 'en'
@@ -1603,7 +1616,10 @@ export const store = createStore({
                 }
             }
             
-            localStorage.setItem('ngsave', JSON.stringify(saveddata))
+            let text = JSON.stringify(saveddata)
+            let compressed = LZString.compressToBase64(text)
+            
+            localStorage.setItem('ngsavecrypted', compressed)
         },
         /*--------------------------------------------------------------------*/
         
