@@ -741,7 +741,7 @@
     "star224101": "DENIS 1048",
     "star179501": "V577 Monoceri",
     "star114001": "Wolf 1061",
-    "star194201": "A",
+    "star194201": "Rhomboid Dronegar 006",
     "star6501": "van Maanen's Star",
     "star1101": "-37°15492",
     "star15301": "A",
@@ -1018,6 +1018,14 @@
     "titans": "Titans Ressource activés",
 
     "upgradesPane": "Améliorations",
+    "advUpgradeStorage1": "Super-promo sur le stockage",
+    "advUpgradeStorage1_desc": "Un super-rabais de 25% est appliqué sur le stockage des ressources. Il fonctionne comme la 'Promo sur le stockage' et est cumulatif.",
+    "shipSpeedEnhancement": "Boost de la vitesse des vaisseaux",
+    "shipSpeedEnhancement_desc": "Avec ce boost vous doublez la vitesse de tous vos vaisseaux. Ce boost s'accumule à tous les autres boosts de vaisseaux.",
+    "shipDefenceEnhancement": "Boost de la défense des vaisseaux",
+    "shipDefenceEnhancement_desc": "Avec ce boost vous doublez la defense de tous vos vaisseaux. Ce boost s'accumule à tous les autres boosts de vaisseaux.",
+    "shipPowerEnhancement": "Boost de la puissance des vaisseaux",
+    "shipPowerEnhancement_desc": "Avec ce boost vous doublez la puissance de tous vos vaisseaux. Ce boost s'accumule à tous les autres boosts de vaisseaux.",
     "techAutoStorageUpgrade": "Augmentation automatique du stockage",
     "techAutoStorageUpgrade_desc": "Cette amélioration permet d'activer ou de désactiver l'augmentation automatique du stockage pour chaque ressource concernée. NB: L'énergie et le plasma ne sont pas concernés ainsi que la science, le carburant et l'anti-matière.",
     

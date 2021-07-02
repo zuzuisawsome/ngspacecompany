@@ -745,7 +745,7 @@
     "star224101": "DENIS 1048",
     "star179501": "V577 Monoceri",
     "star114001": "Wolf 1061",
-    "star194201": "A",
+    "star194201": "Rhomboid Dronegar 006",
     "star6501": "van Maanen's Star",
     "star1101": "-37°15492",
     "star15301": "A",
@@ -1022,6 +1022,14 @@
     "titans": "Activated Resource Titans",
 
     "upgradesPane": "Upgrades",
+    "advUpgradeStorage1": "Advanced Storage Discount",
+    "advUpgradeStorage1_desc": "A bonus discount of 25% is applied on resource storage. It works like the 'Storage Discount' and it is additive to it.",
+    "shipSpeedEnhancement": "Ship Speed Enhancement",
+    "shipSpeedEnhancement_desc": "With this upgrade double the speed stat of all your ships. It is cumulative with all other ship enhancement upgrades.",
+    "shipDefenceEnhancement": "Ship Defence Enhancement",
+    "shipDefenceEnhancement_desc": "With this upgrade double the defense stat of all your ships. It is cumulative with all other ship enhancement upgrades.",
+    "shipPowerEnhancement": "Ship Power Enhancement",
+    "shipPowerEnhancement_desc": "With this upgrade double the power stat of all your ships. It is cumulative with all other ship enhancement upgrades.",
     "techAutoStorageUpgrade": "Auto Storage Upgrade",
     "techAutoStorageUpgrade_desc": "This unlocks the ability to turn on/off the automation of upgrade storage on each resource. NB: Plasma, Energy, Science, Fuel and Antimatter are not impacted.",
 

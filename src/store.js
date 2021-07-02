@@ -308,7 +308,7 @@ export const store = createStore({
         setNotifAchievement(state, payload) { state.notifAchievement = payload },
         setDisplayLockedItems(state, payload) { state.displayLockedItems = payload },
         setDisplayPinnedItems(state, payload) { state.displayPinnedItems = payload },
-        setAutoStorageUpgrade(state, payload) { state.data[payload.id].auto = payload.auto },
+        setAutoStorageUpgrade(state, payload) { state.data[payload.id].auto = payload.auto; console.log(state.data[payload.id]);  },
         setUsername(state, payload) { state.username = payload },
         setToken(state, payload) { state.token = payload },
         setEmcAmount(state, payload) { state.emcAmount = payload },
@@ -1137,7 +1137,7 @@ export const store = createStore({
             state.data['star224601'] = { id:'star224601', unlocked:false, status:'new', donor:false, count:0, spy:0, distance:11.8,  planets:1, faction:'kitrinos', resource1:'methane',   resource2:'gold',      stats:{ 'power':513,  'defense':164,  'speed':9  }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:118000 }], notifs:['interstellarKitrinosPane'], }
             state.data['star58601'] =  { id:'star58601',  unlocked:false, status:'new', donor:false, count:0, spy:0, distance:11.83, planets:4, faction:'kitrinos', resource1:'helium',    resource2:'methane',   stats:{ 'power':427,  'defense':184,  'speed':11 }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:118300 }], notifs:['interstellarKitrinosPane'], }
             state.data['star10101'] =  { id:'star10101',  unlocked:false, status:'new', donor:false, count:0, spy:0, distance:12.2,  planets:1, faction:'kitrinos', resource1:'gold',      resource2:'hydrogen',  stats:{ 'power':506,  'defense':334,  'speed':15 }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:122000 }], notifs:['interstellarKitrinosPane'], }
-            state.data['star194201'] = { id:'star194201', unlocked:false, status:'new', donor:false, count:0, spy:0, distance:14.05, planets:1, faction:'kitrinos', resource1:'silver',    resource2:'lava',      stats:{ 'power':460,  'defense':465,  'speed':10 }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:140500 }], notifs:['interstellarKitrinosPane'], }
+            state.data['star194201'] = { id:'star194201', unlocked:false, status:'new', donor:true,  count:0, spy:0, distance:14.05, planets:1, faction:'kitrinos', resource1:'silver',    resource2:'lava',      stats:{ 'power':460,  'defense':465,  'speed':10 }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:140500 }], notifs:['interstellarKitrinosPane'], }
             state.data['star1101'] =   { id:'star1101',   unlocked:false, status:'new', donor:false, count:0, spy:0, distance:14.22, planets:3, faction:'kitrinos', resource1:'silicon',   resource2:'methane',   stats:{ 'power':779,  'defense':410,  'speed':10 }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:142200 }], notifs:['interstellarKitrinosPane'], }
             state.data['star72501'] =  { id:'star72501',  unlocked:false, status:'new', donor:false, count:0, spy:0, distance:14.76, planets:4, faction:'kitrinos', resource1:'uranium',   resource2:'lava',      stats:{ 'power':620,  'defense':612,  'speed':15 }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:147600 }], notifs:['interstellarKitrinosPane'], }
             state.data['star210501'] = { id:'star210501', unlocked:false, status:'new', donor:false, count:0, spy:0, distance:15.39, planets:1, faction:'kitrinos', resource1:'meteorite', resource2:'meteorite', stats:{ 'power':479,  'defense':563,  'speed':14 }, costType:'FIXED', baseCosts:[{ id:'antimatter', count:153900 }], notifs:['interstellarKitrinosPane'], }
@@ -1287,8 +1287,12 @@ export const store = createStore({
             
             // UPGRADES
             /*----------------------------------------------------------------*/
-            state.data['techNanoswarm0'] =  { id:'techNanoswarm0',  unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:1000 }], notifs:['upgradesPane'], unlocks:['techNanoswarm1'], }
-            state.data['techAutoStorageUpgrade'] =  { id:'techAutoStorageUpgrade',  unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:1000 }], notifs:['upgradesPane'], }
+            state.data['advUpgradeStorage1'] =     { id:'advUpgradeStorage1',     unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:21  }], notifs:['upgradesPane'], }
+            state.data['shipSpeedEnhancement'] =   { id:'shipSpeedEnhancement',   unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:179 }], notifs:['upgradesPane'], }
+            state.data['shipDefenceEnhancement'] = { id:'shipDefenceEnhancement', unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:199 }], notifs:['upgradesPane'], }
+            state.data['shipPowerEnhancement'] =   { id:'shipPowerEnhancement',   unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:206 }], notifs:['upgradesPane'], }
+            state.data['techAutoStorageUpgrade'] = { id:'techAutoStorageUpgrade', unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:220 }], notifs:['upgradesPane'], }
+            state.data['techNanoswarm0'] =         { id:'techNanoswarm0',         unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'ultrite', count:796 }], notifs:['upgradesPane'], unlocks:['techNanoswarm1'], }
             /*----------------------------------------------------------------*/
             
             // ACHIEVEMENT LIST
@@ -1463,7 +1467,10 @@ export const store = createStore({
             /*----------------------------------------------------------------*/            
             state.storageUpgrades = [
                 /*------------------------------------------------------------*/
-                state.data['metalS1'],
+                state.data['meteoriteS1'], state.data['carbonS1'],
+                state.data['oilS1'], state.data['metalS1'], state.data['gemS1'], state.data['woodS1'], state.data['siliconS1'], state.data['uraniumS1'], state.data['lavaS1'],
+                state.data['lunariteS1'], state.data['methaneS1'], state.data['titaniumS1'], state.data['goldS1'], state.data['silverS1'],
+                state.data['hydrogenS1'], state.data['heliumS1'], state.data['iceS1'],
                 /*------------------------------------------------------------*/
             ]
         },
@@ -1522,13 +1529,26 @@ export const store = createStore({
                     if ('status' in item) state.data[i].status = item.status
                     if ('spy' in item) state.data[i].spy = item.spy
                     if ('titan' in item) state.data[i].titan = item.titan
+                    if ('auto' in item) state.data[i].auto = item.auto
                 }
             }
             
             if (state.data['autoEmc'].unlocked == false) state.autoResource = null
             
             if (state.data['ultrite'].unlocked == false) {
-            
+                
+                state.data['advUpgradeStorage1'].unlocked = false
+                state.data['advUpgradeStorage1'].count = 0
+                
+                state.data['shipSpeedEnhancement'].unlocked = false
+                state.data['shipSpeedEnhancement'].count = 0
+
+                state.data['shipDefenceEnhancement'].unlocked = false
+                state.data['shipDefenceEnhancement'].count = 0
+
+                state.data['shipPowerEnhancement'].unlocked = false
+                state.data['shipPowerEnhancement'].count = 0
+
                 state.data['techNanoswarm0'].unlocked = false
                 state.data['techNanoswarm0'].count = 0
                 
@@ -1544,6 +1564,10 @@ export const store = createStore({
             }
             else {
                 
+                dispatch('unlock', 'advUpgradeStorage1')
+                dispatch('unlock', 'shipSpeedEnhancement')
+                dispatch('unlock', 'shipDefenceEnhancement')
+                dispatch('unlock', 'shipPowerEnhancement')
                 dispatch('unlock', 'techNanoswarm0')
                 dispatch('unlock', 'techAutoStorageUpgrade')
             }
@@ -1585,6 +1609,10 @@ export const store = createStore({
                 
                 if (ownedStarCount >= 10) {
                     dispatch('unlock', 'ultrite')
+                    dispatch('unlock', 'advUpgradeStorage1')
+                    dispatch('unlock', 'shipSpeedEnhancement')
+                    dispatch('unlock', 'shipDefenceEnhancement')
+                    dispatch('unlock', 'shipPowerEnhancement')
                     dispatch('unlock', 'techNanoswarm0')
                     dispatch('unlock', 'techAutoStorageUpgrade')
                 }
@@ -1643,6 +1671,7 @@ export const store = createStore({
                     if ('status' in item && item.status != 'new') saveddata.entries[i].status = item.status
                     if ('spy' in item && item.spy != 0) saveddata.entries[i].spy = item.spy
                     if ('titan' in item && item.titan == true) saveddata.entries[i].titan = item.titan
+                    if ('auto' in item && item.auto == true) saveddata.entries[i].auto = item.auto
                 }
             }
             
@@ -2014,6 +2043,41 @@ export const store = createStore({
                 }
             }
             /*----------------------------------------------------------------*/
+            else if (id == 'advUpgradeStorage1') {
+                state.storagePrice -= 0.25
+                for (let i in state.data) {
+                    let item = state.data[i]
+                    if ('storage' in item && 'baseCosts' in item && item.costType == 'DOUBLE') commit('computeCosts', item.id)
+                }
+            }
+            /*----------------------------------------------------------------*/
+            else if (id == 'shipSpeedEnhancement') {
+                let list = ['shipT1', 'shipT2', 'shipT3', 'shipT4', 'shipT5']
+                for (let i = 0; i < list.length; i++) {
+                    let item = state.data[list[i]]
+                    item.stats.speed *= 2
+                    commit('computeFleetStats')
+                }
+            }
+            /*----------------------------------------------------------------*/
+            else if (id == 'shipDefenceEnhancement') {
+                let list = ['shipT1', 'shipT2', 'shipT3', 'shipT4', 'shipT5']
+                for (let i = 0; i < list.length; i++) {
+                    let item = state.data[list[i]]
+                    item.stats.defense *= 2
+                    commit('computeFleetStats')
+                }
+            }
+            /*----------------------------------------------------------------*/
+            else if (id == 'shipPowerEnhancement') {
+                let list = ['shipT1', 'shipT2', 'shipT3', 'shipT4', 'shipT5']
+                for (let i = 0; i < list.length; i++) {
+                    let item = state.data[list[i]]
+                    item.stats.power *= 2
+                    commit('computeFleetStats')
+                }
+            }
+            /*----------------------------------------------------------------*/
             else if (id == 'radarT1' || id == 'radarT2') {
                 let radius = state.data['radarT2'].count + (state.data['radarT1'].count * 5)
                 for (let i in state.stars) {
@@ -2041,6 +2105,10 @@ export const store = createStore({
             
             if (ownedStarCount >= 10) {
                 dispatch('unlock', 'ultrite')
+                dispatch('unlock', 'advUpgradeStorage1')
+                dispatch('unlock', 'shipSpeedEnhancement')
+                dispatch('unlock', 'shipDefenceEnhancement')
+                dispatch('unlock', 'shipPowerEnhancement')
                 dispatch('unlock', 'techNanoswarm0')
                 dispatch('unlock', 'techAutoStorageUpgrade')
             }
@@ -2340,7 +2408,7 @@ export const store = createStore({
                 'kitrinos', 'upgradeTier1', 'techEnergyStorage5', 'multiBuy', 'boostCapital', 'techTier5',
                 'moviton', 'upgradeFuel1', 'upgradeSpaceship', 'techMeteorite3', 'techMeteorite4',
                 'overlord', 'boostDarkmatter', 'upgradeFaction',
-                'ultrite', 'techNanoswarm0', 'techAutoStorageUpgrade',
+                'ultrite', 'advUpgradeStorage1', 'shipSpeedEnhancement', 'shipDefenceEnhancement', 'shipPowerEnhancement', 'techNanoswarm0', 'techAutoStorageUpgrade',
             ]
             
             for (let i in state.data) {
@@ -2414,7 +2482,7 @@ export const store = createStore({
             state.autoEmcInterval = 1 * 1000
             
             let exludedList = [
-                'ultrite', 'techNanoswarm0', 'techAutoStorageUpgrade',
+                'ultrite', 'advUpgradeStorage1', 'shipSpeedEnhancement', 'shipDefenceEnhancement', 'shipPowerEnhancement', 'techNanoswarm0', 'techAutoStorageUpgrade',
             ]
             
             for (let i in state.data) {
