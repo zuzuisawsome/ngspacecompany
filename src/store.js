@@ -272,6 +272,31 @@ export const store = createStore({
             return getters.getULStars + getters.getULDarkmatter + getters.getULSpheres
         },
         /*--------------------------------------------------------------------*/
+        canBuild: (state) => (id) => {
+        
+            let canBuild = true
+            let item = state.data[id]
+            
+            if ('max' in item && item.count >= item.max) canBuild = false
+
+            if ('costs' in item) {
+                item['costs'].forEach(cost => {
+                    if (state.data[cost.id].count - cost.count < 0) {
+                        canBuild = false
+                        return
+                    }
+                })
+            }
+            
+            return canBuild
+        },
+        /*--------------------------------------------------------------------*/
+        getStorageCap: (state) => (id) => {
+            
+            let item = state.data[id]
+            return item.storage * state.storageExcess
+        },
+        /*--------------------------------------------------------------------*/
     },
     mutations: {
     
@@ -528,6 +553,9 @@ export const store = createStore({
             state.data['achFuelT1'] =      { id:'achFuelT1',      icon:'fuel.png',      data:'fuelT1',      unlocked:false, count:0, progress:0, brackets:[5, 25, 75, 150, 250], }
             state.data['achFuelT2'] =      { id:'achFuelT2',      icon:'fuel.png',      data:'fuelT2',      unlocked:false, count:0, progress:0, brackets:[5, 25, 75, 150, 250], }
             state.data['achFuelT3'] =      { id:'achFuelT3',      icon:'fuel.png',      data:'fuelT3',      unlocked:false, count:0, progress:0, brackets:[5, 25, 75, 150, 250], }
+            state.data['achDysonT1'] =     { id:'achDysonT1',     icon:'dyson.png',     data:'dysonT1',     unlocked:false, count:0, progress:0, brackets:[5, 25, 75, 150, 250], }
+            state.data['achDysonT2'] =     { id:'achDysonT2',     icon:'dyson.png',     data:'dysonT2',     unlocked:false, count:0, progress:0, brackets:[5, 25, 75, 150, 250], }
+            state.data['achDysonT3'] =     { id:'achDysonT3',     icon:'dyson.png',     data:'dysonT3',     unlocked:false, count:0, progress:0, brackets:[5, 25, 75, 150, 250], }
             /*----------------------------------------------------------------*/
         
             // ENERGY
@@ -820,8 +848,8 @@ export const store = createStore({
             state.data['techMeteorite0'] =     { id:'techMeteorite0',     unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:100000   }], notifs:['technologiesPane'], unlocks:['meteorite', 'achMeteorite'], }
             state.data['techMeteorite1'] =     { id:'techMeteorite1',     unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:75000    }], notifs:['technologiesPane'], unlocks:['meteoriteT1', 'achMeteoriteT1', 'techMeteorite2'], }
             state.data['techMeteorite2'] =     { id:'techMeteorite2',     unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:100000   }], notifs:['technologiesPane'], unlocks:['meteoriteT2', 'achMeteoriteT2'], }
-            state.data['techDyson1'] =         { id:'techDyson1',         unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:100000   }], notifs:['technologiesPane'], unlocks:['segment', 'dysonT1', 'techDyson2'], }
-            state.data['techDyson2'] =         { id:'techDyson2',         unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:500000   }], notifs:['technologiesPane'], unlocks:['dysonT2', 'dysonT3'], }
+            state.data['techDyson1'] =         { id:'techDyson1',         unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:100000   }], notifs:['technologiesPane'], unlocks:['segment', 'dysonT1', 'achDysonT1', 'techDyson2'], }
+            state.data['techDyson2'] =         { id:'techDyson2',         unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:500000   }], notifs:['technologiesPane'], unlocks:['dysonT2', 'achDysonT2', 'dysonT3', 'achDysonT3'], }
             state.data['techNanoswarm1'] =     { id:'techNanoswarm1',     unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:10000000 }], notifs:['technologiesPane'], unlocks:['nanoswarm'], }
             /*----------------------------------------------------------------*/
             state.data['upgradeTier2']   = { id:'upgradeTier2',   unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:300  }], notifs:['technologiesPane'], }
@@ -1293,6 +1321,7 @@ export const store = createStore({
                 state.data['achIceT1'],       state.data['achIceT2'],       state.data['achIceT3'],       state.data['achIceT4'],       state.data['achIceT5'],
                 state.data['achScienceT1'],   state.data['achScienceT2'],   state.data['achScienceT3'],   state.data['achScienceT4'],   state.data['achScienceT5'],
                 state.data['achFuelT1'],      state.data['achFuelT2'],      state.data['achFuelT3'],
+                state.data['achDysonT1'],     state.data['achDysonT2'],     state.data['achDysonT3'],
                 /*------------------------------------------------------------*/
             ]
             state.resAchievements = [
@@ -1326,6 +1355,7 @@ export const store = createStore({
                 state.data['achIceT1'],       state.data['achIceT2'],       state.data['achIceT3'],       state.data['achIceT4'],       state.data['achIceT5'],
                 state.data['achScienceT1'],   state.data['achScienceT2'],   state.data['achScienceT3'],   state.data['achScienceT4'],   state.data['achScienceT5'],
                 state.data['achFuelT1'],      state.data['achFuelT2'],      state.data['achFuelT3'],
+                state.data['achDysonT1'],     state.data['achDysonT2'],     state.data['achDysonT3'],
                 /*------------------------------------------------------------*/
             ]
             
@@ -1345,7 +1375,7 @@ export const store = createStore({
             state.producers = [
                 /*------------------------------------------------------------*/
                 state.data['energyT1'],     state.data['energyT2'],    state.data['energyT3'],    state.data['energyT4'],    state.data['energyT5'],   state.data['energyT6'],
-                state.data['plasmaT1'],     state.data['plasmaT2'],    state.data['plasmaT3'],
+                state.data['plasmaT1'],     state.data['plasmaT2'],    state.data['plasmaT3'],    state.data['plasmaT4'],
                 state.data['meteoriteT1'],  state.data['meteoriteT2'], state.data['meteoriteT3'], state.data['meteoriteT4'],
                 state.data['carbonT1'],     state.data['carbonT2'],    state.data['carbonT3'],    state.data['carbonT4'],    state.data['carbonT5'],
                 state.data['oilT1'],        state.data['oilT2'],       state.data['oilT3'],       state.data['oilT4'],       state.data['oilT5'],
@@ -1707,6 +1737,8 @@ export const store = createStore({
                     if ('outputs' in item) {
                         item.outputs.forEach(output => {
                             state.data[output.id].problem = true
+                            if (!state.data[output.id].unlocked || ('toggle' in state.data[output.id] && state.data[output.id].toggle != 'on'))
+                                state.data[output.id].problem = false
                         })
                     }
                 }
@@ -2143,13 +2175,13 @@ export const store = createStore({
             }
         },
         /*--------------------------------------------------------------------*/
-        convert({ state }, id) {
+        convert({ state, getters }, id) {
         
             let item = state.data[id]
             
             let amount
-            if (state.emcAmount == 'max') amount = Math.min(Math.floor((state.data[item.source].count - state.data[item.source].consumption) / item.rate), state.data[item.resource].storage - state.data[item.resource].count)
-            else amount = Math.min(state.emcAmount, state.data[item.resource].storage - state.data[item.resource].count)
+            if (state.emcAmount == 'max') amount = Math.min(Math.floor((state.data[item.source].count - state.data[item.source].consumption) / item.rate), getters.getStorageCap(item.resource) - state.data[item.resource].count)
+            else amount = Math.min(state.emcAmount, getters.getStorageCap(item.resource) - state.data[item.resource].count)
             
             let required = (amount * item.rate)
             
