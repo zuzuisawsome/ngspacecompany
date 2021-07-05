@@ -2179,7 +2179,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.22.0',
+            currentRelease: '1.23.0',
             ghLatestRelease: null,
             
             login: null,
