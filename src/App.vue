@@ -1816,6 +1816,7 @@
                             <ul class="small">
                                 <li>FIX: dimension rift is taken into account in wonder costs</li>
                                 <li>FIX: dimension rift is taken into account in calculators</li>
+                                <li>CHANGE: updated ways to gain ultrite</li>
                                 <li>NEW: added calculators on spaceship parts</li>
                             </ul>
                         </div>
