@@ -37,7 +37,7 @@
                 <div class="row gx-2 gy-3 row-cols-1">
                 
                     <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
-                        <sidenav-item v-for="pane in pinned" :key="pane.id" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="data[pane.resId].storage" :problem="data[pane.resId].problem" />
+                        <sidenav-item v-for="pane in pinned" :key="pane.id" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" />
                     </sidenav-group>
                     
                     <sidenav-group id="energyHeading" :unlocked="data['energy'].unlocked">
@@ -649,9 +649,9 @@
                     <!-- SPACESHIP PANE -->
                     <pane id="spaceshipPane" icon="spaceship.png" :descs="['spaceshipPane_desc']">
                         <buildable id="spaceship" btnText="build" />
-                        <buildable id="shield" btnText="build" />
-                        <buildable id="engine" btnText="build" />
-                        <buildable id="aero" btnText="build" />
+                        <buildable id="shield" btnText="build" calc="true" />
+                        <buildable id="engine" btnText="build" calc="true" />
+                        <buildable id="aero" btnText="build" calc="true" />
                     </pane>
                     
                     <!-- MILITARY PANE -->
@@ -842,8 +842,8 @@
                                 <div class="small"><span>{{ $t('ulDarkmatter_desc') }}</span></div>
                             </div>
                             <div class="col-12">
-                                <div class="heading-6">{{ $t('ulSpheres') }} <span class="text-light">{{ getULSpheres }}</span></div>
-                                <div class="small"><span>{{ $t('ulSpheres_desc') }}</span></div>
+                                <div class="heading-6">{{ $t('ulStatues') }} <span class="text-light">{{ getULStatues }}</span></div>
+                                <div class="small"><span>{{ $t('ulStatues_desc') }}</span></div>
                             </div>
                         </card>
                         <card id="enlighten" :descs="['enlighten_desc']" checked="true">
@@ -1812,6 +1812,14 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.24.0 - 2021-07-06</div>
+                            <ul class="small">
+                                <li>FIX: dimension rift is taken into account in wonder costs</li>
+                                <li>FIX: dimension rift is taken into account in calculators</li>
+                                <li>NEW: added calculators on spaceship parts</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.23.0 - 2021-07-05</div>
                             <ul class="small">
                                 <li>FIX: nanoswarm pane is displayed</li>
@@ -2179,7 +2187,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.23.0',
+            currentRelease: '1.24.0',
             ghLatestRelease: null,
             
             login: null,
@@ -2207,7 +2215,7 @@ export default {
             'isNotif', 'hasNotif',
             'getThreat', 'getSpyChance', 'getInvadeChance', 'getStarPower', 'getStarDefense', 'getStarSpeed',
             'getDMWonders', 'getDMSpheres', 'getDMResearches', 'getDMRank', 'getDMSwarms', 'getPotentialDM',
-            'getULStars', 'getULDarkmatter', 'getULSpheres', 'getPotentialUL',
+            'getULStars', 'getULDarkmatter', 'getULStatues', 'getPotentialUL',
             'getStorageCap', 'getStatuesCount',
         ]),
     },

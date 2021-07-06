@@ -1023,8 +1023,8 @@
     "ulStars_desc": "Vous obtenez de l'ultrite pour les systèmes stellaires que vous avez conquis en récompense pour avoir étendu l'influence de l'Overlord sur la galaxie. Pour chaque système stellaire conquis, vous gagnez 1 ultrite.",
     "ulDarkmatter": "Matière noire non dépensée",
     "ulDarkmatter_desc": "Toute la matière noire non-dépensée sera convertie en ultrite: 10 matière noire donneront 1 ultrite.",
-    "ulSpheres": "Sphères",
-    "ulSpheres_desc": "En élargissant votre sphère d'influence de manière pacifique, de l'ultrite supplémentaire par étoile vous sera accordé dans le cadre des efforts déployés pour maintenir un empire prospère. Pour chaque sphère Dyson construite, vous gagnez 1 ultrite.",
+    "ulStatues": "Statues Overlord",
+    "ulStatues_desc": "Pour vous encouragez à conquérir la galaxie pour l'honneur et la puissance de l'Overlord, de l'ultrite vous sera versé. Pour chaque statue construite, vous recevrez 5 ultrites.",
     "enlighten": "Illuminer",
     "enlighten_desc": "Quitter votre dimension laisse beaucoup d'incertitude. Vous laisserez derrière vous tout ce que vous avez créé, pour un monde familier, mais différent, comme s'il attendait d'être colonisé, rien que pour vous. La galaxie se trouve comme ici, ignorant la puissance qui va entrer dans sa dimension. Le saut courageux que vous devez faire pour atteindre la vraie grandeur est calculé, et seuls les meilleurs prospéreront. Êtes-vous prêt? NB: Vous ne pouvez pas vous illiminer sans au moins 10 étoiles possédées.",
     "enlighten_confirm": "Êtes-vous sûr ? Cette action est irréversible.",
@@ -1140,6 +1140,7 @@
     "absorb_desc": "Absorber est le moyen le plus simple de conquérir un système stellaire. Malheureusement, vous devez être en bons termes avec la faction qui contrôle l'étoile: avoir plus de 60 points de réputation avec eux. Lors de l'absorption, vous perdrez 5 points de réputation, soit la moitié du montant que vous perdriez lors d'une invasion.",
         
     "costTo5": "Coûts jusque 5",
+    "costTo15": "Coûts jusque 15",
     "costTo25": "Coûts jusque 25",
     "costTo50": "Coûts jusque 50",
     "costTo75": "Coûts jusque 75",

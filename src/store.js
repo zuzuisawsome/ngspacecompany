@@ -252,24 +252,31 @@ export const store = createStore({
             for (let i in state.stars) {
                 let star = state.stars[i]
                 if (star.status == 'owned') ownedStarCount += 1
+                if (star.subStatus == 'terraformed') ownedStarCount += 5
             }
             
             return ownedStarCount
         },
         /*--------------------------------------------------------------------*/
-        getULDarkmatter: (state) => {
+        getULDarkmatter: (state, getters) => {
         
-            return Math.floor(state.data['darkmatter'].count / 10)
+            return Math.floor((state.data['darkmatter'].count + getters.getPotentialDM) / 10)
         },
         /*--------------------------------------------------------------------*/
-        getULSpheres: (state) => {
-         
-            return state.data['dysonT3'].count
+        getULStatues: (state) => {
+        
+            let ul = 0
+            for (let i in state.stars) {
+                let star = state.stars[i]
+                if (star.subStatus == 'statued') ul += 5
+            }
+            
+            return ul
         },
         /*--------------------------------------------------------------------*/
         getPotentialUL: (state, getters) => {
         
-            return getters.getULStars + getters.getULDarkmatter + getters.getULSpheres
+            return getters.getULStars + getters.getULDarkmatter + getters.getULStatues
         },
         /*--------------------------------------------------------------------*/
         canBuild: (state) => (id) => {
@@ -614,6 +621,7 @@ export const store = createStore({
             state.data['plasmaS1'] = { id:'plasmaS1', unlocked:false, count:0, storage:{ id:'plasma', type:'FIXED', count:50000   }, costType:'EXPONENTIAL', baseCosts:[{ id:'silver', count:770000    }, { id:'gold', count:770000    }, { id:'uranium', count:550000   }], notifs:['plasmaPane'], }
             state.data['plasmaS2'] = { id:'plasmaS2', unlocked:false, count:0, storage:{ id:'plasma', type:'FIXED', count:500000  }, costType:'EXPONENTIAL', baseCosts:[{ id:'silver', count:9300000   }, { id:'gold', count:9300000   }, { id:'uranium', count:6800000  }], notifs:['plasmaPane'], }
             state.data['plasmaS3'] = { id:'plasmaS3', unlocked:false, count:0, storage:{ id:'plasma', type:'FIXED', count:5000000 }, costType:'EXPONENTIAL', baseCosts:[{ id:'silver', count:111600000 }, { id:'gold', count:111600000 }, { id:'uranium', count:81600000 }], notifs:['plasmaPane'], }
+            state.data['plasmaS4'] = { id:'plasmaS4', unlocked:false, count:0, storage:{ id:'plasma', type:'FIXED', count:5000000 }, costType:'EXPONENTIAL', baseCosts:[{ id:'silver', count:111600000 }, { id:'gold', count:111600000 }, { id:'uranium', count:81600000 }], notifs:['plasmaPane'], }
             /*----------------------------------------------------------------*/
             
             // METEORITE
@@ -1879,7 +1887,7 @@ export const store = createStore({
                 if (item.unlocked) {
                     
                     let modStorage = 1
-                    if ('storage' in item && state.data['upgradeStorage3'].count > 0) modStorage = 10
+                    if (state.data['upgradeStorage3'].count > 0) modStorage = 10
                     
                     if ('costs' in item) {
                         item.costs.forEach(cost => {
