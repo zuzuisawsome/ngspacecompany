@@ -263,6 +263,7 @@
                         <buildable id="plasmaS1" btnText="build" collapse="true" unlocker="techPlasmaStorage1" />
                         <buildable id="plasmaS2" btnText="build" collapse="true" unlocker="techPlasmaStorage2" />
                         <buildable id="plasmaS3" btnText="build" collapse="true" unlocker="techPlasmaStorage3" />
+                        <buildable id="plasmaS4" btnText="build" collapse="true" unlocker="techPlasmaStorage4" />
                     </pane>
                     
                     <!-- METEORITE PANE -->
@@ -746,7 +747,7 @@
                     
                     <!-- DARKMATTER PANE -->
                     <pane id="darkmatterPane" icon="darkmatter.png" :descs="['darkmatterPane_desc1', 'darkmatterPane_desc2', 'darkmatterPane_desc3', 'darkmatterPane_desc4', 'darkmatterPane_desc5']">
-                        <card id="darkmatter" :descs="['darkmatter_desc']">
+                        <card id="darkmatter" :descs="['darkmatter_desc']" checked="true">
                             <div class="col-12">
                                 <div class="heading-6">{{ $t('dmWonders') }} <span class="text-light">{{ getDMWonders }}</span></div>
                                 <div class="small"><span>{{ $t('dmWonders_desc') }}</span></div>
@@ -768,11 +769,15 @@
                                 <div class="small"><span>{{ $t('dmSwarms_desc') }}</span></div>
                             </div>
                         </card>
-                        <card id="rebirth" :descs="['rebirth_desc']">
+                        <card id="rebirth" :descs="['rebirth_desc']" checked="true">
+                            <div class="col-12 small">
+                                <div class="text-white">{{ $t('rebirth_nb1') }}</div>
+                                <div :class="{ 'text-white':data['dysonT3'].count > 0, 'text-danger':data['dysonT3'].count < 1 }">{{ $t('rebirth_nb2') }}</div>
+                            </div>
                             <div class="col-12">
                                 <div class="row g-1 justify-content-end">
                                     <div class="col-auto">
-                                        <button class="btn btn-warning" @click="rebirthModal.show()">{{ $t('rebirth') }}</button>
+                                        <button class="btn btn-warning" :class="{ 'disabled':data['dysonT3'].count < 1 }" @click="rebirthModal.show()">{{ $t('rebirth') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -820,6 +825,7 @@
                     <pane id="stargazeMovitonPane" icon="moviton.png" :descs="['stargazeMovitonPane_desc']">
                         <buildable id="upgradeFuel1" btnText="activate" />
                         <buildable id="upgradeSpaceship" btnText="activate" />
+                        <buildable id="techPlasmaStorage4" btnText="activate" />
                         <buildable id="techMeteorite3" btnText="activate" />
                         <buildable id="techMeteorite4" btnText="activate" />
                     </pane>
@@ -875,6 +881,27 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </card>
+                        <card v-if="titanSwapingCount < 1" id="titanSwaping" checked="true" :descs="['titanSwaping_desc']">
+                            <div class="col-12">
+                                <small class="text-light">{{ $t('titanSource') }}</small>
+                                <select class="form-control" v-model="titanSource">
+                                    <option></option>
+                                    <option v-for="item in getCurrentTitan" :key="item" :value="item">{{ $t(item) }}</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <small class="text-light">{{ $t('titanDestination') }}</small>
+                                <select class="form-control" v-model="titanDestination">
+                                    <option></option>
+                                    <option v-for="item in getNotCurrentTitan" :key="item" :value="item">{{ $t(item) }}</option>
+                                </select>
+                            </div>
+                            <div class="col-12 text-end">
+                                <button class="btn" @click="swapTitan({ 'source':titanSource, 'destination':titanDestination })">
+                                    {{ $t('swap') }}
+                                </button>
                             </div>
                         </card>
                     </pane>
@@ -1812,6 +1839,16 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.25.0 - 2021-07-07</div>
+                            <ul class="small">
+                                <li>FIX: hard reset does nothing</li>
+                                <li>FIX: ship costs computed after failed invasion</li>
+                                <li>NEW: added titan swaping ability</li>
+                                <li>NEW: grey out the rebirth button when you can't rebirth yet</li>
+                                <li>NEW: added plasma storage tier 4 + moviton dark matter upgrade to unlock it</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.24.0 - 2021-07-06</div>
                             <ul class="small">
                                 <li>FIX: dimension rift is taken into account in wonder costs</li>
@@ -2188,7 +2225,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.24.0',
+            currentRelease: '1.25.0',
             ghLatestRelease: null,
             
             login: null,
@@ -2199,6 +2236,9 @@ export default {
             
             selectedEmcAmount: null,
             selectedAutoEmcInterval: null,
+            
+            titanSource: null,
+            titanDestination: null,
         }
     },
     computed: {
@@ -2209,7 +2249,7 @@ export default {
             'notifAutoSave', 'notifAchievement', 'displayLockedItems', 'displayPinnedItems',
             'username', 'token',
             'emcAmount', 'autoEmcInterval', 'timeSinceAutoEmc',
-            'stats', 'resources', 'pinned',
+            'stats', 'resources', 'pinned', 'titanSwapingCount',
         ]),
         ...mapGetters([
         
@@ -2217,7 +2257,7 @@ export default {
             'getThreat', 'getSpyChance', 'getInvadeChance', 'getStarPower', 'getStarDefense', 'getStarSpeed',
             'getDMWonders', 'getDMSpheres', 'getDMResearches', 'getDMRank', 'getDMSwarms', 'getPotentialDM',
             'getULStars', 'getULDarkmatter', 'getULStatues', 'getPotentialUL',
-            'getStorageCap', 'getStatuesCount',
+            'getStorageCap', 'getStatuesCount', 'getCurrentTitan', 'getNotCurrentTitan',
         ]),
     },
     created() {        
@@ -2236,7 +2276,7 @@ export default {
             'computeProdValues', 'produceResources', 'updateTimers', 'checkBoosts', 'updateAchievements', 'save',
             'setActiveShip', 'spy', 'invade', 'absorb',
             'rebirth', 'performAutoEmc', 'enlighten',
-            'performAutoStorageUpgrade',
+            'performAutoStorageUpgrade', 'swapTitan',
         ]),
         momentFormat(date, fmt) {
             return moment(date).format(fmt)
@@ -2469,6 +2509,8 @@ export default {
             this.loaded = true
             
             localStorage.removeItem('ngsave')
+            localStorage.removeItem('ngsavecrypted')
+            
             window.location.reload()
         },
         onSave() {

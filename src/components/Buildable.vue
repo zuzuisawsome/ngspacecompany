@@ -172,8 +172,8 @@
                                             </button>
                                         </div>
                                         <div class="col-auto">
-                                            <small v-if="data[id].storage.id != 'energy'" class="text-success">+{{ numeralFormat(data[id].storage.count.toPrecision(4), '0.[000]a') }}</small>
-                                            <small v-if="data[id].storage.id == 'energy'" class="text-success">+{{ numeralFormat((data[id].storage.count * (1 + (0.01 * data['boostEnergyStorage'].count))).toPrecision(4), '0.[000]a') }}</small>
+                                            <small v-if="data[id].storage.id != 'energy'" class="text-success text-uppercase">+{{ numeralFormat(data[id].storage.count.toPrecision(4), '0.[000]a') }}</small>
+                                            <small v-if="data[id].storage.id == 'energy'" class="text-success text-uppercase">+{{ numeralFormat((data[id].storage.count * (1 + (0.01 * data['boostEnergyStorage'].count))).toPrecision(4), '0.[000]a') }}</small>
                                         </div>
                                     </div>
                                 </div>
