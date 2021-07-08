@@ -36,6 +36,8 @@
             <inner-content data-simplebar>
                 <div class="row gx-2 gy-3 row-cols-1">
                 
+                    <sidenav-item id="helpPane" icon="help.png" unlocked="true" />
+                    
                     <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
                         <sidenav-item v-for="pane in pinned" :key="pane.id" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" />
                     </sidenav-group>
@@ -200,12 +202,6 @@
                         <i class="fas fa-fw fa-ellipsis-v"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li>
-                            <button class="dropdown-item cursor-hover" @click="setActivePane('helpPane')">
-                                <img :src="require('./assets/interface/help.png')" width="16" height="16" class="me-2">
-                                {{ $t('helpPane') }}
-                            </button>
-                        </li>
                         <li>
                             <button class="dropdown-item cursor-hover" @click="setActivePane('settingsPane')">
                                 <img :src="require('./assets/interface/cog.png')" width="16" height="16" class="me-2">
@@ -463,36 +459,36 @@
                     
                     <!-- TECHNOLOGIES PANE -->
                     <pane id="technologiesPane" icon="technologies.png" :descs="['technologiesPane_desc']">
-                        <buildable id="techStorage" btnText="unlock" />
-                        <buildable id="techEnergy1" btnText="unlock" />
-                        <buildable id="techOil" btnText="unlock" unlocker="techStorage" />
-                        <buildable id="techEnergy2" btnText="unlock" unlocker="techEnergy1" />
-                        <buildable id="techTier2" btnText="unlock" unlocker="techEnergy1" />
-                        <buildable id="techDestruction" btnText="unlock" unlocker="techTier2" />
-                        <buildable id="techFuel1" btnText="unlock" unlocker="techTier2" />
-                        <buildable id="techFuel2" btnText="unlock" unlocker="techFuel1" />
-                        <buildable id="techFuel3" btnText="unlock" unlocker="techFuel2" />
-                        <buildable id="techScience2" btnText="unlock" unlocker="techFuel1" />
-                        <buildable id="techScience3" btnText="unlock" unlocker="techScience2" />
-                        <buildable id="techScience4" btnText="unlock" unlocker="techScience3" />
-                        <buildable id="techEnergyStorage1" btnText="unlock" unlocker="upgradeEnergy2" />
-                        <buildable id="techEnergyStorage2" btnText="unlock" unlocker="techEnergyStorage1" />
-                        <buildable id="techEnergyStorage3" btnText="unlock" unlocker="techEnergyStorage2" />
-                        <buildable id="techEnergyStorage4" btnText="unlock" unlocker="techEnergyStorage4" />
-                        <buildable id="techPlasma1" btnText="unlock" unlocker="techPlasma0" />
-                        <buildable id="techPlasma2" btnText="unlock" unlocker="techPlasma1" />
-                        <buildable id="techPlasmaStorage1" btnText="unlock" unlocker="techPlasma1" />
-                        <buildable id="techPlasmaStorage2" btnText="unlock" unlocker="techPlasmaStorage1" />
-                        <buildable id="techEmc1" btnText="unlock" unlocker="techEmc0" />
-                        <buildable id="techMeteorite0" btnText="unlock" unlocker="techEmc1" />
-                        <buildable id="techMeteorite1" btnText="unlock" unlocker="wonderMeteorite1" />
-                        <buildable id="techMeteorite2" btnText="unlock" unlocker="techMeteorite1" />
-                        <buildable id="techDyson1" btnText="unlock" unlocker="techDyson0" />
-                        <buildable id="techDyson2" btnText="unlock" unlocker="techDyson1" />
-                        <buildable id="techNanoswarm1" btnText="unlock" unlocker="techNanoswarm0" />
-                        <buildable id="upgradeTier2" btnText="upgrade" unlocker="techTier2" />
-                        <buildable id="upgradeEnergy1" btnText="upgrade" unlocker="techEnergy1" />
-                        <buildable id="upgradeEnergy2" btnText="upgrade" unlocker="techEnergy2" />
+                        <buildable v-if="!(showDoneTechs == false && data['techStorage'].count > 0)" id="techStorage" btnText="unlock" />
+                        <buildable v-if="!(showDoneTechs == false && data['techEnergy1'].count > 0)" id="techEnergy1" btnText="unlock" />
+                        <buildable v-if="!(showDoneTechs == false && data['techOil'].count > 0)" id="techOil" btnText="unlock" unlocker="techStorage" />
+                        <buildable v-if="!(showDoneTechs == false && data['techEnergy2'].count > 0)" id="techEnergy2" btnText="unlock" unlocker="techEnergy1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techTier2'].count > 0)" id="techTier2" btnText="unlock" unlocker="techEnergy1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techDestruction'].count > 0)" id="techDestruction" btnText="unlock" unlocker="techTier2" />
+                        <buildable v-if="!(showDoneTechs == false && data['techFuel1'].count > 0)" id="techFuel1" btnText="unlock" unlocker="techTier2" />
+                        <buildable v-if="!(showDoneTechs == false && data['techFuel2'].count > 0)" id="techFuel2" btnText="unlock" unlocker="techFuel1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techFuel3'].count > 0)" id="techFuel3" btnText="unlock" unlocker="techFuel2" />
+                        <buildable v-if="!(showDoneTechs == false && data['techScience2'].count > 0)" id="techScience2" btnText="unlock" unlocker="techFuel1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techScience3'].count > 0)" id="techScience3" btnText="unlock" unlocker="techScience2" />
+                        <buildable v-if="!(showDoneTechs == false && data['techScience4'].count > 0)" id="techScience4" btnText="unlock" unlocker="techScience3" />
+                        <buildable v-if="!(showDoneTechs == false && data['techEnergyStorage1'].count > 0)" id="techEnergyStorage1" btnText="unlock" unlocker="upgradeEnergy2" />
+                        <buildable v-if="!(showDoneTechs == false && data['techEnergyStorage2'].count > 0)" id="techEnergyStorage2" btnText="unlock" unlocker="techEnergyStorage1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techEnergyStorage3'].count > 0)" id="techEnergyStorage3" btnText="unlock" unlocker="techEnergyStorage2" />
+                        <buildable v-if="!(showDoneTechs == false && data['techEnergyStorage4'].count > 0)" id="techEnergyStorage4" btnText="unlock" unlocker="techEnergyStorage4" />
+                        <buildable v-if="!(showDoneTechs == false && data['techPlasma1'].count > 0)" id="techPlasma1" btnText="unlock" unlocker="techPlasma0" />
+                        <buildable v-if="!(showDoneTechs == false && data['techPlasma2'].count > 0)" id="techPlasma2" btnText="unlock" unlocker="techPlasma1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techPlasmaStorage1'].count > 0)" id="techPlasmaStorage1" btnText="unlock" unlocker="techPlasma1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techPlasmaStorage2'].count > 0)" id="techPlasmaStorage2" btnText="unlock" unlocker="techPlasmaStorage1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techEmc1'].count > 0)" id="techEmc1" btnText="unlock" unlocker="techEmc0" />
+                        <buildable v-if="!(showDoneTechs == false && data['techMeteorite0'].count > 0)" id="techMeteorite0" btnText="unlock" unlocker="techEmc1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techMeteorite1'].count > 0)" id="techMeteorite1" btnText="unlock" unlocker="wonderMeteorite1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techMeteorite2'].count > 0)" id="techMeteorite2" btnText="unlock" unlocker="techMeteorite1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techDyson1'].count > 0)" id="techDyson1" btnText="unlock" unlocker="techDyson0" />
+                        <buildable v-if="!(showDoneTechs == false && data['techDyson2'].count > 0)" id="techDyson2" btnText="unlock" unlocker="techDyson1" />
+                        <buildable v-if="!(showDoneTechs == false && data['techNanoswarm1'].count > 0)" id="techNanoswarm1" btnText="unlock" unlocker="techNanoswarm0" />
+                        <buildable v-if="!(showDoneTechs == false && data['upgradeTier2'].count > 0)" id="upgradeTier2" btnText="upgrade" unlocker="techTier2" />
+                        <buildable v-if="!(showDoneTechs == false && data['upgradeEnergy1'].count > 0)" id="upgradeEnergy1" btnText="upgrade" unlocker="techEnergy1" />
+                        <buildable v-if="!(showDoneTechs == false && data['upgradeEnergy2'].count > 0)" id="upgradeEnergy2" btnText="upgrade" unlocker="techEnergy2" />
                         <buildable id="boostProduction" btnText="boost" />
                         <buildable id="boostScience" btnText="boost" />
                         <buildable id="boostEnergy" btnText="boost" />
@@ -1131,10 +1127,64 @@
                     
                     <!-- HELP PANE -->
                     <pane id="helpPane" icon="help.png" :descs="['helpPane_desc']">
-                        <card id="help1" :descs="['help1_desc1']" checked="true" />
-                        <card id="help2" :descs="['help2_desc1', 'help2_desc2']" checked="true" />
-                        <card id="help3" :descs="['help3_desc1']" checked="true" />
-                        <card id="help4" :descs="['help4_desc1']" checked="true" />
+                        <card id="helpStep1Title" :descs="['helpStep1Text1']" :checked="data['science'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep1Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['science'].unlocked == true" id="helpStep2Title" :descs="['helpStep2Text1']" :checked="data['wonderPrecious0'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep2Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['wonderPrecious0'].unlocked == true" id="helpStep3Title" :descs="['helpStep3Text1']" :checked="data['techDyson0'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep3Tip1') }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep3Tip2') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['techDyson0'].unlocked == true" id="helpStep4Title" :descs="['helpStep4Text1']" :checked="data['segment'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep4Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['segment'].unlocked == true" id="helpStep5Title" :descs="['helpStep5Text1']" :checked="data['antimatter'].unlocked == true">
+                        </card>
+                        <card v-if="data['antimatter'].unlocked == true" id="helpStep6Title" :descs="['helpStep6Text1']" :checked="data['segment'].unlocked == true">
+                        </card>
+                        <card v-if="data['ultrite'].unlocked == true" id="helpStep7Title" :descs="['helpStep7Text1']" :checked="data['ultrite'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep7Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['ultrite'].unlocked == true" id="helpStep8Title" :descs="['helpStep8Text1']">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep8Tip1') }}
+                                </div>
+                            </div>
+                        </card>
                     </pane>
                     
                     <!-- OPTIONS PANE -->
@@ -1174,6 +1224,10 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="checkPinnedItems" v-model="showPinnedItems" @click="setDisplayPinnedItems(!showPinnedItems)" />
                                     <label class="form-check-label small" for="checkPinnedItems">{{ $t('showPinnedItems') }}</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkDoneTechs" v-model="showDoneTechs" @click="setDisplayDoneTechs(!showDoneTechs)" />
+                                    <label class="form-check-label small" for="checkDoneTechs">{{ $t('showDoneTechs') }}</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="checkHideLocked" v-model="showLockedItems" @click="setDisplayLockedItems(!showLockedItems)" />
@@ -1400,17 +1454,17 @@
             </div>
             
             <!-- ACHIEVEMENT TOAST -->
-            <div id="toastAchievement" class="toast hide fade bg-success cursor-hover" @click="setActivePane('achievementPane')" role="alert">
+            <div id="toastAchievement" class="toast hide fade bg-success cursor-hover" role="alert">
                 <div class="toast-body text-light">
                     <div class="row">
-                        <div class="col">
+                        <div class="col" @click="setActivePane('achievementPane')" >
                             <strong>{{ $t('toastAchievement_title') }}</strong>
                         </div>
                         <div class="col-auto">
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" ></button>
                         </div>
                     </div>
-                    <div class="small">{{ $t('toastAchievement_text') }}</div>
+                    <div class="small" @click="setActivePane('achievementPane')" >{{ $t('toastAchievement_text') }}</div>
                 </div>
             </div>
             
@@ -1839,6 +1893,15 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.26.0 - 2021-07-08</div>
+                            <ul class="small">
+                                <li>FIX: compute costs after titan swaping</li>
+                                <li>FIX: building calculator costs were wrong</li>
+                                <li>NEW: overlord roadmap to conquer the universe</li>
+                                <li>NEW: option to display/hide researched techs</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.25.0 - 2021-07-07</div>
                             <ul class="small">
                                 <li>FIX: hard reset does nothing</li>
@@ -2205,6 +2268,7 @@ export default {
             showToastAchievement: true,
             showLockedItems: false,
             showPinnedItems: false,
+            showDoneTechs: true,
 
             compressed: null,
             newCompanyName: null,
@@ -2225,7 +2289,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.25.0',
+            currentRelease: '1.26.0',
             ghLatestRelease: null,
             
             login: null,
@@ -2246,7 +2310,7 @@ export default {
         
             'data', 'companyName', 'locale', 'activePane', 'lastUpdateTime', 'autoSaveInterval', 'timeSinceAutoSave', 'rank',
             'resAchievements', 'prodAchievements', 'newAchievement',
-            'notifAutoSave', 'notifAchievement', 'displayLockedItems', 'displayPinnedItems',
+            'notifAutoSave', 'notifAchievement', 'displayLockedItems', 'displayPinnedItems', 'displayDoneTechs',
             'username', 'token',
             'emcAmount', 'autoEmcInterval', 'timeSinceAutoEmc',
             'stats', 'resources', 'pinned', 'titanSwapingCount',
@@ -2268,7 +2332,7 @@ export default {
         
             'setLocale', 'setActivePane', 'setLastUpdateTime', 'setTimeSinceAutoSave', 'setCompanyName', 'setAutoSaveInterval',
             'setNotifAutoSave', 'setNotifAchievement', 'setDisplayLockedItems', 'setUsername', 'setToken', 'setEmcAmount', 'setTimeSinceAutoEmc', 'setAutoEmcInterval',
-            'setDisplayPinnedItems',
+            'setDisplayPinnedItems', 'setDisplayDoneTechs',
         ]),
         ...mapActions([
         
@@ -2318,6 +2382,7 @@ export default {
                 this.showToastAchievement = this.notifAchievement 
                 this.showLockedItems = this.displayLockedItems
                 this.showPinnedItems = this.displayPinnedItems
+                this.showDoneTechs = this.displayDoneTechs
                 
                 element = document.getElementById('toastAchievement')
                 this.toastAchievement = new Toast(element)
