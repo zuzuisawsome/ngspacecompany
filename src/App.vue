@@ -3,7 +3,7 @@
     <div v-if="!loaded" id="loadScreen">
         <div class="row row-cols-1 g-2 justify-content-center">
             <div class="col text-center"><h1 class="text-light">NG Space Company</h1></div>
-            <div class="col text-center"><img id="loadLogo" style="width:25%; height:auto;" :src="require('./assets/whiteLogo.png')" /></div>
+            <div class="col text-center"><img id="loadLogo" style="width:25%; height:auto;" :src="require('./assets/whiteLogo.png')" alt="Game logo" /></div>
             <div class="col text-center"><h5 class="text-light">Reticulating Splines...</h5></div>
         </div>
     </div>
@@ -144,19 +144,19 @@
                         <div v-if="hasNotif" class="position-absolute top-0 end-0" style="line-height:1">
                             <i class="fas fa-fw fa-certificate text-success small"></i>
                         </div>
-                        <img :src="require('./assets/whiteLogo.png')" width="36" height="36" />
+                        <img :src="require('./assets/whiteLogo.png')" width="36" height="36" alt="Game logo" />
                     </button>
                 </div>
                 
                 <div class="col-auto ms-auto">
                     <a href="https://discord.gg/3UkgeeT9CV" target="_blank" data-bs-toggle="tooltip" data-bs-placement="left" title="Discord">
-                        <img :src="require('./assets/interface/discord.png')" width="16" height="16" />
+                        <img :src="require('./assets/interface/discord.png')" width="16" height="16" alt="Discord icon" />
                     </a>
                 </div>
                 
                 <div class="col-auto cursor-hover">
                     <button @click="setActivePane('donatingPane')">
-                        <img :src="require('./assets/interface/donating.png')" width="16" height="16" />
+                        <img :src="require('./assets/interface/donating.png')" width="16" height="16" alt="Donating icon" />
                         <span class="ms-1 text-light">{{ $t('donatingPane') }}</span>
                     </button>
                 </div>
@@ -166,22 +166,22 @@
                         <div v-if="isNotif('achievementPane')" class="position-absolute top-0 end-0" style="line-height:1">
                             <i class="fas fa-fw fa-certificate text-success small"></i>
                         </div>
-                        <img :src="require('./assets/interface/trophy.png')" width="16" height="16" />
+                        <img :src="require('./assets/interface/trophy.png')" width="16" height="16" alt="Achievements icon" />
                     </button>
                 </div>
                 
                 <div class="col-auto cursor-hover position-relative" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('rankPane')">
                     <button @click="setActivePane('rankPane')">
-                        <img :src="require('./assets/interface/rank.png')" width="16" height="16" />
+                        <img :src="require('./assets/interface/rank.png')" width="16" height="16" alt="Leaderboard icon" />
                     </button>
                 </div>
                 
                 <div class="col-auto">
-                    <button class="text-normal cursor-hover" data-bs-toggle="dropdown">
+                    <button id="dropdownLanguageButton" class="text-normal cursor-hover" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Language dropdown">
                         <span v-if="locale == 'en'" class="flag-icon flag-icon-gb rounded"></span>
                         <span v-if="locale == 'fr'" class="flag-icon flag-icon-fr rounded"></span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguageButton">
                         <li>
                             <button class="dropdown-item cursor-hover" @click="changeLocale('en')">
                                 <span class="flag-icon flag-icon-gb rounded me-2"></span>
@@ -198,19 +198,19 @@
                 </div>
                 
                 <div class="col-auto">
-                    <button class="text-light cursor-hover" data-bs-toggle="dropdown">
+                    <button id="dropdownMenuButton" class="text-light cursor-hover" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu dropdown">
                         <i class="fas fa-fw fa-ellipsis-v"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                         <li>
                             <button class="dropdown-item cursor-hover" @click="setActivePane('settingsPane')">
-                                <img :src="require('./assets/interface/cog.png')" width="16" height="16" class="me-2">
+                                <img :src="require('./assets/interface/cog.png')" width="16" height="16" class="me-2" alt="Settings icon" />
                                 {{ $t('settingsPane') }}
                             </button>
                         </li>
                         <li>
                             <button class="dropdown-item cursor-hover" @click="setActivePane('aboutPane')">
-                                <img :src="require('./assets/interface/about.png')" width="16" height="16" class="me-2">
+                                <img :src="require('./assets/interface/about.png')" width="16" height="16" class="me-2" alt="About icon" />
                                 {{ $t('aboutPane') }}
                             </button>
                         </li>
@@ -1893,6 +1893,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.26.1 - 2021-07-08</div>
+                            <ul class="small">
+                                <li>FIX: various accessibility issues</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.26.0 - 2021-07-08</div>
                             <ul class="small">
                                 <li>FIX: compute costs after titan swaping</li>
@@ -2289,7 +2295,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.26.0',
+            currentRelease: '1.26.1',
             ghLatestRelease: null,
             
             login: null,
