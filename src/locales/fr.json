@@ -81,6 +81,7 @@
     "copy": "Copier en mémoire",
     "importExport_desc": "Copier-coller dans un fichier quelque part afin de pouvoir l'importer dans le jeu à une date ultérieure. Vous pouvez également l'utiliser pour créer plusieurs 'sauvegardes' du jeu en stockant plusieurs instances séparément.",
     "notifications": "Affichage",
+    "showRoadmap": "Afficher la feuille de route Overlord",
     "showPinnedItems": "Afficher et épingler des onglets",
     "showLockedItems": "Afficher les items bloqués",
     "showToastAutoSave": "Afficher la notification de sauvegarde automatique",

@@ -36,7 +36,7 @@
             <inner-content data-simplebar>
                 <div class="row gx-2 gy-3 row-cols-1">
                 
-                    <sidenav-item id="helpPane" icon="help.png" unlocked="true" />
+                    <sidenav-item v-if="showRoadmap" id="helpPane" icon="help.png" unlocked="true" />
                     
                     <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
                         <sidenav-item v-for="pane in pinned" :key="pane.id" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" />
@@ -1222,6 +1222,10 @@
                         <card id="notifications" checked="true">
                             <div class="col-12">
                                 <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="checkRoadmap" v-model="showRoadmap" @click="setDisplayRoadmap(!showRoadmap)" />
+                                    <label class="form-check-label small" for="checkRoadmap">{{ $t('showRoadmap') }}</label>
+                                </div>
+                                <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="checkPinnedItems" v-model="showPinnedItems" @click="setDisplayPinnedItems(!showPinnedItems)" />
                                     <label class="form-check-label small" for="checkPinnedItems">{{ $t('showPinnedItems') }}</label>
                                 </div>
@@ -1893,6 +1897,16 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.27.0 - 2021-07-09</div>
+                            <ul class="small">
+                                <li>FIX: now auto emc is working fine in background</li>
+                                <li>FIX: chemical plant boost is applied on production only</li>
+                                <li>FIX: some typos (thx to silent1b)</li>
+                                <li>NEW: option to show/hide the Overlord roadmap</li>
+                                <li>NEW: QoL DM upgrades are not reset after enlighenment</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.26.1 - 2021-07-08</div>
                             <ul class="small">
                                 <li>FIX: various accessibility issues</li>
@@ -2275,6 +2289,7 @@ export default {
             showLockedItems: false,
             showPinnedItems: false,
             showDoneTechs: true,
+            showRoadmap: true,
 
             compressed: null,
             newCompanyName: null,
@@ -2295,7 +2310,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.26.1',
+            currentRelease: '1.27.0',
             ghLatestRelease: null,
             
             login: null,
@@ -2316,7 +2331,7 @@ export default {
         
             'data', 'companyName', 'locale', 'activePane', 'lastUpdateTime', 'autoSaveInterval', 'timeSinceAutoSave', 'rank',
             'resAchievements', 'prodAchievements', 'newAchievement',
-            'notifAutoSave', 'notifAchievement', 'displayLockedItems', 'displayPinnedItems', 'displayDoneTechs',
+            'notifAutoSave', 'notifAchievement', 'displayLockedItems', 'displayPinnedItems', 'displayDoneTechs', 'displayRoadmap',
             'username', 'token',
             'emcAmount', 'autoEmcInterval', 'timeSinceAutoEmc',
             'stats', 'resources', 'pinned', 'titanSwapingCount',
@@ -2338,7 +2353,7 @@ export default {
         
             'setLocale', 'setActivePane', 'setLastUpdateTime', 'setTimeSinceAutoSave', 'setCompanyName', 'setAutoSaveInterval',
             'setNotifAutoSave', 'setNotifAchievement', 'setDisplayLockedItems', 'setUsername', 'setToken', 'setEmcAmount', 'setTimeSinceAutoEmc', 'setAutoEmcInterval',
-            'setDisplayPinnedItems', 'setDisplayDoneTechs',
+            'setDisplayPinnedItems', 'setDisplayDoneTechs', 'setDisplayRoadmap',
         ]),
         ...mapActions([
         
@@ -2389,6 +2404,7 @@ export default {
                 this.showLockedItems = this.displayLockedItems
                 this.showPinnedItems = this.displayPinnedItems
                 this.showDoneTechs = this.displayDoneTechs
+                this.showRoadmap = this.displayRoadmap
                 
                 element = document.getElementById('toastAchievement')
                 this.toastAchievement = new Toast(element)
@@ -2460,11 +2476,9 @@ export default {
             this.updateTimers()
             this.checkBoosts()
             
-            let timeLeft = this.autoEmcInterval - (this.timeSinceAutoEmc * 1000)
-            if (timeLeft < 100) {
-                this.performAutoEmc()
-                this.setTimeSinceAutoEmc(0)
-            }
+            let autoEmcCount = Math.floor((this.timeSinceAutoEmc * 1000) / this.autoEmcInterval)
+            for (let i = 0; i < autoEmcCount; i++) this.performAutoEmc()
+            if (autoEmcCount > 0) this.setTimeSinceAutoEmc(0)            
         },
         slowUpdate() {
             

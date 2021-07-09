@@ -73,6 +73,7 @@ export const store = createStore({
             displayLockedItems: false,
             displayPinnedItems: false,
             displayDoneTechs: true,
+            displayRoadmap: true,
             collapsed: [],
             pinned: [],
             /*----------------------------------------------------------------*/
@@ -342,6 +343,7 @@ export const store = createStore({
         setDisplayLockedItems(state, payload) { state.displayLockedItems = payload },
         setDisplayPinnedItems(state, payload) { state.displayPinnedItems = payload },
         setDisplayDoneTechs(state, payload) { state.displayDoneTechs = payload },
+        setDisplayRoadmap(state, payload) { state.displayRoadmap = payload },
         setAutoStorageUpgrade(state, payload) { state.data[payload.id].auto = payload.auto; console.log(state.data[payload.id]);  },
         setUsername(state, payload) { state.username = payload },
         setToken(state, payload) { state.token = payload },
@@ -1561,7 +1563,8 @@ export const store = createStore({
                 state.notifAchievement = data.notifAchievement
                 state.displayLockedItems = data.displayLockedItems || false
                 state.displayPinnedItems = data.displayPinnedItems || false
-                state.displayDoneTechs = data.displayDoneTechs
+                state.displayDoneTechs = data.displayDoneTechs ? data.displayDoneTechs : true
+                state.displayRoadmap = data.displayRoadmap ? data.displayRoadmap : true
                 state.username = data.username || null
                 state.token = data.token || null
                 state.emcAmount = data.emcAmount || 'max'
@@ -1744,6 +1747,7 @@ export const store = createStore({
                 displayLockedItems: state.displayLockedItems,
                 displayPinnedItems: state.displayPinnedItems,
                 displayDoneTechs: state.displayDoneTechs,
+                displayRoadmap: state.displayRoadmap,
                 username: state.username,
                 token: state.token,
                 emcAmount: state.emcAmount,
@@ -2146,7 +2150,6 @@ export const store = createStore({
             /*----------------------------------------------------------------*/
             else if (id == 'upgradeFuel1') {
                 state.data['fuelT1'].outputs.forEach(output => { output.count *= 2 })
-                state.data['fuelT1'].inputs.forEach(input => { input.count *= 2 })
             }
             /*----------------------------------------------------------------*/
             else if (id == 'upgradeSpaceship') {
@@ -2612,8 +2615,17 @@ export const store = createStore({
             state.autoEmcInterval = 1 * 1000
             
             let exludedList = [
+                'darkmatter',
+                'carnelian', 'upgradeGain', 'upgradeStorage1', 'upgradeStorage2', 'upgradeStorage3',
+                'prasnian', 'upgradeWonder1', 'upgradeWonder2', 'upgradeWonder3', 'autoEmc',
+                'hyacinite', 'upgradeScience1', 'upgradeScience2', 'upgradeEnergyBoost', 
+                'kitrinos', 'upgradeTier1', 'multiBuy', 'boostCapital',
+                'moviton', 'upgradeFuel1', 'upgradeSpaceship',
+                'overlord', 'boostDarkmatter', 'upgradeFaction',
                 'ultrite', 'overlordProgram', 'advUpgradeStorage1', 'shipSpeedEnhancement', 'shipDefenceEnhancement', 'shipPowerEnhancement', 'techNanoswarm0', 'techAutoStorageUpgrade',
             ]
+            
+            state.data['darkmatter'].count = 0
             
             for (let i in state.data) {
                 let item = state.data[i]
