@@ -1897,6 +1897,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.27.1 - 2021-07-09</div>
+                            <ul class="small">
+                                <li>FIX: QoL DM upgrades are locked after enlighenment</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.27.0 - 2021-07-09</div>
                             <ul class="small">
                                 <li>FIX: now auto emc is working fine in background</li>
@@ -2310,7 +2316,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.27.0',
+            currentRelease: '1.27.1',
             ghLatestRelease: null,
             
             login: null,
@@ -2387,7 +2393,8 @@ export default {
             
             this.ghUpdate()
             
-            this.fastInterval = setInterval(() => { this.fastUpdate() }, 100)
+            requestAnimationFrame(this.fastUpdate)
+            //this.fastInterval = setInterval(() => { this.fastUpdate() }, 100)
             this.slowInterval = setInterval(() => { this.slowUpdate() }, 1000)
             this.ghInterval = setInterval(() => { this.ghUpdate() }, 3600000)
             
@@ -2455,7 +2462,7 @@ export default {
                 
                 element = document.getElementById('overlordModal')
                 this.overlordModal = new Modal(element)
-            })
+            })            
         },
         fastUpdate() {
         
@@ -2463,6 +2470,11 @@ export default {
             let delta = (currentTime - this.lastUpdateTime) / 1000
             if (delta <= 0) {
                 this.setLastUpdateTime(currentTime)
+                return
+            }
+            
+            if (delta < (1 / 60)) {
+                requestAnimationFrame(this.fastUpdate)
                 return
             }
             
@@ -2478,7 +2490,9 @@ export default {
             
             let autoEmcCount = Math.floor((this.timeSinceAutoEmc * 1000) / this.autoEmcInterval)
             for (let i = 0; i < autoEmcCount; i++) this.performAutoEmc()
-            if (autoEmcCount > 0) this.setTimeSinceAutoEmc(0)            
+            if (autoEmcCount > 0) this.setTimeSinceAutoEmc(0)
+            
+            requestAnimationFrame(this.fastUpdate)
         },
         slowUpdate() {
             

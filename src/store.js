@@ -1730,6 +1730,20 @@ export const store = createStore({
                 state.stats.ships.allTime = state.stats.ships.current
                 state.stats.starOwned.allTime = state.stats.starOwned.current
             }
+            
+            if (state.data['darkmatter'].unlocked == true) {
+            
+                let list = [
+                    'carnelian', 'upgradeGain', 'upgradeStorage1', 'upgradeStorage2', 'techEnergyStorage6', 'upgradeStorage3',
+                    'prasnian', 'techPlasma3', 'upgradeWonder1', 'upgradeWonder2', 'upgradeWonder3', 'autoEmc', 'techPlasma4', 'techPlasmaStorage3',
+                    'hyacinite', 'upgradeScience1', 'upgradeScience2', 'techScience5', 'upgradeEnergyBoost', 
+                    'kitrinos', 'upgradeTier1', 'techEnergyStorage5', 'multiBuy', 'boostCapital', 'techTier5',
+                    'moviton', 'upgradeFuel1', 'upgradeSpaceship', 'techPlasmaStorage4', 'techMeteorite3', 'techMeteorite4',
+                    'overlord', 'boostDarkmatter', 'upgradeFaction',
+                    'ultrite', 'overlordProgram', 'advUpgradeStorage1', 'shipSpeedEnhancement', 'shipDefenceEnhancement', 'shipPowerEnhancement', 'techNanoswarm0', 'techAutoStorageUpgrade',
+                ]
+                list.forEach(item => { dispatch('unlock', item) })
+            }
         },
         /*--------------------------------------------------------------------*/
         save({ state }) {
