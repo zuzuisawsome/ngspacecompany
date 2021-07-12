@@ -849,10 +849,13 @@
                             </div>
                         </card>
                         <card id="enlighten" :descs="['enlighten_desc']" checked="true">
+                            <div class="col-12 small">
+                                <div :class="{ 'text-white':getOwnedStarCount >= 10, 'text-danger':getOwnedStarCount < 10 }">{{ $t('enlighten_nb1') }}</div>
+                            </div>
                             <div class="col-12">
                                 <div class="row g-1 justify-content-end">
                                     <div class="col-auto">
-                                        <button class="btn btn-warning" @click="enlightenModal.show()">{{ $t('enlighten') }}</button>
+                                        <button class="btn btn-warning" :class="{ 'disabled':getOwnedStarCount < 10 }" @click="enlightenModal.show()" >{{ $t('enlighten') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -880,21 +883,21 @@
                             </div>
                         </card>
                         <card v-if="titanSwapingCount < 1" id="titanSwaping" checked="true" :descs="['titanSwaping_desc']">
-                            <div class="col-12">
+                            <div v-if="getCurrentTitan.length > 0" class="col-12">
                                 <small class="text-light">{{ $t('titanSource') }}</small>
                                 <select class="form-control" v-model="titanSource">
                                     <option></option>
                                     <option v-for="item in getCurrentTitan" :key="item" :value="item">{{ $t(item) }}</option>
                                 </select>
                             </div>
-                            <div class="col-12">
+                            <div v-if="getCurrentTitan.length > 0" class="col-12">
                                 <small class="text-light">{{ $t('titanDestination') }}</small>
                                 <select class="form-control" v-model="titanDestination">
                                     <option></option>
                                     <option v-for="item in getNotCurrentTitan" :key="item" :value="item">{{ $t(item) }}</option>
                                 </select>
                             </div>
-                            <div class="col-12 text-end">
+                            <div v-if="getCurrentTitan.length > 0" class="col-12 text-end">
                                 <button class="btn" @click="swapTitan({ 'source':titanSource, 'destination':titanDestination })">
                                     {{ $t('swap') }}
                                 </button>
@@ -1814,7 +1817,16 @@
                 <div class="modal-body">
                     <div class="row g-2">
                         <div class="col-12">
-                            <span class="h6 text-light">{{ $t('segmentModal') }}</span>
+                            <div class="row g-1 align-items-center">
+                                <div class="col">
+                                    <span class="h6 text-light">{{ $t('segmentModal') }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn" data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="fas fa-fw fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <calc-segment />
@@ -1832,7 +1844,16 @@
                 <div class="modal-body">
                     <div class="row g-2">
                         <div class="col-12">
-                            <span class="h6 text-light">{{ $t(calcId) }} {{ $t('calcModal') }}</span>
+                            <div class="row g-1 align-items-center">
+                                <div class="col">
+                                    <span class="h6 text-light">{{ $t(calcId) }} {{ $t('calcModal') }}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn" data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="fas fa-fw fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12">
                             <calc-building :id="calcId" />
@@ -1895,6 +1916,19 @@
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12 border-top">
+                            <div class="text-light">v1.28.0 - 2021-07-12</div>
+                            <ul class="small">
+                                <li>FIX: spaceship parts cannot be built if spaceship is already built</li>
+                                <li>FIX: nanoswarm is not applied on consumption</li>
+                                <li>FIX: added close button on calculators</li>
+                                <li>FIX: option to show roadmap and done techs are saved</li>
+                                <li>FIX: T5 machines unlocked if meteorite wonder is already activated</li>
+                                <li>FIX: auto-storage occurs when storage is full (rift is not taken into account)</li>
+                                <li>NEW: grey out the enlighten button if you don't have 1à conquered stars at least</li>
+                                <li>NEW: grey out the titan swapping button if you don't have any titan</li>
+                            </ul>
                         </div>
                         <div class="col-12 border-top">
                             <div class="text-light">v1.27.1 - 2021-07-09</div>
@@ -2316,7 +2350,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.27.1',
+            currentRelease: '1.28.0',
             ghLatestRelease: null,
             
             login: null,
@@ -2348,7 +2382,7 @@ export default {
             'getThreat', 'getSpyChance', 'getInvadeChance', 'getStarPower', 'getStarDefense', 'getStarSpeed',
             'getDMWonders', 'getDMSpheres', 'getDMResearches', 'getDMRank', 'getDMSwarms', 'getPotentialDM',
             'getULStars', 'getULDarkmatter', 'getULStatues', 'getPotentialUL',
-            'getStorageCap', 'getStatuesCount', 'getCurrentTitan', 'getNotCurrentTitan',
+            'getStorageCap', 'getStatuesCount', 'getCurrentTitan', 'getNotCurrentTitan', 'getOwnedStarCount',
         ]),
     },
     created() {        
@@ -2393,8 +2427,7 @@ export default {
             
             this.ghUpdate()
             
-            requestAnimationFrame(this.fastUpdate)
-            //this.fastInterval = setInterval(() => { this.fastUpdate() }, 100)
+            this.fastInterval = setInterval(() => { this.fastUpdate() }, 100)
             this.slowInterval = setInterval(() => { this.slowUpdate() }, 1000)
             this.ghInterval = setInterval(() => { this.ghUpdate() }, 3600000)
             
@@ -2473,10 +2506,7 @@ export default {
                 return
             }
             
-            if (delta < (1 / 60)) {
-                requestAnimationFrame(this.fastUpdate)
-                return
-            }
+            if (delta < (1 / 60)) return
             
             this.setLastUpdateTime(currentTime)
             this.setTimeSinceAutoSave(this.timeSinceAutoSave + delta)
@@ -2491,8 +2521,6 @@ export default {
             let autoEmcCount = Math.floor((this.timeSinceAutoEmc * 1000) / this.autoEmcInterval)
             for (let i = 0; i < autoEmcCount; i++) this.performAutoEmc()
             if (autoEmcCount > 0) this.setTimeSinceAutoEmc(0)
-            
-            requestAnimationFrame(this.fastUpdate)
         },
         slowUpdate() {
             
