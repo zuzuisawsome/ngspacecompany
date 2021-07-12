@@ -1918,6 +1918,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.28.1 - 2021-07-12</div>
+                            <ul class="small">
+                                <li>FIX: spaceship parts cannot be built if spaceship is already built</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.28.0 - 2021-07-12</div>
                             <ul class="small">
                                 <li>FIX: spaceship parts cannot be built if spaceship is already built</li>
