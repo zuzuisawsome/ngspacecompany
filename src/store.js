@@ -1776,6 +1776,7 @@ export const store = createStore({
                 token: state.token,
                 emcAmount: state.emcAmount,
                 autoResource: state.autoResource,
+                autoEmcInterval: state.autoEmcInterval,
                 stats: state.stats,
                 collapsed: state.collapsed,
                 pinned: state.pinned,
@@ -2027,11 +2028,11 @@ export const store = createStore({
             }
         },
         /*--------------------------------------------------------------------*/
-        performAutoStorageUpgrade({ state, dispatch }) {
+        performAutoStorageUpgrade({ state, dispatch, getters }) {
             
             if (state.data['techStorage'].count > 0 && state.data['techAutoStorageUpgrade'].count > 0) {
                 state.storageUpgrades.forEach(building => {
-                    if (building.auto == true && state.data[building.storage.id].count >= state.data[building.storage.id].storage) dispatch('build', { id:building.id, count:1 })
+                    if (building.auto == true && state.data[building.storage.id].count >= getters.getStorageCap(building.storage.id)) dispatch('build', { id:building.id, count:1 })
                 })
             }
         },

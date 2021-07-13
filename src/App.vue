@@ -104,7 +104,7 @@
                     </sidenav-group>
 
                     <sidenav-group id="interstellarHeading" :unlocked="data['radarT1'].unlocked || data['antimatter'].unlocked || data['spaceship'].unlocked || data['shipT1'].unlocked">
-                        <sidenav-item id="antimatterPane" icon="antimatter.png" :unlocked="data['antimatter'].unlocked" :prod="data['antimatter'].prod" :count="data['antimatter'].count" :storage="getStorageCap('antimatter')" />
+                        <sidenav-item id="antimatterPane" icon="antimatter.png" :unlocked="data['antimatter'].unlocked" :prod="data['antimatter'].prod" :count="data['antimatter'].count" :storage="getStorageCap('antimatter')" :cap="data['antimatter'].storage" />
                         <sidenav-item id="communicationPane" icon="communication.png" :unlocked="data['radarT1'].unlocked" />
                         <sidenav-item id="spaceshipPane" icon="spaceship.png" :unlocked="data['spaceship'].unlocked" :done="data['spaceship'].count > 0" doneText="built" />
                         <sidenav-item id="militaryPane" icon="military.png" :unlocked="data['shipT1'].unlocked" />
@@ -634,6 +634,7 @@
                     
                     <!-- ANTIMATTER PANE -->
                     <pane id="antimatterPane" icon="antimatter.png" :descs="['antimatterPane_desc']" pinnable="antimatter">
+                        <resource id="antimatter" />
                         <buildable id="antimatterT1" btnText="build" />
                     </pane>
                     
@@ -1918,6 +1919,15 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.28.2 - 2021-07-13</div>
+                            <ul class="small">
+                                <li>FIX: now EMC interval is saved and loaded</li>
+                                <li>FIX: now antimatter is purple when affected by rift</li>
+                                <li>FIX: now antimatter indicates the time taken for full storage</li>
+                                <li>FIX: now rift is taken into account for auto-storage</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.28.1 - 2021-07-12</div>
                             <ul class="small">
                                 <li>FIX: spaceship parts cannot be built if spaceship is already built</li>
@@ -2356,7 +2366,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.28.1',
+            currentRelease: '1.28.2',
             ghLatestRelease: null,
             
             login: null,
