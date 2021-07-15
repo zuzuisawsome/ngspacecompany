@@ -621,10 +621,10 @@
                     
                     <!-- DYSON PANE -->
                     <pane id="dysonPane" icon="dyson.png" :descs="['dysonPane_desc']">
-                        <buildable id="segment" btnText="build" />
-                        <buildable id="dysonT1" btnText="build" />
-                        <buildable id="dysonT2" btnText="build" />
-                        <buildable id="dysonT3" btnText="build" />
+                        <buildable id="segment" btnText="build" collapse="true" />
+                        <buildable id="dysonT1" btnText="build" collapse="true" />
+                        <buildable id="dysonT2" btnText="build" collapse="true" />
+                        <buildable id="dysonT3" btnText="build" collapse="true" />
                     </pane>
                     
                     <!-- NANOSWARM PANE -->
@@ -1665,7 +1665,7 @@
                                 <div class="col small">
                                     <div class="text-normal">{{ $t('chance') }}</div>
                                     <div v-if="data[activeStar].spy <= 2" class="text-light">???</div>
-                                    <div v-if="data[activeStar].spy > 2" class="text-light">{{ getInvadeChance(activeStar) * 100 }}%</div>
+                                    <div v-if="data[activeStar].spy > 2" class="text-light">{{ Math.round(getInvadeChance(activeStar) * 100) }}%</div>
                                 </div>
                             </div>
                         </div>
@@ -1917,6 +1917,13 @@
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12 border-top">
+                            <div class="text-light">v1.28.3 - 2021-07-15</div>
+                            <ul class="small">
+                                <li>FIX: now invade chance computing is fixed</li>
+                                <li>FIX: now dyson segment and items are collapsable</li>
+                            </ul>
                         </div>
                         <div class="col-12 border-top">
                             <div class="text-light">v1.28.2 - 2021-07-13</div>
@@ -2366,7 +2373,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.28.2',
+            currentRelease: '1.28.3',
             ghLatestRelease: null,
             
             login: null,

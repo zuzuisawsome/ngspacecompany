@@ -169,8 +169,8 @@ export const store = createStore({
 
                 let damage = (activeFleet.power / star.stats.defense * multi) * activeFleet.speed
                 let starDamage = (star.stats.power * multi / Math.max(activeFleet.defense, 1)) * star.stats.speed
-                if (damage > starDamage) return Math.min(1, Math.round((damage / starDamage) - 0.5))
-                else if (damage != 0) return Math.min(1, Math.round(Math.max(0, 1.5 - (starDamage / damage))))
+                if (damage > starDamage) return (damage / starDamage) - 0.5
+                else if (damage != 0) return Math.max(0, 1.5 - (starDamage / damage))
             }
             
             return 0
