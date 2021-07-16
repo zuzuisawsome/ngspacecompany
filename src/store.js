@@ -1375,7 +1375,7 @@ export const store = createStore({
                 state.data['achFuel'],
                 /*------------------------------------------------------------*/
                 state.data['achEnergyT1'],    state.data['achEnergyT2'],    state.data['achEnergyT3'],    state.data['achEnergyT4'],    state.data['achEnergyT5'],   state.data['achEnergyT6'],
-                state.data['achPlasmaT1'],    state.data['achPlasmaT2'],    state.data['achPlasmaT3'],
+                state.data['achPlasmaT1'],    state.data['achPlasmaT2'],    state.data['achPlasmaT3'],    state.data['achPlasmaT4'],
                 state.data['achMeteoriteT1'], state.data['achMeteoriteT2'], state.data['achMeteoriteT3'], state.data['achMeteoriteT4'],
                 state.data['achCarbonT1'],    state.data['achCarbonT2'],    state.data['achCarbonT3'],    state.data['achCarbonT4'],    state.data['achCarbonT5'],
                 state.data['achOilT1'],       state.data['achOilT2'],       state.data['achOilT3'],       state.data['achOilT4'],       state.data['achOilT5'],
@@ -2606,6 +2606,8 @@ export const store = createStore({
             dispatch('rebirthFaction', { id:'moviton', items:['upgradeFuel1', 'upgradeSpaceship', 'techPlasmaStorage4', 'techMeteorite3', 'techMeteorite4'] })
             dispatch('rebirthFaction', { id:'overlord', items:['boostDarkmatter', 'upgradeFaction'] })
             
+            if (state.data['upgradeFaction'].count > 0) dispatch('onBuild', 'upgradeFaction')
+            
             dispatch('save')
             
             return true
@@ -2688,6 +2690,8 @@ export const store = createStore({
             dispatch('rebirthFaction', { id:'kitrinos', items:['upgradeTier1', 'techEnergyStorage5', 'multiBuy', 'boostCapital', 'techTier5'] })
             dispatch('rebirthFaction', { id:'moviton', items:['upgradeFuel1', 'upgradeSpaceship', 'techPlasmaStorage4', 'techMeteorite3', 'techMeteorite4'] })
             dispatch('rebirthFaction', { id:'overlord', items:['boostDarkmatter', 'upgradeFaction'] })
+            
+            if (state.data['upgradeFaction'].count > 0) dispatch('onBuild', 'upgradeFaction')
             
             dispatch('save')
             

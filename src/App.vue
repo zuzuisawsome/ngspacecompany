@@ -1919,6 +1919,14 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.28.4 - 2021-07-16</div>
+                            <ul class="small">
+                                <li>FIX: now bribery remains after rebirth and enlightenment</li>
+                                <li>FIX: now empty storage timer displays '> 48h'</li>
+                                <li>FIX: now QRS is taken into account in achievements</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.28.3 - 2021-07-15</div>
                             <ul class="small">
                                 <li>FIX: now invade chance computing is fixed</li>
@@ -2373,7 +2381,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.28.3',
+            currentRelease: '1.28.4',
             ghLatestRelease: null,
             
             login: null,
