@@ -2051,7 +2051,7 @@ export const store = createStore({
             }
         },
         /*--------------------------------------------------------------------*/
-        onBuild({ state, commit, dispatch }, id) {
+        onBuild({ state, commit, dispatch, getters }, id) {
             /*----------------------------------------------------------------*/
             if (id == 'upgradeTier2') {
                 let list = ['oil', 'metal', 'gem', 'carbon', 'wood']
@@ -2192,8 +2192,8 @@ export const store = createStore({
             /*----------------------------------------------------------------*/
             else if (id == 'upgradeFaction') {
                 let upgrade = state.data[id]
-                if (upgrade.count <= 1) {
-                    upgrade.count += 1
+                if (upgrade.count <= 1 || (upgrade.count == 2 && getters.getULStars <= 0)) {
+                    upgrade.count = 3
                     let list = ['carnelian', 'prasnian', 'hyacinite', 'kitrinos', 'moviton']
                     for (let i = 0; i < list.length; i++) {
                         let item = state.data[list[i]]
@@ -2606,7 +2606,10 @@ export const store = createStore({
             dispatch('rebirthFaction', { id:'moviton', items:['upgradeFuel1', 'upgradeSpaceship', 'techPlasmaStorage4', 'techMeteorite3', 'techMeteorite4'] })
             dispatch('rebirthFaction', { id:'overlord', items:['boostDarkmatter', 'upgradeFaction'] })
             
-            if (state.data['upgradeFaction'].count > 0) dispatch('onBuild', 'upgradeFaction')
+            if (state.data['upgradeFaction'].count > 0) {
+                state.data['upgradeFaction'].count = 1
+                dispatch('onBuild', 'upgradeFaction')
+            }
             
             dispatch('save')
             
@@ -2691,7 +2694,10 @@ export const store = createStore({
             dispatch('rebirthFaction', { id:'moviton', items:['upgradeFuel1', 'upgradeSpaceship', 'techPlasmaStorage4', 'techMeteorite3', 'techMeteorite4'] })
             dispatch('rebirthFaction', { id:'overlord', items:['boostDarkmatter', 'upgradeFaction'] })
             
-            if (state.data['upgradeFaction'].count > 0) dispatch('onBuild', 'upgradeFaction')
+            if (state.data['upgradeFaction'].count > 0) {
+                state.data['upgradeFaction'].count = 1
+                dispatch('onBuild', 'upgradeFaction')
+            }
             
             dispatch('save')
             
