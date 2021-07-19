@@ -3,7 +3,7 @@
     <div v-if="!loaded" id="loadScreen">
         <div class="row row-cols-1 g-2 justify-content-center">
             <div class="col text-center"><h1 class="text-light">NG Space Company</h1></div>
-            <div class="col text-center"><img id="loadLogo" style="width:25%; height:auto;" :src="require(`./assets/whiteLogo.png`)" alt="Game logo" /></div>
+            <div class="col text-center"><img id="loadLogo" style="width:25%; height:auto;" src="https://ngspacecompany.exileng.com/whiteLogo.png" alt="Game logo" /></div>
             <div class="col text-center"><h5 class="text-light">Reticulating Splines...</h5></div>
         </div>
     </div>
@@ -13,7 +13,7 @@
             <top-header class="px-2">
             
                 <div class="col-auto">
-                    <img :src="require(`./assets/whiteLogo.png`)" width="42" height="42" alt="Game logo" />
+                    <img src="https://ngspacecompany.exileng.com/whiteLogo.png" width="42" height="42" alt="Game logo" />
                 </div>
 
                 <div class="col text-truncate px-0">
@@ -33,7 +33,7 @@
                 </div>
                 
             </top-header>
-            <inner-content data-simplebar>
+            <inner-content data-simplebar class="pe-2">
                 <div class="row gx-2 gy-3 row-cols-1">
                 
                     <sidenav-item v-if="showRoadmap" id="helpPane" icon="help.png" unlocked="true" />
@@ -725,9 +725,9 @@
                             <div class="col-12">
                                 <small>{{ 150 - getStatuesCount }} {{ $t('remainingStatues') }}</small>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" :style="'width: ' + (getStatuesCount / 150) + '%'">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" :style="'width: ' + ((getStatuesCount / 150) * 100) + '%'">
                                         <div class="small">
-                                            <span>{{ getStatuesCount / 150 }}%</span>
+                                            <span>{{ (getStatuesCount / 150) * 100 }}%</span>
                                             <span class="ms-1">{{ getStatuesCount }}</span>
                                             <small>/150</small>
                                         </div>
@@ -1919,6 +1919,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.28.6 - 2021-07-19</div>
+                            <ul class="small">
+                                <li>FIX: now overlord statues progress bar is displayed well</li>
+                                <li>FIX: now padding to display scroll bar on left side pane is larger</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.28.5 - 2021-07-18</div>
                             <ul class="small">
                                 <li>FIX: (again) now bribery remains after rebirth and enlightenment</li>
@@ -2388,7 +2395,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.28.5',
+            currentRelease: '1.28.6',
             ghLatestRelease: null,
             
             login: null,
