@@ -74,6 +74,7 @@ export const store = createStore({
             displayPinnedItems: false,
             displayDoneTechs: true,
             displayRoadmap: true,
+            displayEmcShortcut: false,
             collapsed: [],
             pinned: [],
             /*----------------------------------------------------------------*/
@@ -360,6 +361,7 @@ export const store = createStore({
         setEmcAmount(state, payload) { state.emcAmount = payload },
         setAutoResource(state, payload) { state.autoResource = payload },
         setAutoEmcInterval(state, payload) { state.autoEmcInterval = payload * 1000 },
+        setDisplayEmcShortcut(state, payload) { state.displayEmcShortcut = payload },
         /*--------------------------------------------------------------------*/
         setActivePane(state, payload) {
 
@@ -1580,6 +1582,7 @@ export const store = createStore({
                 state.emcAmount = data.emcAmount || 'max'
                 state.autoResource = data.autoResource
                 state.autoEmcInterval = data.autoEmcInterval || 1 * 1000
+                state.displayEmcShortcut = data.displayEmcShortcut || false,
                 state.collapsed = data.collapsed || []
                 state.pinned = data.pinned || []
                 state.titanSwapingCount = data.titanSwapingCount || 0
@@ -1777,6 +1780,7 @@ export const store = createStore({
                 emcAmount: state.emcAmount,
                 autoResource: state.autoResource,
                 autoEmcInterval: state.autoEmcInterval,
+                displayEmcShortcut: state.displayEmcShortcut,
                 stats: state.stats,
                 collapsed: state.collapsed,
                 pinned: state.pinned,

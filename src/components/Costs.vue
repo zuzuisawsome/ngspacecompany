@@ -34,6 +34,13 @@
                 </button>
             </div>
             <div class="col-auto">
+                <button v-if="cost.timer > 0 && isEmcResource(data, getEmcId(cost.id))" class="me-3" @click="if (cost.id != 'segment' && data[cost.id].unlocked == true) { convert(getEmcId(cost.id)); }">
+                    <img :src="require(`../assets/interface/energy.png`)" width="12" height="12" :alt="$t('energy') + ' icon'" />
+                    <i class="mx-1 fas fa-fw fa-long-arrow-alt-right" aria-hidden="true"></i>
+                    <img :src="require(`../assets/interface/${cost.id}.png`)" width="12" height="12" :alt="$t(cost.id) + ' icon'" />
+                </button>
+            </div>
+            <div class="col-auto">
                 <small v-if="!cost.timer || cost.timer > -2" class="text-uppercase text-light">{{ numeralFormat(cost.count.toPrecision(4), '0.[000]a') }}</small>
                 <small v-if="cost.timer <= -2" class="text-uppercase text-danger">{{ numeralFormat(cost.count.toPrecision(4), '0.[000]a') }}</small>
             </div>
@@ -48,7 +55,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 
 export default {
     props: [ 'costs', 'mod', 'id', 'calc' ],
@@ -61,6 +68,15 @@ export default {
         ...mapMutations([
             'setActivePane',
         ]),
+        ...mapActions([
+            'convert',
+        ]),
+        getEmcId(id) {
+            return `emc${id[0].toUpperCase()}${id.slice(1)}`
+        },
+        isEmcResource(data, emcId) {
+            return !!data[emcId]
+        }
     },
 }
 </script>
