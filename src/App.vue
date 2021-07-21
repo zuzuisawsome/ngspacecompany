@@ -591,6 +591,12 @@
                                             <option value="60">{{ $t('1minute') }}</option>
                                         </select>
                                     </div>
+                                    <div class="col-12 mt-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="checkEmcShortcut" v-model="showEmcShortcut" @click="setDisplayEmcShortcut(!showEmcShortcut)" />
+                                            <label class="form-check-label small" for="checkEmcShortcut">{{ $t('showEmcShortcut') }}</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </card>
@@ -2406,6 +2412,7 @@ export default {
             
             selectedEmcAmount: null,
             selectedAutoEmcInterval: null,
+            showEmcShortcut: null,
             
             titanSource: null,
             titanDestination: null,
@@ -2418,7 +2425,7 @@ export default {
             'resAchievements', 'prodAchievements', 'newAchievement',
             'notifAutoSave', 'notifAchievement', 'displayLockedItems', 'displayPinnedItems', 'displayDoneTechs', 'displayRoadmap',
             'username', 'token',
-            'emcAmount', 'autoEmcInterval', 'timeSinceAutoEmc',
+            'emcAmount', 'autoEmcInterval', 'displayEmcShortcut', 'timeSinceAutoEmc',
             'stats', 'resources', 'pinned', 'titanSwapingCount',
         ]),
         ...mapGetters([
@@ -2437,7 +2444,7 @@ export default {
         ...mapMutations([
         
             'setLocale', 'setActivePane', 'setLastUpdateTime', 'setTimeSinceAutoSave', 'setCompanyName', 'setAutoSaveInterval',
-            'setNotifAutoSave', 'setNotifAchievement', 'setDisplayLockedItems', 'setUsername', 'setToken', 'setEmcAmount', 'setTimeSinceAutoEmc', 'setAutoEmcInterval',
+            'setNotifAutoSave', 'setNotifAchievement', 'setDisplayLockedItems', 'setUsername', 'setToken', 'setEmcAmount', 'setTimeSinceAutoEmc', 'setAutoEmcInterval', 'setDisplayEmcShortcut',
             'setDisplayPinnedItems', 'setDisplayDoneTechs', 'setDisplayRoadmap',
         ]),
         ...mapActions([
@@ -2469,6 +2476,7 @@ export default {
             this.login = this.username
             this.selectedEmcAmount = this.emcAmount
             this.selectedAutoEmcInterval = this.autoEmcInterval / 1000
+            this.displayEmcShortcut = this.showEmcShortcut
             
             this.ghUpdate()
             
@@ -2490,6 +2498,7 @@ export default {
                 this.showPinnedItems = this.displayPinnedItems
                 this.showDoneTechs = this.displayDoneTechs
                 this.showRoadmap = this.displayRoadmap
+                this.showEmcShortcut = this.displayEmcShortcut
                 
                 element = document.getElementById('toastAchievement')
                 this.toastAchievement = new Toast(element)
