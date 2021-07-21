@@ -34,7 +34,7 @@
                 </button>
             </div>
             <div class="col-auto">
-                <button v-if="displayEmcShortcut && cost.timer > 0 && isEmcResource(data, getEmcId(cost.id))" class="me-3" @click="if (cost.id != 'segment' && data[cost.id].unlocked == true) { convert(getEmcId(cost.id)); }">
+                <button v-if="displayEmcShortcut && data['emc'].unlocked == true && cost.timer > 0 && isEmcResource(data, getEmcId(cost.id))" class="me-3" @click="if (cost.id != 'segment' && data[cost.id].unlocked == true) { convert(getEmcId(cost.id)); }">
                     <img v-if="cost.id !== 'meteorite'" :src="require(`../assets/interface/energy.png`)" width="12" height="12" :alt="$t('energy') + ' icon'" />
                     <img v-if="cost.id === 'meteorite'" :src="require(`../assets/interface/plasma.png`)" width="12" height="12" :alt="$t('plasma') + ' icon'" />
                     <i class="mx-1 fas fa-fw fa-long-arrow-alt-right" aria-hidden="true"></i>

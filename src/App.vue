@@ -1925,6 +1925,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.29.1 - 2021-07-21</div>
+                            <ul class="small">
+                                <li>FIX: now option in EMC pane to display EMC shortcut on upgrade storage card is taken into account (made by eliannelavoie)</li>
+                                <li>FIX: now EMC shortcut on upgrade storage card is hidden if EMC is unlocked (made by eliannelavoie)</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.29.0 - 2021-07-21</div>
                             <ul class="small">
                                 <li>FIX: now upgrade storage button is displayed on pinned resource (made by eliannelavoie)</li>
@@ -2409,7 +2416,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.29.0',
+            currentRelease: '1.29.1',
             ghLatestRelease: null,
             
             login: null,
