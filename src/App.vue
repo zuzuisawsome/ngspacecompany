@@ -1925,6 +1925,14 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.29.0 - 2021-07-21</div>
+                            <ul class="small">
+                                <li>FIX: now upgrade storage button is displayed on pinned resource (made by eliannelavoie)</li>
+                                <li>NEW: option in EMC pane to display EMC shortcut on upgrade storage card (made by eliannelavoie)</li>
+                                <li>NEW: EMC shortcut on upgrade storage card is displayed to convert resource (made by eliannelavoie)</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.28.6 - 2021-07-19</div>
                             <ul class="small">
                                 <li>FIX: now overlord statues progress bar is displayed well</li>
@@ -2401,7 +2409,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.28.6',
+            currentRelease: '1.29.0',
             ghLatestRelease: null,
             
             login: null,
@@ -2476,7 +2484,6 @@ export default {
             this.login = this.username
             this.selectedEmcAmount = this.emcAmount
             this.selectedAutoEmcInterval = this.autoEmcInterval / 1000
-            this.displayEmcShortcut = this.showEmcShortcut
             
             this.ghUpdate()
             
