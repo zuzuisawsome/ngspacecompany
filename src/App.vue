@@ -39,7 +39,7 @@
                     <sidenav-item v-if="showRoadmap" id="helpPane" icon="help.png" unlocked="true" />
                     
                     <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
-                        <sidenav-item v-for="pane in pinned" :key="pane.id" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" />
+                        <sidenav-item v-for="pane in pinned" :key="pane.id" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
                     </sidenav-group>
                     
                     <sidenav-group id="energyHeading" :unlocked="data['energy'].unlocked">
@@ -263,7 +263,7 @@
                     </pane>
                     
                     <!-- METEORITE PANE -->
-                    <pane id="meteoritePane" icon="meteorite.png" :descs="['meteoritePane_desc']" pinnable="meteorite">
+                    <pane id="meteoritePane" icon="meteorite.png" :descs="['meteoritePane_desc']" pinnable="meteorite" shortcutBuildingStorageId="meteoriteS1">
                         <resource id="meteorite" />
                         <buildable id="meteoriteS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="meteoriteT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" unlocker="techMeteorite1" />
@@ -273,7 +273,7 @@
                     </pane>
                     
                     <!-- CARBON PANE -->
-                    <pane id="carbonPane" icon="carbon.png" :descs="['carbonPane_desc']" pinnable="carbon">
+                    <pane id="carbonPane" icon="carbon.png" :descs="['carbonPane_desc']" pinnable="carbon" shortcutBuildingStorageId="carbonS1">
                         <resource id="carbon" />
                         <buildable id="carbonS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="carbonT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -284,7 +284,7 @@
                     </pane>
                     
                     <!-- OIL PANE -->
-                    <pane id="oilPane" icon="oil.png" :descs="['oilPane_desc']" pinnable="oil">
+                    <pane id="oilPane" icon="oil.png" :descs="['oilPane_desc']" pinnable="oil" shortcutBuildingStorageId="oilS1">
                         <resource id="oil" />
                         <buildable id="oilS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="oilT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -295,7 +295,7 @@
                     </pane>
                     
                     <!-- METAL PANE -->
-                    <pane id="metalPane" icon="metal.png" :descs="['metalPane_desc']" pinnable="metal">
+                    <pane id="metalPane" icon="metal.png" :descs="['metalPane_desc']" pinnable="metal" shortcutBuildingStorageId="metalS1">
                         <resource id="metal" />
                         <buildable id="metalS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="metalT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -306,7 +306,7 @@
                     </pane>
                     
                     <!-- GEM PANE -->
-                    <pane id="gemPane" icon="gem.png" :descs="['gemPane_desc']" pinnable="gem">
+                    <pane id="gemPane" icon="gem.png" :descs="['gemPane_desc']" pinnable="gem" shortcutBuildingStorageId="gemS1">
                         <resource id="gem" />
                         <buildable id="gemS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="gemT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -317,7 +317,7 @@
                     </pane>
                     
                     <!-- WOOD PANE -->
-                    <pane id="woodPane" icon="wood.png" :descs="['woodPane_desc']" pinnable="wood">
+                    <pane id="woodPane" icon="wood.png" :descs="['woodPane_desc']" pinnable="wood" shortcutBuildingStorageId="woodS1">
                         <resource id="wood" />
                         <buildable id="woodS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="woodT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -328,7 +328,7 @@
                     </pane>
                     
                     <!-- SILICON PANE -->
-                    <pane id="siliconPane" icon="silicon.png" :descs="['siliconPane_desc']" pinnable="silicon">
+                    <pane id="siliconPane" icon="silicon.png" :descs="['siliconPane_desc']" pinnable="silicon" shortcutBuildingStorageId="siliconS1">
                         <resource id="silicon" />
                         <buildable id="siliconS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="siliconT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -339,7 +339,7 @@
                     </pane>
                     
                     <!-- URANIUM PANE -->
-                    <pane id="uraniumPane" icon="uranium.png" :descs="['uraniumPane_desc']" pinnable="uranium">
+                    <pane id="uraniumPane" icon="uranium.png" :descs="['uraniumPane_desc']" pinnable="uranium" shortcutBuildingStorageId="uraniumS1">
                         <resource id="uranium" />
                         <buildable id="uraniumS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="uraniumT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -350,7 +350,7 @@
                     </pane>
                     
                     <!-- LAVA PANE -->
-                    <pane id="lavaPane" icon="lava.png" :descs="['lavaPane_desc']" pinnable="lava">
+                    <pane id="lavaPane" icon="lava.png" :descs="['lavaPane_desc']" pinnable="lava" shortcutBuildingStorageId="lavaS1">
                         <resource id="lava" />
                         <buildable id="lavaS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="lavaT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -361,7 +361,7 @@
                     </pane>
                     
                     <!-- LUNARITE PANE -->
-                    <pane id="lunaritePane" icon="lunarite.png" :descs="['lunaritePane_desc']" pinnable="lunarite">
+                    <pane id="lunaritePane" icon="lunarite.png" :descs="['lunaritePane_desc']" pinnable="lunarite" shortcutBuildingStorageId="lunariteS1">
                         <resource id="lunarite" />
                         <buildable id="lunariteS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="lunariteT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -372,7 +372,7 @@
                     </pane>
                     
                     <!-- METHANE PANE -->
-                    <pane id="methanePane" icon="methane.png" :descs="['methanePane_desc']" pinnable="methane">
+                    <pane id="methanePane" icon="methane.png" :descs="['methanePane_desc']" pinnable="methane" shortcutBuildingStorageId="methaneS1">
                         <resource id="methane" />
                         <buildable id="methaneS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="methaneT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -383,7 +383,7 @@
                     </pane>
                     
                     <!-- TITANIUM PANE -->
-                    <pane id="titaniumPane" icon="titanium.png" :descs="['titaniumPane_desc']" pinnable="titanium">
+                    <pane id="titaniumPane" icon="titanium.png" :descs="['titaniumPane_desc']" pinnable="titanium" shortcutBuildingStorageId="titaniumS1">
                         <resource id="titanium" />
                         <buildable id="titaniumS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="titaniumT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -394,7 +394,7 @@
                     </pane>
                     
                     <!-- GOLD PANE -->
-                    <pane id="goldPane" icon="gold.png" :descs="['goldPane_desc']" pinnable="gold">
+                    <pane id="goldPane" icon="gold.png" :descs="['goldPane_desc']" pinnable="gold" shortcutBuildingStorageId="goldS1">
                         <resource id="gold" />
                         <buildable id="goldS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="goldT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -405,7 +405,7 @@
                     </pane>
                     
                     <!-- SILVER PANE -->
-                    <pane id="silverPane" icon="silver.png" :descs="['silverPane_desc']" pinnable="silver">
+                    <pane id="silverPane" icon="silver.png" :descs="['silverPane_desc']" pinnable="silver" shortcutBuildingStorageId="silverS1">
                         <resource id="silver" />
                         <buildable id="silverS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="silverT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -416,7 +416,7 @@
                     </pane>
                     
                     <!-- HYDROGEN PANE -->
-                    <pane id="hydrogenPane" icon="hydrogen.png" :descs="['hydrogenPane_desc']" pinnable="hydrogen">
+                    <pane id="hydrogenPane" icon="hydrogen.png" :descs="['hydrogenPane_desc']" pinnable="hydrogen" shortcutBuildingStorageId="hydrogenS1">
                         <resource id="hydrogen" />
                         <buildable id="hydrogenS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="hydrogenT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -427,7 +427,7 @@
                     </pane>
                     
                     <!-- HELIUM PANE -->
-                    <pane id="heliumPane" icon="helium.png" :descs="['heliumPane_desc']" pinnable="helium">
+                    <pane id="heliumPane" icon="helium.png" :descs="['heliumPane_desc']" pinnable="helium" shortcutBuildingStorageId="heliumS1">
                         <resource id="helium" />
                         <buildable id="heliumS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="heliumT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -438,7 +438,7 @@
                     </pane>
                     
                     <!-- ICE PANE -->
-                    <pane id="icePane" icon="ice.png" :descs="['icePane_desc']" pinnable="ice">
+                    <pane id="icePane" icon="ice.png" :descs="['icePane_desc']" pinnable="ice" shortcutBuildingStorageId="iceS1">
                         <resource id="ice" />
                         <buildable id="iceS1" btnText="upgrade" collapse="true" unlocker="techStorage" autoUpgradeStorage="true" />
                         <buildable id="iceT1" btnText="build" collapse="true" :multibuy="data['multiBuy'].count > 0" calc="true" />
@@ -1925,6 +1925,14 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.29.0 - 2021-07-21</div>
+                            <ul class="small">
+                                <li>FIX: now upgrade storage button is displayed on pinned resource (made by eliannelavoie)</li>
+                                <li>NEW: option in EMC pane to display EMC shortcut on upgrade storage card (made by eliannelavoie)</li>
+                                <li>NEW: EMC shortcut on upgrade storage card is displayed to convert resource (made by eliannelavoie)</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.28.6 - 2021-07-19</div>
                             <ul class="small">
                                 <li>FIX: now overlord statues progress bar is displayed well</li>
@@ -2401,7 +2409,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.28.6',
+            currentRelease: '1.29.0',
             ghLatestRelease: null,
             
             login: null,
@@ -2476,7 +2484,6 @@ export default {
             this.login = this.username
             this.selectedEmcAmount = this.emcAmount
             this.selectedAutoEmcInterval = this.autoEmcInterval / 1000
-            this.displayEmcShortcut = this.showEmcShortcut
             
             this.ghUpdate()
             
