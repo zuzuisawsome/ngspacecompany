@@ -2565,6 +2565,7 @@ export const store = createStore({
             state.emcAmount = 'max'
             state.autoResource = null
             state.autoEmcInterval = 1 * 1000
+            state.displayEmcShortcut = false
             
             let exludedList = [
                 'darkmatter',
@@ -2651,6 +2652,7 @@ export const store = createStore({
             state.emcAmount = 'max'
             state.autoResource = null
             state.autoEmcInterval = 1 * 1000
+            state.displayEmcShortcut = false
             
             let exludedList = [
                 'darkmatter',
