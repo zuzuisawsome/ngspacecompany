@@ -1925,6 +1925,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.29.2 - 2021-07-22</div>
+                            <ul class="small">
+                                <li>FIX: now timers won't display '00:00:60' anymore</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.29.1 - 2021-07-21</div>
                             <ul class="small">
                                 <li>FIX: now option in EMC pane to display EMC shortcut on upgrade storage card is taken into account (made by eliannelavoie)</li>
@@ -2416,7 +2422,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.29.1',
+            currentRelease: '1.29.2',
             ghLatestRelease: null,
             
             login: null,

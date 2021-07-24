@@ -48,7 +48,7 @@
             <div class="col-auto text-end" style="width:75px">
                 <small v-if="(!cost.timer && cost.timer != 0) || cost.timer < 0" class="text-normal">---</small>
                 <small v-if="cost.timer == 0" class="text-success"><i class="fas fa-fw fa-check"></i></small>
-                <small v-if="cost.timer > 0 && cost.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(cost.timer, '00:00:00') }}</small>
+                <small v-if="cost.timer > 0 && cost.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="cost.timer" /></small>
                 <small v-if="cost.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
             </div>
         </div>
@@ -58,7 +58,12 @@
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
 
+import Timer from './Timer.vue'
+
 export default {
+    components: {
+        'timer': Timer,
+    },
     props: [ 'costs', 'mod', 'id', 'calc' ],
     computed: {
         ...mapState([
