@@ -10,14 +10,14 @@
                 </div>
                 <div v-if="id && id == 'segment'" class="col text-end">
                     <span class="me-1">{{ $t('max') }}</span>
-                    <span class="me-3">{{ numeralFormat(maxBuildable()) }}</span>
+                    <span class="me-3">{{ numeralFormat(maxBuildable) }}</span>
                     <button @click="$root.segmentModal.show();" aria-label="Calculator">
                         <i class="fas fa-fw fa-calculator"></i>
                     </button>
                 </div>
                 <div v-if="id && calc" class="col text-end">
                     <span class="me-1">{{ $t('max') }}</span>
-                    <span class="me-3">{{ numeralFormat(maxBuildable()) }}</span>
+                    <span class="me-3">{{ numeralFormat(maxBuildable) }}</span>
                     <button @click="$root.calcId=id; $root.calcModal.show();" aria-label="Calculator">
                         <i class="fas fa-fw fa-calculator"></i>
                     </button>
@@ -73,6 +73,24 @@ export default {
         ...mapState([
             'data', 'displayEmcShortcut'
         ]),
+        maxBuildable: function() {
+            
+            let factor = 0
+            if (this.data[this.id].costType == 'EXPONENTIAL') factor = 1.1
+            else if (this.data[this.id].costType == 'DYSON') factor = 1.02
+            else if (this.data[this.id].costType == 'DOUBLE') factor = 2
+            
+            let result = 1000000
+            this.costs.forEach(cost => {
+                
+                if (result == 0) return
+                
+                let max = Math.floor(Math.log(((this.data[cost.id].count * (factor - 1)) / cost.count) + 1) / Math.log(factor))
+                if (max < result) { result = max }
+            })
+            
+            return result
+        },
     },
     methods: {
         ...mapMutations([
@@ -86,22 +104,6 @@ export default {
         },
         isEmcResource(data, emcId) {
             return !!data[emcId]
-        },
-        maxBuildable: function() {
-            let result = 10000000
-            this.costs.forEach(cost => {
-                
-                let max = 0
-                let value = cost.count
-                while (value <= this.data[cost.id].count) {
-                    max += 1
-                    if (this.data[this.id].costType == 'EXPONENTIAL') value += Math.floor(cost.count * Math.pow(1.1, max))
-                    else if (this.data[this.id].costType == 'DYSON') value += Math.floor(cost.count * Math.pow(1.02, max))
-                    else if (this.data[this.id].costType == 'DOUBLE') value += Math.floor(cost.count * Math.pow(2, max))
-                }
-                if (max < result) { result = max }
-            })
-            return result
         },
     },
 }

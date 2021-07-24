@@ -40,9 +40,10 @@
                     
                     <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
                         <div v-for="pane in pinned" :key="pane.id">
-                            <sidenav-item v-if="pane.resId != 'dyson' && pane.resId != 'emc'" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
+                            <sidenav-item v-if="pane.resId != 'dyson' && pane.resId != 'emc' && pane.resId != 'technologies'" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
                             <sidenav-item v-if="pane.resId == 'dyson'" :id="pane.id" :icon="pane.icon" unlocked="true" />
                             <sidenav-item v-if="pane.resId == 'emc'" :id="pane.id" :icon="pane.icon" unlocked="true" />
+                            <sidenav-item v-if="pane.resId == 'technologies'" :id="pane.id" :icon="pane.icon" unlocked="true" />
                         </div>
                     </sidenav-group>
                     
@@ -462,7 +463,7 @@
                     </pane>
                     
                     <!-- TECHNOLOGIES PANE -->
-                    <pane id="technologiesPane" icon="technologies.png" :descs="['technologiesPane_desc']">
+                    <pane id="technologiesPane" icon="technologies.png" :descs="['technologiesPane_desc']" pinnable="technologies">
                         <buildable v-if="!(showDoneTechs == false && data['techStorage'].count > 0)" id="techStorage" btnText="unlock" />
                         <buildable v-if="!(showDoneTechs == false && data['techEnergy1'].count > 0)" id="techEnergy1" btnText="unlock" />
                         <buildable v-if="!(showDoneTechs == false && data['techOil'].count > 0)" id="techOil" btnText="unlock" unlocker="techStorage" />
@@ -1134,68 +1135,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </card>
-                    </pane>
-                    
-                    <!-- HELP PANE -->
-                    <pane id="helpPane" icon="help.png" :descs="['helpPane_desc']">
-                        <card id="helpStep1Title" :descs="['helpStep1Text1']" :checked="data['science'].unlocked == true">
-                            <div class="col-12">
-                                <div class="tip tip-normal">
-                                    <b class="text-uppercase">{{ $t('tip') }}</b>
-                                    {{ $t('helpStep1Tip1') }}
-                                </div>
-                            </div>
-                        </card>
-                        <card v-if="data['science'].unlocked == true" id="helpStep2Title" :descs="['helpStep2Text1']" :checked="data['wonderPrecious0'].unlocked == true">
-                            <div class="col-12">
-                                <div class="tip tip-normal">
-                                    <b class="text-uppercase">{{ $t('tip') }}</b>
-                                    {{ $t('helpStep2Tip1') }}
-                                </div>
-                            </div>
-                        </card>
-                        <card v-if="data['wonderPrecious0'].unlocked == true" id="helpStep3Title" :descs="['helpStep3Text1']" :checked="data['techDyson0'].unlocked == true">
-                            <div class="col-12">
-                                <div class="tip tip-normal">
-                                    <b class="text-uppercase">{{ $t('tip') }}</b>
-                                    {{ $t('helpStep3Tip1') }}
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="tip tip-normal">
-                                    <b class="text-uppercase">{{ $t('tip') }}</b>
-                                    {{ $t('helpStep3Tip2') }}
-                                </div>
-                            </div>
-                        </card>
-                        <card v-if="data['techDyson0'].unlocked == true" id="helpStep4Title" :descs="['helpStep4Text1']" :checked="data['segment'].unlocked == true">
-                            <div class="col-12">
-                                <div class="tip tip-normal">
-                                    <b class="text-uppercase">{{ $t('tip') }}</b>
-                                    {{ $t('helpStep4Tip1') }}
-                                </div>
-                            </div>
-                        </card>
-                        <card v-if="data['segment'].unlocked == true" id="helpStep5Title" :descs="['helpStep5Text1']" :checked="data['antimatter'].unlocked == true">
-                        </card>
-                        <card v-if="data['antimatter'].unlocked == true" id="helpStep6Title" :descs="['helpStep6Text1']" :checked="data['segment'].unlocked == true">
-                        </card>
-                        <card v-if="data['ultrite'].unlocked == true" id="helpStep7Title" :descs="['helpStep7Text1']" :checked="data['ultrite'].unlocked == true">
-                            <div class="col-12">
-                                <div class="tip tip-normal">
-                                    <b class="text-uppercase">{{ $t('tip') }}</b>
-                                    {{ $t('helpStep7Tip1') }}
-                                </div>
-                            </div>
-                        </card>
-                        <card v-if="data['ultrite'].unlocked == true" id="helpStep8Title" :descs="['helpStep8Text1']">
-                            <div class="col-12">
-                                <div class="tip tip-normal">
-                                    <b class="text-uppercase">{{ $t('tip') }}</b>
-                                    {{ $t('helpStep8Tip1') }}
                                 </div>
                             </div>
                         </card>
@@ -1929,6 +1868,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.31.0 - 2021-07-24</div>
+                            <ul class="small">
+                                <li>NEW: now Technologies panes is pinnable</li>
+                                <li>FIX: now 'Max' computing perfomance is better</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.30.0 - 2021-07-24</div>
                             <ul class="small">
                                 <li>NEW: now Dyson and EMC panes are pinnable</li>
@@ -2436,7 +2382,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.30.0',
+            currentRelease: '1.30.1',
             ghLatestRelease: null,
             
             login: null,
