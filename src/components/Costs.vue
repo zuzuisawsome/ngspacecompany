@@ -9,11 +9,15 @@
                     <span class="text-lowercase">x</span>{{ mod }}
                 </div>
                 <div v-if="id && id == 'segment'" class="col text-end">
+                    <span class="me-1">{{ $t('max') }}</span>
+                    <span class="me-3">{{ numeralFormat(maxBuildable()) }}</span>
                     <button @click="$root.segmentModal.show();" aria-label="Calculator">
                         <i class="fas fa-fw fa-calculator"></i>
                     </button>
                 </div>
                 <div v-if="id && calc" class="col text-end">
+                    <span class="me-1">{{ $t('max') }}</span>
+                    <span class="me-3">{{ numeralFormat(maxBuildable()) }}</span>
                     <button @click="$root.calcId=id; $root.calcModal.show();" aria-label="Calculator">
                         <i class="fas fa-fw fa-calculator"></i>
                     </button>
@@ -82,7 +86,23 @@ export default {
         },
         isEmcResource(data, emcId) {
             return !!data[emcId]
-        }
+        },
+        maxBuildable: function() {
+            let result = 10000000
+            this.costs.forEach(cost => {
+                
+                let max = 0
+                let value = cost.count
+                while (value <= this.data[cost.id].count) {
+                    max += 1
+                    if (this.data[this.id].costType == 'EXPONENTIAL') value += Math.floor(cost.count * Math.pow(1.1, max))
+                    else if (this.data[this.id].costType == 'DYSON') value += Math.floor(cost.count * Math.pow(1.02, max))
+                    else if (this.data[this.id].costType == 'DOUBLE') value += Math.floor(cost.count * Math.pow(2, max))
+                }
+                if (max < result) { result = max }
+            })
+            return result
+        },
     },
 }
 </script>

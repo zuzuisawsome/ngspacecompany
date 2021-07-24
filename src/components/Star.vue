@@ -38,7 +38,8 @@
                                                     <span class="text-normal">{{ $t(data[id].resource1) }}</span>
                                                 </div>
                                                 <div class="col-auto small">
-                                                    <span class="text-success">+25%</span>
+                                                    <span v-if="data[id].donor == false" class="text-success">+25%</span>
+                                                    <span v-if="data[id].donor == true" class="fw-bold text-donor">+50%</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -51,7 +52,8 @@
                                                     <span class="text-normal">{{ $t(data[id].resource2) }}</span>
                                                 </div>
                                                 <div class="col-auto small">
-                                                    <span class="text-success">+25%</span>
+                                                    <span v-if="data[id].donor == false" class="text-success">+25%</span>
+                                                    <span v-if="data[id].donor == true" class="fw-bold text-donor">+50%</span>
                                                 </div>
                                             </div>
                                         </div>

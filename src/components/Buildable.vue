@@ -74,7 +74,7 @@
                                         </div>
                                         <div v-if="!data[id].max || data[id].max > 1" class="col-auto">
                                             <small class="text-normal me-1">x</small>
-                                            <span :class="{ 'text-light':data[id].count > 0, 'text-normal':data[id].count <= 0 }">{{ numeralFormat(data[id].count, '0.[0]a') }}</span>
+                                            <span :class="{ 'text-light':data[id].count > 0, 'text-normal':data[id].count <= 0 }">{{ numeralFormat(data[id].count) }}</span>
                                             <small v-if="data[id].max && data[id].max > 1" class="ms-1 text-normal">/{{ data[id].max }}</small>
                                         </div>
                                         <div class="col-12 small">

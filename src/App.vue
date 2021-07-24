@@ -39,7 +39,11 @@
                     <sidenav-item v-if="showRoadmap" id="helpPane" icon="help.png" unlocked="true" />
                     
                     <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
-                        <sidenav-item v-for="pane in pinned" :key="pane.id" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
+                        <div v-for="pane in pinned" :key="pane.id">
+                            <sidenav-item v-if="pane.resId != 'dyson' && pane.resId != 'emc'" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
+                            <sidenav-item v-if="pane.resId == 'dyson'" :id="pane.id" :icon="pane.icon" unlocked="true" />
+                            <sidenav-item v-if="pane.resId == 'emc'" :id="pane.id" :icon="pane.icon" unlocked="true" />
+                        </div>
                     </sidenav-group>
                     
                     <sidenav-group id="energyHeading" :unlocked="data['energy'].unlocked">
@@ -567,7 +571,7 @@
                     </pane>
                     
                     <!-- EMC PANE -->
-                    <pane id="emcPane" icon="emc.png" :descs="['emcPane_desc']">
+                    <pane id="emcPane" icon="emc.png" :descs="['emcPane_desc']" pinnable="emc">
                         <card checked="true">
                             <div class="col-12">
                                 <div class="row gx-3">
@@ -626,7 +630,7 @@
                     </pane>
                     
                     <!-- DYSON PANE -->
-                    <pane id="dysonPane" icon="dyson.png" :descs="['dysonPane_desc']">
+                    <pane id="dysonPane" icon="dyson.png" :descs="['dysonPane_desc']" pinnable="dyson">
                         <buildable id="segment" btnText="build" collapse="true" />
                         <buildable id="dysonT1" btnText="build" collapse="true" />
                         <buildable id="dysonT2" btnText="build" collapse="true" />
@@ -1925,6 +1929,16 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.30.0 - 2021-07-24</div>
+                            <ul class="small">
+                                <li>NEW: now Dyson and EMC panes are pinnable</li>
+                                <li>NEW: now a max value is dispayed on each buildable item</li>
+                                <li>CHANGE: now displaying of item current count is not rounded</li>
+                                <li>CHANGE: now donor stars give +50% bonus instead of +25%</li>
+                                <li>FIX: now timers won't display 'NaN' anymore</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.29.2 - 2021-07-22</div>
                             <ul class="small">
                                 <li>FIX: now timers won't display '00:00:60' anymore</li>
@@ -2422,7 +2436,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.29.2',
+            currentRelease: '1.30.0',
             ghLatestRelease: null,
             
             login: null,

@@ -1157,6 +1157,7 @@
     "costTo150": "Coûts jusque 150",
     "costTo250": "Coûts jusque 250",
     
+    "max": "Max",    
     "calcModal": "Machine calculateur de coûts",
     "segmentModal": "Segment Dyson calculateur de coûts"
 }

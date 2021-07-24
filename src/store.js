@@ -1166,8 +1166,8 @@ export const store = createStore({
             state.data['star77801']	=	{	id:'star77801',	unlocked:false,	status:'new',	donor:false,	count:0,	spy:0,	distance:34.17,	planets:3,	faction:'prasnian',	resource1:'uranium',	resource2:'hydrogen',	stats:{	'power':3402,	'defense':2740,	'speed':14	},	costType:'FIXED',	baseCosts:[{	id:'antimatter',	count:341700	}],	notifs:['interstellarPrasnianPane'],	atmosphere:false,	subStatus:'none',	probeCosts:[{	id:'probe',	count:1	},	{	id:'antimatter',	count:341700	}],	terraformCosts:[{	id:'terraformer',	count:1	},	{	id:'antimatter',	count:341700	}],	statueCosts:[{	id:'uranium',	count:100000000000000	},	{	id:'hydrogen',	count:100000000000000	}],	}
             state.data['star205201']	=	{	id:'star205201',	unlocked:false,	status:'new',	donor:false,	count:0,	spy:0,	distance:34.96,	planets:2,	faction:'prasnian',	resource1:'uranium',	resource2:'lava',	stats:{	'power':2987,	'defense':2014,	'speed':13	},	costType:'FIXED',	baseCosts:[{	id:'antimatter',	count:349600	}],	notifs:['interstellarPrasnianPane'],	atmosphere:true,	subStatus:'none',	probeCosts:[{	id:'probe',	count:1	},	{	id:'antimatter',	count:349600	}],	terraformCosts:[{	id:'terraformer',	count:1	},	{	id:'antimatter',	count:349600	}],	statueCosts:[{	id:'uranium',	count:100000000000000	},	{	id:'lava',	count:100000000000000	}],	}
             /*----------------------------------------------------------------*/																																																																																								
-                                                                                                                                                                                                                                                                                                                                                                            
-            //	HYACINITE	STARS																																																																																						
+            
+            //	HYACINITE STARS
             /*----------------------------------------------------------------*/																																																																																								
             state.data['star201']	=	{	id:'star201',	unlocked:false,	status:'new',	donor:false,	count:0,	spy:0,	distance:4.3,	planets:1,	faction:'hyacinite',	resource1:'ice',	resource2:'hydrogen',	stats:{	'power':30,	'defense':20,	'speed':5	},	costType:'FIXED',	baseCosts:[{	id:'antimatter',	count:43000	}],	notifs:['interstellarHyacinitePane'],	atmosphere:false,	subStatus:'none',	probeCosts:[{	id:'probe',	count:1	},	{	id:'antimatter',	count:43000	}],	terraformCosts:[{	id:'terraformer',	count:1	},	{	id:'antimatter',	count:43000	}],	statueCosts:[{	id:'ice',	count:100000000000000	},	{	id:'hydrogen',	count:100000000000000	}],	}
             state.data['star217101']	=	{	id:'star217101',	unlocked:false,	status:'new',	donor:false,	count:0,	spy:0,	distance:11.08,	planets:1,	faction:'hyacinite',	resource1:'silver',	resource2:'metal',	stats:{	'power':420,	'defense':143,	'speed':12	},	costType:'FIXED',	baseCosts:[{	id:'antimatter',	count:110800	}],	notifs:['interstellarHyacinitePane'],	atmosphere:true,	subStatus:'none',	probeCosts:[{	id:'probe',	count:1	},	{	id:'antimatter',	count:110800	}],	terraformCosts:[{	id:'terraformer',	count:1	},	{	id:'antimatter',	count:110800	}],	statueCosts:[{	id:'silver',	count:100000000000000	},	{	id:'metal',	count:100000000000000	}],	}
@@ -1846,6 +1846,10 @@ export const store = createStore({
                 if (item.status == 'owned') {
                     temp[item.resource1].boost += 0.25
                     temp[item.resource2].boost += 0.25
+                    if (item.donor == true) {
+                        temp[item.resource1].boost += 0.25
+                        temp[item.resource2].boost += 0.25
+                    }
                 }
             })
             
@@ -1912,7 +1916,7 @@ export const store = createStore({
                 let tempBoost = boost
                 if (item.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count            
                 temp[item.id].prod = temp[item.id].production - temp[item.id].consumption
-                if (temp[item.id].prod > 0 && temp[item.id].prod < 0.001) temp[item.id].prod = 0
+                if (temp[item.id].prod > -0.001 && temp[item.id].prod < 0.001) temp[item.id].prod = 0
                 commit('setDataProd', { id:item.id, prod:temp[item.id].prod })
                 commit('setDataBoost', { id:item.id, boost:(1 + tempBoost) * (1 + temp[item.id].boost) })
                 commit('setDataProduction', { id:item.id, production:temp[item.id].production })

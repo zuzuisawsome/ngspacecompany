@@ -812,7 +812,7 @@
     "star185101": "Scalzi",
     "star79901": "AC +79°388",
     "star95001": "BD +15°262",
-    "star175901": "A",
+    "star175901": "Mo Lun",
     "star175902": "B",
     "star37601": "BD -3°1123",
     "star133601": "L 347-14",
@@ -1190,6 +1190,7 @@
     "costTo150": "Costs to 150",
     "costTo250": "Costs to 250",
     
+    "max": "Max",    
     "calcModal": "Machine Cost Calculator",    
     "segmentModal": "Dyson Segment Cost Calculator"
 }
