@@ -10,7 +10,17 @@ export default {
     computed: {
     
         seconds: function() {
-            return new Date(0, 0, 0, 0, 0, this.value).toTimeString().split(' ')[0]
+        
+            let h = Math.floor(this.value / 3600)
+            if (h < 10) { h = '0' + h }
+            
+            let m = Math.floor(Math.floor(this.value / 60) % 60)
+            if (m < 10) { m = '0' + m }
+            
+            let s = Math.floor(this.value % 60)
+            if (s < 10) { s = '0' + s }
+            
+            return h + ':' + m + ':' + s
         },
     },
 }

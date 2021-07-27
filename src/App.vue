@@ -1140,6 +1140,68 @@
                         </card>
                     </pane>
                     
+                    <!-- HELP PANE -->
+                    <pane id="helpPane" icon="help.png" :descs="['helpPane_desc']">
+                        <card id="helpStep1Title" :descs="['helpStep1Text1']" :checked="data['science'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep1Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['science'].unlocked == true" id="helpStep2Title" :descs="['helpStep2Text1']" :checked="data['wonderPrecious0'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep2Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['wonderPrecious0'].unlocked == true" id="helpStep3Title" :descs="['helpStep3Text1']" :checked="data['techDyson0'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep3Tip1') }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep3Tip2') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['techDyson0'].unlocked == true" id="helpStep4Title" :descs="['helpStep4Text1']" :checked="data['segment'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep4Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['segment'].unlocked == true" id="helpStep5Title" :descs="['helpStep5Text1']" :checked="data['antimatter'].unlocked == true">
+                        </card>
+                        <card v-if="data['antimatter'].unlocked == true" id="helpStep6Title" :descs="['helpStep6Text1']" :checked="data['segment'].unlocked == true">
+                        </card>
+                        <card v-if="data['ultrite'].unlocked == true" id="helpStep7Title" :descs="['helpStep7Text1']" :checked="data['ultrite'].unlocked == true">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep7Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                        <card v-if="data['ultrite'].unlocked == true" id="helpStep8Title" :descs="['helpStep8Text1']">
+                            <div class="col-12">
+                                <div class="tip tip-normal">
+                                    <b class="text-uppercase">{{ $t('tip') }}</b>
+                                    {{ $t('helpStep8Tip1') }}
+                                </div>
+                            </div>
+                        </card>
+                    </pane>
+                    
                     <!-- OPTIONS PANE -->
                     <pane id="settingsPane" icon="cog.png" :descs="['settingsPane_desc']">
                         <card id="companyName" checked="true">
@@ -1868,6 +1930,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.31.1 - 2021-07-27</div>
+                            <ul class="small">
+                                <li>FIX: now timers display value greater than 24 hours</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.31.0 - 2021-07-24</div>
                             <ul class="small">
                                 <li>NEW: now Technologies panes is pinnable</li>
@@ -1882,408 +1950,6 @@
                                 <li>CHANGE: now displaying of item current count is not rounded</li>
                                 <li>CHANGE: now donor stars give +50% bonus instead of +25%</li>
                                 <li>FIX: now timers won't display 'NaN' anymore</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.29.2 - 2021-07-22</div>
-                            <ul class="small">
-                                <li>FIX: now timers won't display '00:00:60' anymore</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.29.1 - 2021-07-21</div>
-                            <ul class="small">
-                                <li>FIX: now option in EMC pane to display EMC shortcut on upgrade storage card is taken into account (made by eliannelavoie)</li>
-                                <li>FIX: now EMC shortcut on upgrade storage card is hidden if EMC is unlocked (made by eliannelavoie)</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.29.0 - 2021-07-21</div>
-                            <ul class="small">
-                                <li>FIX: now upgrade storage button is displayed on pinned resource (made by eliannelavoie)</li>
-                                <li>NEW: option in EMC pane to display EMC shortcut on upgrade storage card (made by eliannelavoie)</li>
-                                <li>NEW: EMC shortcut on upgrade storage card is displayed to convert resource (made by eliannelavoie)</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.28.6 - 2021-07-19</div>
-                            <ul class="small">
-                                <li>FIX: now overlord statues progress bar is displayed well</li>
-                                <li>FIX: now padding to display scroll bar on left side pane is larger</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.28.5 - 2021-07-18</div>
-                            <ul class="small">
-                                <li>FIX: (again) now bribery remains after rebirth and enlightenment</li>
-                                <li>FIX: now hydrogen, helium, and ice can be unlocked in any order</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.28.4 - 2021-07-16</div>
-                            <ul class="small">
-                                <li>FIX: now bribery remains after rebirth and enlightenment</li>
-                                <li>FIX: now empty storage timer displays '> 48h'</li>
-                                <li>FIX: now QRS is taken into account in achievements</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.28.3 - 2021-07-15</div>
-                            <ul class="small">
-                                <li>FIX: now invade chance computing is fixed</li>
-                                <li>FIX: now dyson segment and items are collapsable</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.28.2 - 2021-07-13</div>
-                            <ul class="small">
-                                <li>FIX: now EMC interval is saved and loaded</li>
-                                <li>FIX: now antimatter is purple when affected by rift</li>
-                                <li>FIX: now antimatter indicates the time taken for full storage</li>
-                                <li>FIX: now rift is taken into account for auto-storage</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.28.1 - 2021-07-12</div>
-                            <ul class="small">
-                                <li>FIX: spaceship parts cannot be built if spaceship is already built</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.28.0 - 2021-07-12</div>
-                            <ul class="small">
-                                <li>FIX: spaceship parts cannot be built if spaceship is already built</li>
-                                <li>FIX: nanoswarm is not applied on consumption</li>
-                                <li>FIX: added close button on calculators</li>
-                                <li>FIX: option to show roadmap and done techs are saved</li>
-                                <li>FIX: T5 machines unlocked if meteorite wonder is already activated</li>
-                                <li>FIX: auto-storage occurs when storage is full (rift is not taken into account)</li>
-                                <li>NEW: grey out the enlighten button if you don't have 1à conquered stars at least</li>
-                                <li>NEW: grey out the titan swapping button if you don't have any titan</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.27.1 - 2021-07-09</div>
-                            <ul class="small">
-                                <li>FIX: QoL DM upgrades are locked after enlighenment</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.27.0 - 2021-07-09</div>
-                            <ul class="small">
-                                <li>FIX: now auto emc is working fine in background</li>
-                                <li>FIX: chemical plant boost is applied on production only</li>
-                                <li>FIX: some typos (thx to silent1b)</li>
-                                <li>NEW: option to show/hide the Overlord roadmap</li>
-                                <li>NEW: QoL DM upgrades are not reset after enlighenment</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.26.1 - 2021-07-08</div>
-                            <ul class="small">
-                                <li>FIX: various accessibility issues</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.26.0 - 2021-07-08</div>
-                            <ul class="small">
-                                <li>FIX: compute costs after titan swaping</li>
-                                <li>FIX: building calculator costs were wrong</li>
-                                <li>NEW: overlord roadmap to conquer the universe</li>
-                                <li>NEW: option to display/hide researched techs</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.25.0 - 2021-07-07</div>
-                            <ul class="small">
-                                <li>FIX: hard reset does nothing</li>
-                                <li>FIX: ship costs computed after failed invasion</li>
-                                <li>NEW: added titan swaping ability</li>
-                                <li>NEW: grey out the rebirth button when you can't rebirth yet</li>
-                                <li>NEW: added plasma storage tier 4 + moviton dark matter upgrade to unlock it</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.24.0 - 2021-07-06</div>
-                            <ul class="small">
-                                <li>FIX: dimension rift is taken into account in wonder costs</li>
-                                <li>FIX: dimension rift is taken into account in calculators</li>
-                                <li>CHANGE: updated ways to gain ultrite</li>
-                                <li>NEW: added calculators on spaceship parts</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.23.0 - 2021-07-05</div>
-                            <ul class="small">
-                                <li>FIX: nanoswarm pane is displayed</li>
-                                <li>NEW: close button in change log modal</li>
-                                <li>NEW: overlord appreciation program as ultrite upgrade</li>
-                                <li>NEW: terraforming ships</li>
-                                <li>NEW: overloard statues</li>
-                                <li>NEW: the end of the game</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.22.0 - 2021-07-02</div>
-                            <ul class="small">
-                                <li>FIX: auto-storage upgrade works on all resources (again)</li>
-                                <li>FIX: display storage upgrade button only when tech storage is done</li>
-                                <li>FIX: removed tooltip on storage upgrade button on left side</li>
-                                <li>CHANGE: updated cost of nanoswarm and auto upgrade storage ultrite prices</li>
-                                <li>NEW: display resource count in specific color when your store resource in another dimension</li>
-                                <li>NEW: advanced storage discount ultrite upgrade</li>
-                                <li>NEW: 3 ship enhancement ultrite upgrades</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.21.0 - 2021-07-02</div>
-                            <ul class="small">
-                                <li>FIX: now quasar redirection system is working well</li>
-                                <li>FIX: dimensional rift is taken into account in storage cap displaying</li>
-                                <li>FIX: dimensional rift is taken into account in EMC</li>
-                                <li>FIX: multy-buy buttons are displayed on 1 row</li>
-                                <li>FIX: auto-storage upgrade works on all resources</li>
-                                <li>NEW: small button to upgrade storage in left side menu</li>
-                                <li>NEW: dyson items achievements</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.20.3 - 2021-07-01</div>
-                            <ul class="small">
-                                <li>FIX: fixed issue with data exporting</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.20.2 - 2021-07-01</div>
-                            <ul class="small">
-                                <li>FIX: invading and absorbtion are initially allowed but invade chance is displayed when star is spyied only</li>
-                                <li>FIX: save in local storage a crypted copy of data</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.20.1 - 2021-07-01</div>
-                            <ul class="small">
-                                <li>FIX: now auto storage upgrade ultrite upgrade is displayed after enlightenment</li>
-                                <li>FIX: typo in enlightenment modal</li>
-                                <li>FIX: dimensional rift is taken into account in timer computing</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.20.0 - 2021-06-30</div>
-                            <ul class="small">
-                                <li>FIX: now segment and machine calculators take titans into account</li>
-                                <li>NEW: change leaderboard ranking to take into account ultrite and darkmatter</li>
-                                <li>NEW: now you could pin resoure pane to have them displaued in top of left menu ; must be activated in options menu</li>
-                                <li>NEW: now you could build dyson items in one click</li>
-                                <li>NEW: auto storage upgrade ultrite upgrade</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.19.0 - 2021-06-29</div>
-                            <ul class="small">
-                                <li>FIX: EMC convert to full storage</li>
-                                <li>FIX: star stats are fixed number</li>
-                                <li>NEW: click on update version button trigger a manual save</li>
-                                <li>NEW: now you have to spy before invading</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.18.1 - 2021-06-28</div>
-                            <ul class="small">
-                                <li>FIX: stats loading</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.18.0 - 2021-06-28</div>
-                            <ul class="small">
-                                <li>NEW: initial implementation of 'Enlightenment' = second layer of prestige</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.17.0 - 2021-06-26</div>
-                            <ul class="small">
-                                <li>NEW: donor card + star</li>
-                                <li>NEW: ultrite pane + titans pane + upgrades pane (not finalized)</li>
-                                <li>NEW: make notifications closeable</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.16.2 - 2021-06-25</div>
-                            <ul class="small">
-                                <li>FIX: negative resource production</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.16.1 - 2021-06-25</div>
-                            <ul class="small">
-                                <li>FIX: power and defense star values</li>
-                                <li>FIX: +NAN/s value in resource production</li>
-                                <li>FIX: EMC negative value</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.16.0 - 2021-06-24</div>
-                            <ul class="small">
-                                <li>FIX: calculator computed values</li>
-                                <li>FIX: computed ship costs after scouting and invasion</li>
-                                <li>NEW: nanoswarms DM upgrade will be removed for the moment (those who have it keep it until next rebirth)</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.15.0 - 2021-06-24</div>
-                            <ul class="small">
-                                <li>FIX: 'Battery Efficiency' still doesn't increase battery storage in v1.14.0</li>
-                                <li>FIX: reaching 250 resource machines, or reaching 50T produced resources gives negative XP</li>
-                                <li>FIX: nanoswarm resource not showing the resource it is on, after refresh</li>
-                                <li>FIX: 'Display autosave notifications' not persisting between refreshes</li>
-                                <li>NEW: calculator to compute costs and timers to reach achievements on each machine cards</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.14.0 - 2021-06-24</div>
-                            <ul class="small">
-                                <li>FIX: 'Battery Efficiency' does not actually increase battery stogage</li>
-                                <li>FIX: reset faction relationship to DM upgrade after rebirth</li>
-                                <li>NEW: display a warning message when there is not enough consumed resource storage to produce</li>
-                                <li>NEW: an option to hide or not locked items</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.13.0 - 2021-06-23</div>
-                            <ul class="small">
-                                <li>FIX: exit game loop when last update is later than now</li>
-                                <li>FIX: reflect boosts in machine cards production/consumptions values</li>
-                                <li>FIX: display green mark on 'Batteries' menu item instead of 'Energy' menu item</li>
-                                <li>NEW: un-collapse all on 'Rebirth'</li>
-                                <li>NEW: display real 'Max' amount of plasma/energy to be converted</li>
-                                <li>NEW: when card is minimized, display name + current count</li>
-                                <li>NEW: manual save button</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.12.0 - 2021-06-22</div>
-                            <ul class="small">
-                                <li>FIX: 'Auto-EMC' consumption issue fixed</li>
-                                <li>NEW: display total production/consumption and balance on each resource pane</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.11.2 - 2021-06-22</div>
-                            <ul class="small">
-                                <li>FIX: 'Auto-EMC' frequency issue fixed</li>
-                                <li>FIX: 'Multi-Buy' description fixed</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.11.0 - 2021-06-22</div>
-                            <ul class="small">
-                                <li>NEW: Dyson Segment calculator takes into account current resource count to compute timers</li>
-                                <li>NEW: add 'Multi-Buy' as Corporation Kitrinos upgrade</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.10.0 - 2021-06-21</div>
-                            <ul class="small">
-                                <li>NEW: add Dyson Segment calculator</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.9.2 - 2021-06-21</div>
-                            <ul class="small">
-                                <li>FIX: fixed 'Starting Storage'</li>
-                                <li>FIX: fixed 'Storage Discount'</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.9.1 - 2021-06-21</div>
-                            <ul class="small">
-                                <li>FIX: make all machine cards collaspable</li>
-                                <li>FIX: display 'Auto EMC' as unlocked</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.9.0 - 2021-06-21</div>
-                            <ul class="small">
-                                <li>NEW: add 'Auto EMC' as Prasnian Empire upgrade</li>
-                                <li>NEW: display change log modal when you click on current version number on left side top bar</li>
-                                <li>NEW: add 'Hard Reset' functionnality in 'Options' pane</li>
-                                <li>NEW: save left side menu group collapse state</li>
-                                <li>NEW: make machine card collaspable and save collaspe state</li>
-                                <li>NEW: new option to activate/dactivate achievement notification</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.8.0 - 2021-06-20</div>
-                            <ul class="small">
-                                <li>NEW: better displaying of statictics</li>
-                                <li>FIX: display "DONE" on "Floor #2" only when all wonders are activated</li>
-                                <li>FIX: "Mystery Wonder Construction" unlocks "Floor #2"</li>
-                                <li>FIX: left side resource production displaying is rounding as storage</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.7.0 - 2021-06-19</div>
-                            <ul class="small">
-                                <li>FIX: Make resource boosts multiplicative, rather than additive</li>
-                                <li>FIX : Unlock T5 machines only when Wonder Meteorite is activated</li>
-                                <li>NEW: better precision in number displaying (4 digits)</li>
-                                <li>NEW: current version number displaying on left side top bar</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.6.0 - 2021-06-18</div>
-                            <ul class="small">
-                                <li>FIX: fix Energy Efficiency boost (again)</li>
-                                <li>NEW : remove dependendy between Wonder Station Floor #2 and Dyson Sphere</li>
-                                <li>NEW : add statistics in Achievements pane</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.5.0 - 2021-06-18</div>
-                            <ul class="small">
-                                <li>NEW : add EMC amount selector</li>
-                                <li>NEW : change EMC pane displaying</li>
-                                <li>NEW : make Wonder Station Floor #2 available only if you have 1 Dyson Sphere at least (for those who already build wonders on floor #2, you don't loose anything, you will recover your wonders after the first Dyson Sphere)</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.4.0 - 2021-06-18</div>
-                            <ul class="small">
-                                <li>FIX: fix Energy Efficiency boost</li>
-                                <li>FIX: fix Science Efficiency boost</li>
-                                <li>NEW: change Ranking pane displaying</li>
-                                <li>NEW: change Achievements pane displaying</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.3.0 - 2021-06-17</div>
-                            <ul class="small">
-                                <li>NEW: add backend to save player current rank data and new pane to display player ranks (leaderboard first tentative)</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.2.0 - 2021-06-16</div>
-                            <ul class="small">
-                                <li>FIX: to unlock "Floor #1" whatever the wonder you decide to achieve first</li>
-                                <li>NEW : make site more compatible with screenreaders</li>
-                                <li>NEW : display current version number of the game</li>
-                                <li>NEW : every hour check latest version on Github and propose to update the game if current version is not up to date</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.1.0 - 2021-06-16</div>
-                            <ul class="small">
-                                <li>FIX : do not double the consumption for "Upgrade Resource Technology" & "Upgrade Engine Technology"</li>
-                                <li>NEW : display timer to tell when item storage will be empty</li>
-                                <li>NEW : display item description even when it is done</li>
-                                <li>NEW : display different button style when you hover/click on it</li>
-                                <li>NEW : make new achievement toast clickable to achivevement pane</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.0.0 - 2021-06-16</div>
-                            <ul class="small">
-                                <li>Initial release</li>
                             </ul>
                         </div>
                     </div>
@@ -2382,7 +2048,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.31.0',
+            currentRelease: '1.31.1',
             ghLatestRelease: null,
             
             login: null,
