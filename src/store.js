@@ -256,7 +256,7 @@ export const store = createStore({
             for (let i in state.stars) {
                 let star = state.stars[i]
                 if (star.status == 'owned') ownedStarCount += 1
-                if (star.subStatus == 'terraformed') ownedStarCount += 5
+                if (star.subStatus == 'terraformed' || star.subStatus == 'statued') ownedStarCount += 5
             }
             
             return ownedStarCount
@@ -420,8 +420,8 @@ export const store = createStore({
                     if (state.data[cost.id].titan == true) cost.count *= 0.1
                 })
                 
-            if (item.terraformerCosts)
-                item.terraformerCosts.forEach(cost => {
+            if (item.terraformCosts)
+                item.terraformCosts.forEach(cost => {
                     if (state.data[cost.id].titan == true) cost.count *= 0.1
                 })
                 
@@ -2714,7 +2714,7 @@ export const store = createStore({
             return true
         },
         /*--------------------------------------------------------------------*/
-        check({ state }, payload) {
+        check({ state, commit }, payload) {
         
             let item = state.data[payload]
             
@@ -2740,10 +2740,12 @@ export const store = createStore({
                 }
                 
                 item.subStatus = 'probed'
+                
+                commit('computeCosts', 'probe')
             }
         },
         /*--------------------------------------------------------------------*/
-        terraform({ state }, payload) {
+        terraform({ state, commit }, payload) {
         
             let item = state.data[payload]
             
@@ -2769,6 +2771,8 @@ export const store = createStore({
                 }
                 
                 item.subStatus = 'terraformed'
+                
+                commit('computeCosts', 'terraformer')
             }
         },
         /*--------------------------------------------------------------------*/

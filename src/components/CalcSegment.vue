@@ -19,7 +19,7 @@
                     <small v-if="data['titanium'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo50.titanium.count <= data['titanium'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo50.titanium.count > data['titanium'].count && costTo50.titanium.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo50.titanium.count > data['titanium'].count && costTo50.titanium.timer > 0 && costTo50.titanium.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo50.titanium.timer, '00:00:00') }}</small>
+                    <small v-if="costTo50.titanium.count > data['titanium'].count && costTo50.titanium.timer > 0 && costTo50.titanium.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo50.titanium.timer" /></small>
                 </div>                
             </div>
             
@@ -37,7 +37,7 @@
                     <small v-if="data['gold'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo50.gold.count <= data['gold'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo50.gold.count > data['gold'].count && costTo50.gold.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo50.gold.count > data['gold'].count && costTo50.gold.timer > 0 && costTo50.gold.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo50.gold.timer, '00:00:00') }}</small>
+                    <small v-if="costTo50.gold.count > data['gold'].count && costTo50.gold.timer > 0 && costTo50.gold.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo50.gold.timer" /></small>
                 </div>                
             </div>
             
@@ -55,7 +55,7 @@
                     <small v-if="data['silicon'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo50.silicon.count <= data['silicon'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo50.silicon.count > data['silicon'].count && costTo50.silicon.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo50.silicon.count > data['silicon'].count && costTo50.silicon.timer > 0 && costTo50.silicon.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo50.silicon.timer, '00:00:00') }}</small>
+                    <small v-if="costTo50.silicon.count > data['silicon'].count && costTo50.silicon.timer > 0 && costTo50.silicon.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo50.silicon.timer" /></small>
                 </div>                
             </div>
 
@@ -73,7 +73,7 @@
                     <small v-if="data['meteorite'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo50.meteorite.count <= data['meteorite'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo50.meteorite.count > data['meteorite'].count && costTo50.meteorite.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo50.meteorite.count > data['meteorite'].count && costTo50.meteorite.timer > 0 && costTo50.meteorite.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo50.meteorite.timer, '00:00:00') }}</small>
+                    <small v-if="costTo50.meteorite.count > data['meteorite'].count && costTo50.meteorite.timer > 0 && costTo50.meteorite.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo50.meteorite.timer" /></small>
                 </div>                
             </div>
             
@@ -91,7 +91,7 @@
                     <small v-if="data['ice'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo50.ice.count <= data['ice'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo50.ice.count > data['ice'].count && costTo50.ice.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo50.ice.count > data['ice'].count && costTo50.ice.timer > 0 && costTo50.ice.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo50.ice.timer, '00:00:00') }}</small>
+                    <small v-if="costTo50.ice.count > data['ice'].count && costTo50.ice.timer > 0 && costTo50.ice.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo50.ice.timer" /></small>
                 </div>                
             </div>
             
@@ -115,7 +115,7 @@
                     <small v-if="data['titanium'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo100.titanium.count <= data['titanium'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo100.titanium.count > data['titanium'].count && costTo100.titanium.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo100.titanium.count > data['titanium'].count && costTo100.titanium.timer > 0 && costTo100.titanium.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo100.titanium.timer, '00:00:00') }}</small>
+                    <small v-if="costTo100.titanium.count > data['titanium'].count && costTo100.titanium.timer > 0 && costTo100.titanium.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo100.titanium.timer" /></small>
                 </div>                
             </div>
             
@@ -133,7 +133,7 @@
                     <small v-if="data['gold'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo100.gold.count <= data['gold'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo100.gold.count > data['gold'].count && costTo100.gold.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo100.gold.count > data['gold'].count && costTo100.gold.timer > 0 && costTo100.gold.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo100.gold.timer, '00:00:00') }}</small>
+                    <small v-if="costTo100.gold.count > data['gold'].count && costTo100.gold.timer > 0 && costTo100.gold.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo100.gold.timer" /></small>
                 </div>                
             </div>
             
@@ -151,7 +151,7 @@
                     <small v-if="data['silicon'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo100.silicon.count <= data['silicon'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo100.silicon.count > data['silicon'].count && costTo100.silicon.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo100.silicon.count > data['silicon'].count && costTo100.silicon.timer > 0 && costTo100.silicon.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo100.silicon.timer, '00:00:00') }}</small>
+                    <small v-if="costTo100.silicon.count > data['silicon'].count && costTo100.silicon.timer > 0 && costTo100.silicon.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo100.silicon.timer" /></small>
                 </div>                
             </div>
 
@@ -169,7 +169,7 @@
                     <small v-if="data['meteorite'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo100.meteorite.count <= data['meteorite'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo100.meteorite.count > data['meteorite'].count && costTo100.meteorite.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo100.meteorite.count > data['meteorite'].count && costTo100.meteorite.timer > 0 && costTo100.meteorite.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo100.meteorite.timer, '00:00:00') }}</small>
+                    <small v-if="costTo100.meteorite.count > data['meteorite'].count && costTo100.meteorite.timer > 0 && costTo100.meteorite.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo100.meteorite.timer" /></small>
                 </div>                
             </div>
             
@@ -187,7 +187,7 @@
                     <small v-if="data['ice'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo100.ice.count <= data['ice'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo100.ice.count > data['ice'].count && costTo100.ice.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo100.ice.count > data['ice'].count && costTo100.ice.timer > 0 && costTo100.ice.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo100.ice.timer, '00:00:00') }}</small>
+                    <small v-if="costTo100.ice.count > data['ice'].count && costTo100.ice.timer > 0 && costTo100.ice.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo100.ice.timer" /></small>
                 </div>                
             </div>
             
@@ -211,7 +211,7 @@
                     <small v-if="data['titanium'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo250.titanium.count <= data['titanium'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo250.titanium.count > data['titanium'].count && costTo250.titanium.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo250.titanium.count > data['titanium'].count && costTo250.titanium.timer > 0 && costTo250.titanium.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo250.titanium.timer, '00:00:00') }}</small>
+                    <small v-if="costTo250.titanium.count > data['titanium'].count && costTo250.titanium.timer > 0 && costTo250.titanium.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo250.titanium.timer" /></small>
                 </div>                
             </div>
             
@@ -229,7 +229,7 @@
                     <small v-if="data['gold'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo250.gold.count <= data['gold'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo250.gold.count > data['gold'].count && costTo250.gold.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo250.gold.count > data['gold'].count && costTo250.gold.timer > 0 && costTo250.gold.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo250.gold.timer, '00:00:00') }}</small>
+                    <small v-if="costTo250.gold.count > data['gold'].count && costTo250.gold.timer > 0 && costTo250.gold.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo250.gold.timer" /></small>
                 </div>                
             </div>
             
@@ -247,7 +247,7 @@
                     <small v-if="data['silicon'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo250.silicon.count <= data['silicon'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo250.silicon.count > data['silicon'].count && costTo250.silicon.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo250.silicon.count > data['silicon'].count && costTo250.silicon.timer > 0 && costTo250.silicon.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo250.silicon.timer, '00:00:00') }}</small>
+                    <small v-if="costTo250.silicon.count > data['silicon'].count && costTo250.silicon.timer > 0 && costTo250.silicon.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo250.silicon.timer" /></small>
                 </div>                
             </div>
 
@@ -265,7 +265,7 @@
                     <small v-if="data['meteorite'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo250.meteorite.count <= data['meteorite'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo250.meteorite.count > data['meteorite'].count && costTo250.meteorite.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo250.meteorite.count > data['meteorite'].count && costTo250.meteorite.timer > 0 && costTo250.meteorite.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo250.meteorite.timer, '00:00:00') }}</small>
+                    <small v-if="costTo250.meteorite.count > data['meteorite'].count && costTo250.meteorite.timer > 0 && costTo250.meteorite.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo250.meteorite.timer" /></small>
                 </div>                
             </div>
             
@@ -283,7 +283,7 @@
                     <small v-if="data['ice'].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo250.ice.count <= data['ice'].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo250.ice.count > data['ice'].count && costTo250.ice.timer > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo250.ice.count > data['ice'].count && costTo250.ice.timer > 0 && costTo250.ice.timer <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(costTo250.ice.timer, '00:00:00') }}</small>
+                    <small v-if="costTo250.ice.count > data['ice'].count && costTo250.ice.timer > 0 && costTo250.ice.timer <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="costTo250.ice.timer" /></small>
                 </div>                
             </div>
             
@@ -294,7 +294,12 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 
+import Timer from './Timer.vue'
+
 export default {
+    components: {
+        'timer': Timer,
+    },
     computed: {
         ...mapState([
             'data',

@@ -1930,6 +1930,15 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.31.2 - 2021-07-28</div>
+                            <ul class="small">
+                                <li>FIX: now overlord statue will give you 5 ultrite</li>
+                                <li>FIX: now calculators don't display 00:00:60 anymore</li>
+                                <li>FIX: now terraformer and probe costs are re-computed</li>
+                                <li>FIX: now titans are applied on terraforming costs</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.31.1 - 2021-07-27</div>
                             <ul class="small">
                                 <li>FIX: now timers display value greater than 24 hours</li>
@@ -2048,7 +2057,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.31.1',
+            currentRelease: '1.31.2',
             ghLatestRelease: null,
             
             login: null,

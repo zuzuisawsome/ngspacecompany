@@ -18,7 +18,7 @@
                     <small v-if="data[cost.id].prod <= 0" class="text-normal">---</small>
                     <small v-if="costTo(bracket, cost.count, data[id].count, cost.id) <= data[cost.id].count" class="text-success"><i class="fas fa-fw fa-check"></i></small>
                     <small v-if="costTo(bracket, cost.count, data[id].count, cost.id) > data[cost.id].count && timerTo(bracket, cost.count, data[id].count, cost.id) > (3600 * 24 * 2)" class="text-timer">{{ $t('bigTimer') }}</small>
-                    <small v-if="costTo(bracket, cost.count, data[id].count, cost.id) > data[cost.id].count && timerTo(bracket, cost.count, data[id].count, cost.id) > 0 && timerTo(bracket, cost.count, data[id].count, cost.id) <= (3600 * 24 * 2)" class="text-timer" role="timer">{{ numeralFormat(timerTo(bracket, cost.count, data[id].count, cost.id), '00:00:00') }}</small>
+                    <small v-if="costTo(bracket, cost.count, data[id].count, cost.id) > data[cost.id].count && timerTo(bracket, cost.count, data[id].count, cost.id) > 0 && timerTo(bracket, cost.count, data[id].count, cost.id) <= (3600 * 24 * 2)" class="text-timer" role="timer"><timer :value="timerTo(bracket, cost.count, data[id].count, cost.id)" /></small>
                 </div>                
             </div>
         </div>
@@ -28,7 +28,12 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 
+import Timer from './Timer.vue'
+
 export default {
+    components: {
+        'timer': Timer,
+    },
     props: [ 'id' ],
     computed: {
         ...mapState([
