@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="row gx-2 gy-3">
+                <div class="row g-2">
                     <slot></slot>
                 </div>
             </div>

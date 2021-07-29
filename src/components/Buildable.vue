@@ -1,15 +1,21 @@
 <template>
-    <div v-if="data[id].unlocked || (!data[id].unlocked && displayLockedItems == true)" class="col-12 col-sm-4 col-xl-3" role="article">
+    <div v-if="data[id].unlocked || (!data[id].unlocked && displayLockedItems == true)" class="col-12">
 
         <div v-if="!data[id].unlocked" class="card card-body small">
-            <i class="fas fa-fw fa-lock text-muted"></i>
-            <span class="text-muted">
-                {{ $t('locked') }}
-                <span v-if="unlocker">
-                    {{ $t('by') }}
-                    <span class="text-normal">{{ $t(unlocker) }}</span>
-                </span>
-            </span>
+            <div class="row g-1">
+				<div class="col-auto">
+					<i class="fas fa-fw fa-lock text-muted"></i>
+				</div>
+				<div class="col">
+					<span class="text-muted">
+						{{ $t('locked') }}
+						<span v-if="unlocker">
+							{{ $t('by') }}
+							<span class="text-normal">{{ $t(unlocker) }}</span>
+						</span>
+					</span>
+				</div>
+			</div>
         </div>
         
         <div v-if="(data[id].unlocked && data[id].max && data[id].count >= data[id].max) || (spaceshipParts.includes(id) && data['spaceship'].count > 0)" class="card card-body">
@@ -30,11 +36,14 @@
         </div>
         
         <div v-if="(spaceshipParts.includes(id) && data[id].count < data[id].max && data['spaceship'].count < 1) || (!spaceshipParts.includes(id) && data[id].unlocked && data[id].max && data[id].count < data[id].max) || (data[id].unlocked && !data[id].max)" class="card card-body">
-            <div v-if="isCollapsed(id)" class="row g-3">
-                <div class="col-12">
+            
+			<div v-if="isCollapsed(id)" class="row gx-3">
+                <div class="col-12 col-md-6">
                     <div class="row g-1">
                         <div class="col-auto">
-                            <i class="fas fa-fw fa-check text-success"></i>
+                            <button v-if="collapse" @click="toggleCollapsed(id)" aria-label="Collapse">
+                                <i class="fas fa-fw fa-chevron-right"></i>
+                            </button>
                         </div>
                         <div class="col">
                             <span class="h6 text-light">{{ $t(data[id].id) }}</span>
@@ -47,12 +56,19 @@
                     </div>
                 </div>
             </div>
-            <div v-if="!isCollapsed(id)" class="h-100 row" style="align-content: space-between">
-                <div class="col-12 mb-3">
+			
+            <div v-if="!isCollapsed(id)" class="row gx-3">
+			
+                <div class="col-12 col-md-6">
                     <div class="row g-3">
                     
                         <div class="col-12">
                             <div class="row g-1">
+                                <div class="col-auto">
+                                    <button v-if="collapse" @click="toggleCollapsed(id)" aria-label="Collapse">
+                                        <i class="fas fa-fw fa-chevron-down"></i>
+                                    </button>
+                                </div>
                                 <div class="col">
                                     <span class="h6 text-light">{{ $t(data[id].id) }}</span>
                                 </div>
@@ -119,60 +135,61 @@
                         
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="row g-3">
                     
-                        <div v-if="data[id].stats" class="col-12">
-                            <div class="heading-6">{{ $t('stats') }}</div>
-                            <div class="row g-1 gx-3">
-                                <div class="col-auto">
-                                    <span class="small text-normal">{{ $t('power') }}</span>
-                                    <span class="ms-2 text-light">{{ numeralFormat(data[id].stats.power, '0.[0]a') }}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <span class="small text-normal">{{ $t('defense') }}</span>
-                                    <span class="ms-2 text-light">{{ numeralFormat(data[id].stats.defense, '0.[0]a') }}</span>
-                                </div>
-                                <div class="col-auto">
-                                    <span class="small text-normal">{{ $t('speed') }}</span>
-                                    <span class="ms-2 text-light">{{ numeralFormat(data[id].stats.speed, '0.[0]a') }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div v-if="data[id].storage && data[id].storage.count > 0" class="col-12">
-                            <div class="heading-6">{{ $t('storage') }}</div>
-                            <div class="row g-1">
-                                <div class="col">
-                                    <button class="text-light small" @click="setActivePane(data[id].storage.id + 'Pane')">
-                                        <div class="row g-1">
-                                            <div class="col-auto d-flex align-items-center">
-                                                <img :src="require(`../assets/interface/${data[id].storage.id}.png`)" width="12" height="12" :alt="$t(data[id].storage.id) + ' icon'" />
-                                            </div>
-                                            <div class="col">
-                                                <span class="text-light">{{ $t(data[id].storage.id) }}</span>
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col-auto">
-                                    <small v-if="data[id].storage.id != 'energy'" class="text-success text-uppercase">+{{ numeralFormat(data[id].storage.count.toPrecision(4), '0.[000]a') }}</small>
-                                    <small v-if="data[id].storage.id == 'energy'" class="text-success text-uppercase">+{{ numeralFormat((data[id].storage.count * (1 + (0.01 * data['boostEnergyStorage'].count))).toPrecision(4), '0.[000]a') }}</small>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-12 col-md-6">
+                    <div class="row g-3">
+					
+						<div v-if="data[id].stats" class="col-12">
+							<div class="heading-6">{{ $t('stats') }}</div>
+							<div class="row g-1 gx-3">
+								<div class="col-auto">
+									<span class="small text-normal">{{ $t('power') }}</span>
+									<span class="ms-2 text-light">{{ numeralFormat(data[id].stats.power, '0.[0]a') }}</span>
+								</div>
+								<div class="col-auto">
+									<span class="small text-normal">{{ $t('defense') }}</span>
+									<span class="ms-2 text-light">{{ numeralFormat(data[id].stats.defense, '0.[0]a') }}</span>
+								</div>
+								<div class="col-auto">
+									<span class="small text-normal">{{ $t('speed') }}</span>
+									<span class="ms-2 text-light">{{ numeralFormat(data[id].stats.speed, '0.[0]a') }}</span>
+								</div>
+							</div>
+						</div>
+								
+						<div v-if="data[id].storage && data[id].storage.count > 0" class="col-12">
+							<div class="heading-6">{{ $t('storage') }}</div>
+							<div class="row g-1">
+								<div class="col">
+									<button class="small" @click="setActivePane(data[id].storage.id + 'Pane')">
+										<div class="row g-1">
+											<div class="col-auto d-flex align-items-center">
+												<img :src="require(`../assets/interface/${data[id].storage.id}.png`)" width="12" height="12" :alt="$t(data[id].storage.id) + ' icon'" />
+											</div>
+											<div class="col">
+												<span class="text-normal">{{ $t(data[id].storage.id) }}</span>
+											</div>
+										</div>
+									</button>
+								</div>
+								<div class="col-auto">
+									<small v-if="data[id].storage.id != 'energy'" class="text-success text-uppercase">+{{ numeralFormat(data[id].storage.count.toPrecision(4), '0.[000]a') }}</small>
+									<small v-if="data[id].storage.id == 'energy'" class="text-success text-uppercase">+{{ numeralFormat((data[id].storage.count * (1 + (0.01 * data['boostEnergyStorage'].count))).toPrecision(4), '0.[000]a') }}</small>
+								</div>
+							</div>
+						</div>
                         
                         <div v-if="data[id].outputs" class="col-12">
                             <div class="heading-6">{{ $t('production') }}</div>
                             <div v-for="output in data[id].outputs" :key="output.id" class="row g-1">
                                 <div class="col">
-                                    <button class="text-light small" @click="setActivePane(output.id + 'Pane')">
+                                    <button class="small" @click="setActivePane(output.id + 'Pane')">
                                         <div class="row g-1">
                                             <div class="col-auto d-flex align-items-center">
                                                 <img :src="require(`../assets/interface/${output.id}.png`)" width="12" height="12" :alt="$t(output.id) + ' icon'" />
                                             </div>
                                             <div class="col">
-                                                <span class="text-light">{{ $t(output.id) }}</span>
+                                                <span class="text-normal">{{ $t(output.id) }}</span>
                                             </div>
                                         </div>
                                     </button>
@@ -184,13 +201,13 @@
                             </div>
                             <div v-for="input in data[id].inputs" :key="input.id" class="row g-1">
                                 <div class="col">
-                                    <button class="text-light small" @click="setActivePane(input.id + 'Pane')">
+                                    <button class="small" @click="setActivePane(input.id + 'Pane')">
                                         <div class="row g-1">
                                             <div class="col-auto d-flex align-items-center">
                                                 <img :src="require(`../assets/interface/${input.id}.png`)" width="12" height="12" :alt="$t(input.id) + ' icon'" />
                                             </div>
                                             <div class="col">
-                                                <span class="text-light">{{ $t(input.id) }}</span>
+                                                <span class="text-normal">{{ $t(input.id) }}</span>
                                             </div>
                                         </div>
                                     </button>
@@ -207,7 +224,7 @@
                                 <span class="text-light ms-1">{{ $t(data[id].problem.id) }}</span>
                             </div>
                         </div>
-
+					
                         <costs :costs="data[id].costs" :id="id" :calc="calc" />
                         
                         <div class="col-12">
@@ -233,6 +250,7 @@
                         
                     </div>
                 </div>
+				
             </div>
         </div>
         

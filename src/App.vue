@@ -224,7 +224,7 @@
                     <button class="btn" @click="onRefresh()">{{ $t('update') }}</button>
                 </div>
                 
-                <div class="tab-content pt-3 px-3" style="padding-bottom: 65px;">
+                <div class="tab-content container pt-3 px-2" style="padding-bottom: 65px;">
                     
                     <!-- ENERGY PANE -->
                     <pane id="energyPane" icon="energy.png" :descs="['energyPane_desc']" pinnable="energy">
@@ -1924,6 +1924,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.31.4 - 2021-07-29</div>
+                            <ul class="small">
+                                <li>CHANGE: some UI changes</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.31.3 - 2021-07-29</div>
                             <ul class="small">
                                 <li>CHANGE: some UI changes</li>
@@ -2058,7 +2064,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.31.3',
+            currentRelease: '1.31.4',
             ghLatestRelease: null,
             
             login: null,

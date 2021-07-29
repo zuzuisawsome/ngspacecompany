@@ -1,8 +1,8 @@
 <template>
-    <div class="col-12 col-sm-4 col-xl-3" role="article">
+    <div class="col-12" role="article">
         <div class="card card-body">
             <div class="row g-3">
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <div class="row g-3">
                     
                         <div class="col-12">
@@ -44,7 +44,7 @@
                         
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-6">
                     <div class="row g-3">
                         
                         <div class="col-12">

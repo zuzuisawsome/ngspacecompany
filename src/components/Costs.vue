@@ -26,13 +26,13 @@
         </div>
         <div v-for="cost in costs" :key="cost.id" class="row g-1">
             <div class="col">
-                <button class="text-light small" @click="if (cost.id != 'segment' && data[cost.id].unlocked == true) { setActivePane(cost.id + 'Pane'); }">
+                <button class="small" @click="if (cost.id != 'segment' && data[cost.id].unlocked == true) { setActivePane(cost.id + 'Pane'); }">
                     <div class="row g-1">
                         <div class="col-auto d-flex align-items-center">
                             <img :src="require(`../assets/interface/${cost.id}.png`)" width="12" height="12" :alt="$t(cost.id) + ' icon'" />
                         </div>
                         <div class="col">
-                            <span class="text-light">{{ $t(cost.id) }}</span>
+                            <span class="text-normal">{{ $t(cost.id) }}</span>
                         </div>
                     </div>
                 </button>

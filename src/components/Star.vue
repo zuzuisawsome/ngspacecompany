@@ -1,5 +1,5 @@
 <template>
-    <div class="col-12 col-sm-4 col-xl-3">
+    <div class="col-12">
         <div class="row gx-2">
             <div class="col">
             
@@ -9,7 +9,7 @@
                 
                 <div v-if="data[id].unlocked && data[id].status == 'owned'" class="card card-body">
                     <div class="row g-3">
-                        <div class="col-12">
+                        <div class="col-12 col-md-6">
                             <div class="row g-3">
                                 <div class="col-auto">
                                     <span class="h6 text-light">{{ $t(data[id].id) }}</span>
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12" v-if="data['overlordProgram'].count > 0" >
+                        <div class="col-12 col-md-6" v-if="data['overlordProgram'].count > 0" >
                             <div v-if="data[id].subStatus == 'none'" class="row g-3">
                                 <div class="col-12 small">
                                     <span>{{ $t('beforeChecking') }}</span>
@@ -92,7 +92,7 @@
                 
                 <div v-if="data[id].unlocked && data[id].status != 'owned'" class="card card-body">
                     <div class="row g-3">
-                        <div class="col-12">
+                        <div class="col-12 col-md-6">
                             <div class="row g-3">
                             
                                 <div class="col-auto">
@@ -139,7 +139,7 @@
                                 
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 col-md-6">
                             <div class="row g-3">
                             
                                 <costs v-if="data[id].count == 0" :costs="data[id].costs" />
