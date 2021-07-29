@@ -5,7 +5,7 @@
 html, body, #app { width: 100%; height: 100%; }
 
 body {
-    color: #9aa4ab; font-family: 'Inter', sans-serif; font-size: .875rem; text-rendering: optimizeLegibility;
+    color: #9aa4ab; font-family: 'Inter', sans-serif; font-size: .8rem; text-rendering: optimizeLegibility;
     background-color: #2c3444;
 }
 
@@ -113,7 +113,7 @@ body {
 
 .dropdown-menu {
     padding: .25rem; margin: -2px 0 0;
-    color: #f5f5f5; font-size: .875rem;
+    color: #f5f5f5; font-size: .8rem;
     background-color: #343c4a;
     border: 1px solid #1f252e; border-radius: .25rem;
 }
@@ -185,7 +185,7 @@ button {
 }
 
 .btn {
-    color: #f5f5f5; font-size: .875em;
+    color: #f5f5f5; font-size: .8em;
     background-color: #343c4a;
     padding: .25rem .75rem;
 }
@@ -227,7 +227,7 @@ button {
 /* -------------------------------------------------------------------------- */
 
 .form-control {
-    color: #f5f5f5; font-size: .875em;
+    color: #f5f5f5; font-size: .8rem;
     background-color: #343c4a;
     padding: .25rem .75rem;
     border: 1px solid rgba(255,255,255,.25);
@@ -237,7 +237,8 @@ button {
 
 /* -------------------------------------------------------------------------- */
 
-.tooltip.show { opacity:1; }
+.tooltip { font-size: .8rem; }
+.tooltip.show { opacity: 1; }
 
 /* -------------------------------------------------------------------------- */
 
@@ -275,7 +276,7 @@ button {
 
 /* -------------------------------------------------------------------------- */
 
-.tip { font-size: .875em; padding: .25rem .5rem; border-left: 3px solid rgba(255,255,255,.125); background: rgba(255,255,255,.125); border-radius: 3px 0 0 3px; }
+.tip { font-size: .8em; padding: .25rem .5rem; border-left: 3px solid rgba(255,255,255,.125); background: rgba(255,255,255,.125); border-radius: 3px 0 0 3px; }
 .tip-normal { color: rgb(0,188,212); border-color: rgba(0,188,212,.5); background: rgba(0,188,212,.125); }
 
 /* -------------------------------------------------------------------------- */

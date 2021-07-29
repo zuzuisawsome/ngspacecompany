@@ -15,27 +15,27 @@
                         </div>
                         <div v-if="prod != null" class="col-auto text-end small">
                             <i v-if="problem" class="small me-1 fas fa-fw fa-exclamation-triangle text-danger"></i>
-                            <small class="text-uppercase" :class="{ 'text-danger':prod < 0, 'text-normal':prod == 0, 'text-success':prod > 0 }">
+                            <span class="text-uppercase" :class="{ 'text-danger':prod < 0, 'text-normal':prod == 0, 'text-success':prod > 0 }">
                                 <span v-if="prod > 0">+</span>{{ numeralFormat(prod.toPrecision(4), '0.[000]a') }}
-                            </small>
+                            </span>
                             <small class="text-normal ms-1">/s</small>
                         </div>
-                        <div v-if="count != null" class="col-auto text-end small" style="width:90px;">
-                            <small class="text-uppercase" :class="{ 'text-light':(count > 0 && (!cap || count < cap)), 'text-normal':count == 0, 'text-danger':count < 0, 'text-excess':cap && count >= cap && count < storage, 'text-success':storage && count >= storage }">{{ numeralFormat(count.toPrecision(4), '0.[000]a') }}</small>
+                        <div v-if="count != null" class="col-auto text-end small" style="width:100px;">
+                            <span class="text-uppercase" :class="{ 'text-light':(count > 0 && (!cap || count < cap)), 'text-normal':count == 0, 'text-danger':count < 0, 'text-excess':cap && count >= cap && count < storage, 'text-success':storage && count >= storage }">{{ numeralFormat(count.toPrecision(4), '0.[000]a') }}</span>
                             <small v-if="storage" class="text-uppercase text-normal ms-1">/{{ numeralFormat(storage.toPrecision(4), '0.[000]a') }}</small>
-                            <small v-if="potential >= 0" class="text-normal ms-1">({{ potential }})</small>
+                            <span v-if="potential >= 0" class="text-normal ms-1">({{ potential }})</span>
                         </div>
                         <div v-if="opinion != null" class="col-auto text-end small">
-                            <small :class="{ 'text-light':opinion > 0, 'text-normal':opinion == 0, 'text-danger':opinion < 0 }">{{ opinion }}</small>
+                            <span :class="{ 'text-light':opinion > 0, 'text-normal':opinion == 0, 'text-danger':opinion < 0 }">{{ opinion }}</span>
                         </div>
                         <div v-if="done" class="col-auto text-end small">
-                            <small class="text-success text-uppercase">{{ $t(doneText) }}</small>
+                            <span class="text-success text-uppercase">{{ $t(doneText) }}</span>
                         </div>
                     </div>
                 </button>
             </div>
-            <div v-if="buildingStorageId && data['techStorage'].count > 0" class="col-auto">
-                <button :id="'tpUpgradeStorage' + buildingStorageId" class="btn btn-small ms-1" :class="{ 'disabled text-muted':!canBuild(buildingStorageId) }" aria-label="Upgrade storage" @click.stop="build({id:buildingStorageId, count:1})">
+            <div class="col-auto" style="width: 27px;">
+                <button v-if="buildingStorageId && data['techStorage'].count > 0" :id="'tpUpgradeStorage' + buildingStorageId" class="btn btn-small" :class="{ 'disabled text-muted':!canBuild(buildingStorageId) }" aria-label="Upgrade storage" @click.stop="build({id:buildingStorageId, count:1})">
                     <i class="fas fa-fw fa-arrow-alt-circle-up"></i>
                 </button>
             </div>

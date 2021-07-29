@@ -3,7 +3,7 @@
         <button class="sidenav-group" :class="{ 'collapsed':isCollapsed(id) }" data-bs-toggle="collapse" :data-bs-target="'#collapse' + id" :aria-expanded="!isCollapsed(id)" :aria-controls="'collapse' + id" @click="toggleCollapsed(id)">
             {{ $t(id) }}
         </button>
-        <div :id="'collapse' + id" class="collapse row gx-2 gy-1 row-cols-1" :class="{ 'show':!isCollapsed(id) }">
+        <div :id="'collapse' + id" class="collapse row gy-0 row-cols-1" :class="{ 'show':!isCollapsed(id) }">
             <slot></slot>
         </div>
     </div>

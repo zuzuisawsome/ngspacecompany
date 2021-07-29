@@ -22,7 +22,7 @@
                 
                 <div class="col-auto px-0">
                     <button class="btn p-1" @click="changeLogModal.show();">
-                        <small class="small text-normal">v{{ currentRelease }}</small>
+                        <span class="text-normal">{{ currentRelease }}</span>
                     </button>
                 </div>
 
@@ -33,111 +33,113 @@
                 </div>
                 
             </top-header>
-            <inner-content data-simplebar class="pe-2">
-                <div class="row gx-2 gy-3 row-cols-1">
-                
-                    <sidenav-item v-if="showRoadmap" id="helpPane" icon="help.png" unlocked="true" />
+            <inner-content data-simplebar class="pe-3">
+                <div class="pt-2 pb-3 ps-1">
+                    <div class="row gx-2 gy-3 row-cols-1">
                     
-                    <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
-                        <div v-for="pane in pinned" :key="pane.id">
-                            <sidenav-item v-if="pane.resId != 'dyson' && pane.resId != 'emc' && pane.resId != 'technologies'" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
-                            <sidenav-item v-if="pane.resId == 'dyson'" :id="pane.id" :icon="pane.icon" unlocked="true" />
-                            <sidenav-item v-if="pane.resId == 'emc'" :id="pane.id" :icon="pane.icon" unlocked="true" />
-                            <sidenav-item v-if="pane.resId == 'technologies'" :id="pane.id" :icon="pane.icon" unlocked="true" />
-                        </div>
-                    </sidenav-group>
-                    
-                    <sidenav-group id="energyHeading" :unlocked="data['energy'].unlocked">
-                        <sidenav-item id="energyPane" icon="energy.png" :unlocked="data['energy'].unlocked" :prod="data['energy'].prod" :problem="data['energy'].problem" />
-                        <sidenav-item id="batteryPane" icon="battery.png" :unlocked="data['energy'].unlocked" :count="data['energy'].count" :storage="getStorageCap('energy')" :cap="data['energy'].storage" />
-                    </sidenav-group>
-                    
-                    <sidenav-group id="fabricatedHeading" :unlocked="data['carbon'].unlocked">
-                        <sidenav-item id="plasmaPane" icon="plasma.png" :unlocked="data['plasma'].unlocked" :prod="data['plasma'].prod" :count="data['plasma'].count" :storage="getStorageCap('plasma')" :cap="data['plasma'].storage" :problem="data['plasma'].problem" />
-                        <sidenav-item id="meteoritePane" icon="meteorite.png" :unlocked="data['meteorite'].unlocked" :prod="data['meteorite'].prod" :count="data['meteorite'].count" :storage="getStorageCap('meteorite')" :cap="data['meteorite'].storage" :problem="data['meteorite'].problem" buildingStorageId="meteoriteS1" />
-                        <sidenav-item id="carbonPane" icon="carbon.png" :unlocked="data['carbon'].unlocked" :prod="data['carbon'].prod" :count="data['carbon'].count" :storage="getStorageCap('carbon')" :cap="data['carbon'].storage" :problem="data['carbon'].problem" buildingStorageId="carbonS1" />
-                    </sidenav-group>
-
-                    <sidenav-group id="earthResourcesHeading" :unlocked="data['metal'].unlocked">
-                        <sidenav-item id="oilPane" icon="oil.png" :unlocked="data['oil'].unlocked" :prod="data['oil'].prod" :count="data['oil'].count" :storage="getStorageCap('oil')" :cap="data['oil'].storage" buildingStorageId="oilS1" />
-                        <sidenav-item id="metalPane" icon="metal.png" :unlocked="data['metal'].unlocked" :prod="data['metal'].prod" :count="data['metal'].count" :storage="getStorageCap('metal')" :cap="data['metal'].storage" buildingStorageId="metalS1" />
-                        <sidenav-item id="gemPane" icon="gem.png" :unlocked="data['gem'].unlocked" :prod="data['gem'].prod" :count="data['gem'].count" :storage="getStorageCap('gem')" :cap="data['gem'].storage" buildingStorageId="gemS1" />
-                        <sidenav-item id="woodPane" icon="wood.png" :unlocked="data['wood'].unlocked" :prod="data['wood'].prod" :count="data['wood'].count" :storage="getStorageCap('wood')" :cap="data['wood'].storage" buildingStorageId="woodS1" />
-                        <sidenav-item id="siliconPane" icon="silicon.png" :unlocked="data['silicon'].unlocked" :prod="data['silicon'].prod" :count="data['silicon'].count" :storage="getStorageCap('silicon')" :cap="data['silicon'].storage" buildingStorageId="siliconS1" />
-                        <sidenav-item id="uraniumPane" icon="uranium.png" :unlocked="data['uranium'].unlocked" :prod="data['uranium'].prod" :count="data['uranium'].count" :storage="getStorageCap('uranium')" :cap="data['uranium'].storage" buildingStorageId="uraniumS1" />
-                        <sidenav-item id="lavaPane" icon="lava.png" :unlocked="data['lava'].unlocked" :prod="data['lava'].prod" :count="data['lava'].count" :storage="getStorageCap('lava')" :cap="data['lava'].storage" buildingStorageId="lavaS1" />
-                    </sidenav-group>
-
-                    <sidenav-group id="innerResourcesHeading" :unlocked="data['lunarite'].unlocked">
-                        <sidenav-item id="lunaritePane" icon="lunarite.png" :unlocked="data['lunarite'].unlocked" :prod="data['lunarite'].prod" :count="data['lunarite'].count" :storage="getStorageCap('lunarite')" :cap="data['lunarite'].storage" buildingStorageId="lunariteS1" />
-                        <sidenav-item id="methanePane" icon="methane.png" :unlocked="data['methane'].unlocked" :prod="data['methane'].prod" :count="data['methane'].count" :storage="getStorageCap('methane')" :cap="data['methane'].storage" buildingStorageId="methaneS1" />
-                        <sidenav-item id="titaniumPane" icon="titanium.png" :unlocked="data['titanium'].unlocked" :prod="data['titanium'].prod" :count="data['titanium'].count" :storage="getStorageCap('titanium')" :cap="data['titanium'].storage" buildingStorageId="titaniumS1" />
-                        <sidenav-item id="goldPane" icon="gold.png" :unlocked="data['gold'].unlocked" :prod="data['gold'].prod" :count="data['gold'].count" :storage="getStorageCap('gold')" :cap="data['gold'].storage" buildingStorageId="goldS1" />
-                        <sidenav-item id="silverPane" icon="silver.png" :unlocked="data['silver'].unlocked" :prod="data['silver'].prod" :count="data['silver'].count" :storage="getStorageCap('silver')" :cap="data['silver'].storage" buildingStorageId="silverS1" />
-                    </sidenav-group>
-
-                    <sidenav-group id="outerResourcesHeading" :unlocked="data['hydrogen'].unlocked || data['helium'].unlocked || data['ice'].unlocked">
-                        <sidenav-item id="hydrogenPane" icon="hydrogen.png" :unlocked="data['hydrogen'].unlocked" :prod="data['hydrogen'].prod" :count="data['hydrogen'].count" :storage="getStorageCap('hydrogen')" :cap="data['hydrogen'].storage" buildingStorageId="hydrogenS1" />
-                        <sidenav-item id="heliumPane" icon="helium.png" :unlocked="data['helium'].unlocked" :prod="data['helium'].prod" :count="data['helium'].count" :storage="getStorageCap('helium')" :cap="data['helium'].storage" buildingStorageId="heliumS1" />
-                        <sidenav-item id="icePane" icon="ice.png" :unlocked="data['ice'].unlocked" :prod="data['ice'].prod" :count="data['ice'].count" :storage="getStorageCap('ice')" :cap="data['ice'].storage" buildingStorageId="iceS1" />
-                    </sidenav-group>
-
-                    <sidenav-group id="researchesHeading" :unlocked="data['science'].unlocked">
-                        <sidenav-item id="sciencePane" icon="science.png" :unlocked="data['science'].unlocked" :prod="data['science'].prod" :count="data['science'].count" />
-                        <sidenav-item id="technologiesPane" icon="technologies.png" :unlocked="data['science'].unlocked" />
-                    </sidenav-group>
-
-                    <sidenav-group id="solSytemHeading" :unlocked="data['fuel'].unlocked">
-                        <sidenav-item id="fuelPane" icon="fuel.png" :unlocked="data['fuel'].unlocked" :prod="data['fuel'].prod" :count="data['fuel'].count" />
-                        <sidenav-item id="rocketPane" icon="rocket.png" :unlocked="data['rocket1'].unlocked" :done="data['rocket2'].count > 0" doneText="launched" />
-                        <sidenav-item id="innerSolarSystemPane" icon="innerSolarSystem.png" :unlocked="data['moon'].unlocked" :done="data['wonderStation'].count > 0" doneText="explored" />
-                        <sidenav-item id="outerSolarSystemPane" icon="outerSolarSystem.png" :unlocked="data['jupiter'].unlocked" :done="data['solCenter1'].count > 0" doneText="explored" />
-                    </sidenav-group>
-
-                    <sidenav-group id="wondersHeading" :unlocked="data['wonderPrecious0'].unlocked">
-                        <sidenav-item id="wonderStationPane" icon="wonderStation.png" :unlocked="data['wonderPrecious0'].unlocked" :done="data['wonderPrecious0'].count > 0 && data['wonderEnergetic0'].count > 0 && data['wonderTechnological0'].count > 0 && data['wonderMeteorite0'].count > 0" doneText="done" />
-                        <sidenav-item id="floor1Pane" icon="floor1.png" :unlocked="data['wonderPrecious1'].unlocked || data['wonderEnergetic1'].unlocked || data['wonderTechnological1'].unlocked || data['wonderMeteorite1'].unlocked" :done="data['wonderPrecious1'].count > 0 && data['wonderEnergetic1'].count > 0 && data['wonderTechnological1'].count > 0 && data['wonderMeteorite1'].count > 0" doneText="done" />
-                        <sidenav-item id="floor2Pane" icon="floor2.png" :unlocked="data['wonderComm'].unlocked" :done="data['wonderComm'].count > 0 && data['wonderSpaceship'].count > 0 && data['wonderAntimatter'].count > 0 && data['wonderPortal'].count > 0" doneText="done" />
-                        <sidenav-item id="floor3Pane" icon="floor3.png" :unlocked="data['wonderStargate'].unlocked" :done="data['wonderStargate'].count > 0" doneText="done" />
-                    </sidenav-group>
-
-                    <sidenav-group id="solCenterHeading" :unlocked="data['techPlasma0'].unlocked">
-                        <sidenav-item id="solCenterPane" icon="solCenter.png" :unlocked="data['techPlasma0'].unlocked" :done="data['techPlasma0'].count > 0 && data['techEmc0'].count > 0 && data['techDyson0'].count > 0" doneText="done" />
-                        <sidenav-item id="emcPane" icon="emc.png" :unlocked="data['emc'].unlocked" />
-                        <sidenav-item id="dysonPane" icon="dyson.png" :unlocked="data['segment'].unlocked" />
-                        <sidenav-item id="nanoswarmPane" icon="nanoswarm.png" :unlocked="data['nanoswarm'].unlocked" />
-                    </sidenav-group>
-
-                    <sidenav-group id="interstellarHeading" :unlocked="data['radarT1'].unlocked || data['antimatter'].unlocked || data['spaceship'].unlocked || data['shipT1'].unlocked">
-                        <sidenav-item id="antimatterPane" icon="antimatter.png" :unlocked="data['antimatter'].unlocked" :prod="data['antimatter'].prod" :count="data['antimatter'].count" :storage="getStorageCap('antimatter')" :cap="data['antimatter'].storage" />
-                        <sidenav-item id="communicationPane" icon="communication.png" :unlocked="data['radarT1'].unlocked" />
-                        <sidenav-item id="spaceshipPane" icon="spaceship.png" :unlocked="data['spaceship'].unlocked" :done="data['spaceship'].count > 0" doneText="built" />
-                        <sidenav-item id="militaryPane" icon="military.png" :unlocked="data['shipT1'].unlocked" />
-                        <sidenav-item id="terraformingPane" icon="terraforming.png" :unlocked="data['probe'].unlocked" />
-                        <sidenav-item id="interstellarCarnelianPane" icon="carnelian.png" :unlocked="data['spaceship'].count > 0" :opinion="data['carnelian'].opinion" />
-                        <sidenav-item id="interstellarPrasnianPane" icon="prasnian.png" :unlocked="data['spaceship'].count > 0" :opinion="data['prasnian'].opinion" />
-                        <sidenav-item id="interstellarHyacinitePane" icon="hyacinite.png" :unlocked="data['spaceship'].count > 0" :opinion="data['hyacinite'].opinion" />
-                        <sidenav-item id="interstellarKitrinosPane" icon="kitrinos.png" :unlocked="data['spaceship'].count > 0" :opinion="data['kitrinos'].opinion" />
-                        <sidenav-item id="interstellarMovitonPane" icon="moviton.png" :unlocked="data['spaceship'].count > 0" :opinion="data['moviton'].opinion" />
-                        <sidenav-item id="interstellarOverlordPane" icon="overlord.png" :unlocked="data['overlordProgram'].count > 0" />
-                    </sidenav-group>
-
-                    <sidenav-group id="stargazeHeading" :unlocked="data['darkmatter'].unlocked">
-                        <sidenav-item id="darkmatterPane" icon="darkmatter.png" :unlocked="data['darkmatter'].unlocked" :count="data['darkmatter'].count" :potential="getPotentialDM" />
-                        <sidenav-item id="stargazeCarnelianPane" icon="carnelian.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['carnelian'].opinion" />
-                        <sidenav-item id="stargazePrasnianPane" icon="prasnian.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['prasnian'].opinion" />
-                        <sidenav-item id="stargazeHyacinitePane" icon="hyacinite.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['hyacinite'].opinion" />
-                        <sidenav-item id="stargazeKitrinosPane" icon="kitrinos.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['kitrinos'].opinion" />
-                        <sidenav-item id="stargazeMovitonPane" icon="moviton.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['moviton'].opinion" />
-                        <sidenav-item id="stargazeOverlordPane" icon="overlord.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['overlord'].opinion" />
-                    </sidenav-group>
-                    
-                    <sidenav-group id="enlightenmentHeading" :unlocked="data['ultrite'].unlocked">
-                        <sidenav-item id="ultritePane" icon="ultrite.png" :unlocked="data['ultrite'].unlocked" :count="data['ultrite'].count" :potential="getPotentialUL" />
-                        <sidenav-item id="titansPane" icon="titans.png" :unlocked="data['ultrite'].unlocked" />
-                        <sidenav-item id="upgradesPane" icon="upgrades.png" :unlocked="data['ultrite'].unlocked" />
-                    </sidenav-group>
-                    
+                        <sidenav-item v-if="showRoadmap" id="helpPane" icon="help.png" unlocked="true" />
+                        
+                        <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
+                            <div v-for="pane in pinned" :key="pane.id">
+                                <sidenav-item v-if="pane.resId != 'dyson' && pane.resId != 'emc' && pane.resId != 'technologies'" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="data[pane.resId].count" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
+                                <sidenav-item v-if="pane.resId == 'dyson'" :id="pane.id" :icon="pane.icon" unlocked="true" />
+                                <sidenav-item v-if="pane.resId == 'emc'" :id="pane.id" :icon="pane.icon" unlocked="true" />
+                                <sidenav-item v-if="pane.resId == 'technologies'" :id="pane.id" :icon="pane.icon" unlocked="true" />
+                            </div>
+                        </sidenav-group>
+                        
+                        <sidenav-group id="energyHeading" :unlocked="data['energy'].unlocked">
+                            <sidenav-item id="energyPane" icon="energy.png" :unlocked="data['energy'].unlocked" :prod="data['energy'].prod" :problem="data['energy'].problem" />
+                            <sidenav-item id="batteryPane" icon="battery.png" :unlocked="data['energy'].unlocked" :count="data['energy'].count" :storage="getStorageCap('energy')" :cap="data['energy'].storage" />
+                        </sidenav-group>
+                        
+                        <sidenav-group id="fabricatedHeading" :unlocked="data['carbon'].unlocked">
+                            <sidenav-item id="plasmaPane" icon="plasma.png" :unlocked="data['plasma'].unlocked" :prod="data['plasma'].prod" :count="data['plasma'].count" :storage="getStorageCap('plasma')" :cap="data['plasma'].storage" :problem="data['plasma'].problem" />
+                            <sidenav-item id="meteoritePane" icon="meteorite.png" :unlocked="data['meteorite'].unlocked" :prod="data['meteorite'].prod" :count="data['meteorite'].count" :storage="getStorageCap('meteorite')" :cap="data['meteorite'].storage" :problem="data['meteorite'].problem" buildingStorageId="meteoriteS1" />
+                            <sidenav-item id="carbonPane" icon="carbon.png" :unlocked="data['carbon'].unlocked" :prod="data['carbon'].prod" :count="data['carbon'].count" :storage="getStorageCap('carbon')" :cap="data['carbon'].storage" :problem="data['carbon'].problem" buildingStorageId="carbonS1" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="earthResourcesHeading" :unlocked="data['metal'].unlocked">
+                            <sidenav-item id="oilPane" icon="oil.png" :unlocked="data['oil'].unlocked" :prod="data['oil'].prod" :count="data['oil'].count" :storage="getStorageCap('oil')" :cap="data['oil'].storage" buildingStorageId="oilS1" />
+                            <sidenav-item id="metalPane" icon="metal.png" :unlocked="data['metal'].unlocked" :prod="data['metal'].prod" :count="data['metal'].count" :storage="getStorageCap('metal')" :cap="data['metal'].storage" buildingStorageId="metalS1" />
+                            <sidenav-item id="gemPane" icon="gem.png" :unlocked="data['gem'].unlocked" :prod="data['gem'].prod" :count="data['gem'].count" :storage="getStorageCap('gem')" :cap="data['gem'].storage" buildingStorageId="gemS1" />
+                            <sidenav-item id="woodPane" icon="wood.png" :unlocked="data['wood'].unlocked" :prod="data['wood'].prod" :count="data['wood'].count" :storage="getStorageCap('wood')" :cap="data['wood'].storage" buildingStorageId="woodS1" />
+                            <sidenav-item id="siliconPane" icon="silicon.png" :unlocked="data['silicon'].unlocked" :prod="data['silicon'].prod" :count="data['silicon'].count" :storage="getStorageCap('silicon')" :cap="data['silicon'].storage" buildingStorageId="siliconS1" />
+                            <sidenav-item id="uraniumPane" icon="uranium.png" :unlocked="data['uranium'].unlocked" :prod="data['uranium'].prod" :count="data['uranium'].count" :storage="getStorageCap('uranium')" :cap="data['uranium'].storage" buildingStorageId="uraniumS1" />
+                            <sidenav-item id="lavaPane" icon="lava.png" :unlocked="data['lava'].unlocked" :prod="data['lava'].prod" :count="data['lava'].count" :storage="getStorageCap('lava')" :cap="data['lava'].storage" buildingStorageId="lavaS1" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="innerResourcesHeading" :unlocked="data['lunarite'].unlocked">
+                            <sidenav-item id="lunaritePane" icon="lunarite.png" :unlocked="data['lunarite'].unlocked" :prod="data['lunarite'].prod" :count="data['lunarite'].count" :storage="getStorageCap('lunarite')" :cap="data['lunarite'].storage" buildingStorageId="lunariteS1" />
+                            <sidenav-item id="methanePane" icon="methane.png" :unlocked="data['methane'].unlocked" :prod="data['methane'].prod" :count="data['methane'].count" :storage="getStorageCap('methane')" :cap="data['methane'].storage" buildingStorageId="methaneS1" />
+                            <sidenav-item id="titaniumPane" icon="titanium.png" :unlocked="data['titanium'].unlocked" :prod="data['titanium'].prod" :count="data['titanium'].count" :storage="getStorageCap('titanium')" :cap="data['titanium'].storage" buildingStorageId="titaniumS1" />
+                            <sidenav-item id="goldPane" icon="gold.png" :unlocked="data['gold'].unlocked" :prod="data['gold'].prod" :count="data['gold'].count" :storage="getStorageCap('gold')" :cap="data['gold'].storage" buildingStorageId="goldS1" />
+                            <sidenav-item id="silverPane" icon="silver.png" :unlocked="data['silver'].unlocked" :prod="data['silver'].prod" :count="data['silver'].count" :storage="getStorageCap('silver')" :cap="data['silver'].storage" buildingStorageId="silverS1" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="outerResourcesHeading" :unlocked="data['hydrogen'].unlocked || data['helium'].unlocked || data['ice'].unlocked">
+                            <sidenav-item id="hydrogenPane" icon="hydrogen.png" :unlocked="data['hydrogen'].unlocked" :prod="data['hydrogen'].prod" :count="data['hydrogen'].count" :storage="getStorageCap('hydrogen')" :cap="data['hydrogen'].storage" buildingStorageId="hydrogenS1" />
+                            <sidenav-item id="heliumPane" icon="helium.png" :unlocked="data['helium'].unlocked" :prod="data['helium'].prod" :count="data['helium'].count" :storage="getStorageCap('helium')" :cap="data['helium'].storage" buildingStorageId="heliumS1" />
+                            <sidenav-item id="icePane" icon="ice.png" :unlocked="data['ice'].unlocked" :prod="data['ice'].prod" :count="data['ice'].count" :storage="getStorageCap('ice')" :cap="data['ice'].storage" buildingStorageId="iceS1" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="researchesHeading" :unlocked="data['science'].unlocked">
+                            <sidenav-item id="sciencePane" icon="science.png" :unlocked="data['science'].unlocked" :prod="data['science'].prod" :count="data['science'].count" />
+                            <sidenav-item id="technologiesPane" icon="technologies.png" :unlocked="data['science'].unlocked" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="solSytemHeading" :unlocked="data['fuel'].unlocked">
+                            <sidenav-item id="fuelPane" icon="fuel.png" :unlocked="data['fuel'].unlocked" :prod="data['fuel'].prod" :count="data['fuel'].count" />
+                            <sidenav-item id="rocketPane" icon="rocket.png" :unlocked="data['rocket1'].unlocked" :done="data['rocket2'].count > 0" doneText="launched" />
+                            <sidenav-item id="innerSolarSystemPane" icon="innerSolarSystem.png" :unlocked="data['moon'].unlocked" :done="data['wonderStation'].count > 0" doneText="explored" />
+                            <sidenav-item id="outerSolarSystemPane" icon="outerSolarSystem.png" :unlocked="data['jupiter'].unlocked" :done="data['solCenter1'].count > 0" doneText="explored" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="wondersHeading" :unlocked="data['wonderPrecious0'].unlocked">
+                            <sidenav-item id="wonderStationPane" icon="wonderStation.png" :unlocked="data['wonderPrecious0'].unlocked" :done="data['wonderPrecious0'].count > 0 && data['wonderEnergetic0'].count > 0 && data['wonderTechnological0'].count > 0 && data['wonderMeteorite0'].count > 0" doneText="done" />
+                            <sidenav-item id="floor1Pane" icon="floor1.png" :unlocked="data['wonderPrecious1'].unlocked || data['wonderEnergetic1'].unlocked || data['wonderTechnological1'].unlocked || data['wonderMeteorite1'].unlocked" :done="data['wonderPrecious1'].count > 0 && data['wonderEnergetic1'].count > 0 && data['wonderTechnological1'].count > 0 && data['wonderMeteorite1'].count > 0" doneText="done" />
+                            <sidenav-item id="floor2Pane" icon="floor2.png" :unlocked="data['wonderComm'].unlocked" :done="data['wonderComm'].count > 0 && data['wonderSpaceship'].count > 0 && data['wonderAntimatter'].count > 0 && data['wonderPortal'].count > 0" doneText="done" />
+                            <sidenav-item id="floor3Pane" icon="floor3.png" :unlocked="data['wonderStargate'].unlocked" :done="data['wonderStargate'].count > 0" doneText="done" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="solCenterHeading" :unlocked="data['techPlasma0'].unlocked">
+                            <sidenav-item id="solCenterPane" icon="solCenter.png" :unlocked="data['techPlasma0'].unlocked" :done="data['techPlasma0'].count > 0 && data['techEmc0'].count > 0 && data['techDyson0'].count > 0" doneText="done" />
+                            <sidenav-item id="emcPane" icon="emc.png" :unlocked="data['emc'].unlocked" />
+                            <sidenav-item id="dysonPane" icon="dyson.png" :unlocked="data['segment'].unlocked" />
+                            <sidenav-item id="nanoswarmPane" icon="nanoswarm.png" :unlocked="data['nanoswarm'].unlocked" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="interstellarHeading" :unlocked="data['radarT1'].unlocked || data['antimatter'].unlocked || data['spaceship'].unlocked || data['shipT1'].unlocked">
+                            <sidenav-item id="antimatterPane" icon="antimatter.png" :unlocked="data['antimatter'].unlocked" :prod="data['antimatter'].prod" :count="data['antimatter'].count" :storage="getStorageCap('antimatter')" :cap="data['antimatter'].storage" />
+                            <sidenav-item id="communicationPane" icon="communication.png" :unlocked="data['radarT1'].unlocked" />
+                            <sidenav-item id="spaceshipPane" icon="spaceship.png" :unlocked="data['spaceship'].unlocked" :done="data['spaceship'].count > 0" doneText="built" />
+                            <sidenav-item id="militaryPane" icon="military.png" :unlocked="data['shipT1'].unlocked" />
+                            <sidenav-item id="terraformingPane" icon="terraforming.png" :unlocked="data['probe'].unlocked" />
+                            <sidenav-item id="interstellarCarnelianPane" icon="carnelian.png" :unlocked="data['spaceship'].count > 0" :opinion="data['carnelian'].opinion" />
+                            <sidenav-item id="interstellarPrasnianPane" icon="prasnian.png" :unlocked="data['spaceship'].count > 0" :opinion="data['prasnian'].opinion" />
+                            <sidenav-item id="interstellarHyacinitePane" icon="hyacinite.png" :unlocked="data['spaceship'].count > 0" :opinion="data['hyacinite'].opinion" />
+                            <sidenav-item id="interstellarKitrinosPane" icon="kitrinos.png" :unlocked="data['spaceship'].count > 0" :opinion="data['kitrinos'].opinion" />
+                            <sidenav-item id="interstellarMovitonPane" icon="moviton.png" :unlocked="data['spaceship'].count > 0" :opinion="data['moviton'].opinion" />
+                            <sidenav-item id="interstellarOverlordPane" icon="overlord.png" :unlocked="data['overlordProgram'].count > 0" />
+                        </sidenav-group>
+    
+                        <sidenav-group id="stargazeHeading" :unlocked="data['darkmatter'].unlocked">
+                            <sidenav-item id="darkmatterPane" icon="darkmatter.png" :unlocked="data['darkmatter'].unlocked" :count="data['darkmatter'].count" :potential="getPotentialDM" />
+                            <sidenav-item id="stargazeCarnelianPane" icon="carnelian.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['carnelian'].opinion" />
+                            <sidenav-item id="stargazePrasnianPane" icon="prasnian.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['prasnian'].opinion" />
+                            <sidenav-item id="stargazeHyacinitePane" icon="hyacinite.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['hyacinite'].opinion" />
+                            <sidenav-item id="stargazeKitrinosPane" icon="kitrinos.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['kitrinos'].opinion" />
+                            <sidenav-item id="stargazeMovitonPane" icon="moviton.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['moviton'].opinion" />
+                            <sidenav-item id="stargazeOverlordPane" icon="overlord.png" :unlocked="data['darkmatter'].unlocked" :opinion="data['overlord'].opinion" />
+                        </sidenav-group>
+                        
+                        <sidenav-group id="enlightenmentHeading" :unlocked="data['ultrite'].unlocked">
+                            <sidenav-item id="ultritePane" icon="ultrite.png" :unlocked="data['ultrite'].unlocked" :count="data['ultrite'].count" :potential="getPotentialUL" />
+                            <sidenav-item id="titansPane" icon="titans.png" :unlocked="data['ultrite'].unlocked" />
+                            <sidenav-item id="upgradesPane" icon="upgrades.png" :unlocked="data['ultrite'].unlocked" />
+                        </sidenav-group>
+                        
+                    </div>
                 </div>
             </inner-content>
         </div>
@@ -159,42 +161,41 @@
                     </a>
                 </div>
                 
-                <div class="col-auto cursor-hover">
+                <div class="col-auto" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('donatingPane')">
                     <button @click="setActivePane('donatingPane')">
-                        <img :src="require('./assets/interface/donating.png')" width="16" height="16" alt="Donating icon" />
-                        <span class="ms-1 text-light">{{ $t('donatingPane') }}</span>
+                        <img :src="require('./assets/interface/donating.png')" width="16" height="16" alt="Donating" />
                     </button>
                 </div>
                 
-                <div class="col-auto cursor-hover position-relative" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('achievementPane')">
+                <div class="col-auto position-relative" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('achievementPane')">
                     <button @click="setActivePane('achievementPane')">
                         <div v-if="isNotif('achievementPane')" class="position-absolute top-0 end-0" style="line-height:1">
                             <i class="fas fa-fw fa-certificate text-success small"></i>
                         </div>
-                        <img :src="require('./assets/interface/trophy.png')" width="16" height="16" alt="Achievements icon" />
+                        <img :src="require('./assets/interface/trophy.png')" width="16" height="16" alt="Achievements" />
                     </button>
                 </div>
                 
-                <div class="col-auto cursor-hover position-relative" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('rankPane')">
+                <div class="col-auto" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('rankPane')">
                     <button @click="setActivePane('rankPane')">
-                        <img :src="require('./assets/interface/rank.png')" width="16" height="16" alt="Leaderboard icon" />
+                        <img :src="require('./assets/interface/rank.png')" width="16" height="16" alt="Leaderboard" />
                     </button>
                 </div>
                 
-                <div class="col-auto">
-                    <button id="dropdownLanguageButton" class="text-normal cursor-hover" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Language dropdown">
+                <div class="col-auto" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('language')">
+                    <button id="dropdownLanguageButton" class="text-normal" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Language">
                         <span v-if="locale == 'en'" class="flag-icon flag-icon-gb rounded"></span>
                         <span v-if="locale == 'fr'" class="flag-icon flag-icon-fr rounded"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguageButton">
                         <li>
-                            <button class="dropdown-item cursor-hover" @click="changeLocale('en')">
+                            <button class="dropdown-item" @click="changeLocale('en')">
                                 <span class="flag-icon flag-icon-gb rounded me-2"></span>
                                 English
                             </button>
                         </li>
                         <li>
-                            <button class="dropdown-item cursor-hover" @click="changeLocale('fr')">
+                            <button class="dropdown-item" @click="changeLocale('fr')">
                                 <span class="flag-icon flag-icon-fr rounded me-2"></span>
                                 Français
                             </button>
@@ -202,36 +203,28 @@
                     </ul>
                 </div>
                 
-                <div class="col-auto">
-                    <button id="dropdownMenuButton" class="text-light cursor-hover" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu dropdown">
-                        <i class="fas fa-fw fa-ellipsis-v"></i>
+                <div class="col-auto" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('settingsPane')">
+                    <button @click="setActivePane('settingsPane')">
+                        <img :src="require('./assets/interface/cog.png')" width="16" height="16" alt="Settings" />
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                        <li>
-                            <button class="dropdown-item cursor-hover" @click="setActivePane('settingsPane')">
-                                <img :src="require('./assets/interface/cog.png')" width="16" height="16" class="me-2" alt="Settings icon" />
-                                {{ $t('settingsPane') }}
-                            </button>
-                        </li>
-                        <li>
-                            <button class="dropdown-item cursor-hover" @click="setActivePane('aboutPane')">
-                                <img :src="require('./assets/interface/about.png')" width="16" height="16" class="me-2" alt="About icon" />
-                                {{ $t('aboutPane') }}
-                            </button>
-                        </li>
-                    </ul>
                 </div>
                 
+                <div class="col-auto" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('aboutPane')">
+                    <button @click="setActivePane('aboutPane')">
+                        <img :src="require('./assets/interface/about.png')" width="16" height="16" alt="About" />
+                    </button>
+                </div>
+
             </top-header>
             <inner-content data-simplebar role="main">
             
-                <div v-if="ghLatestRelease && ghLatestRelease != currentRelease" class="alert alert-warning text-end" role="alert">
+                <div v-if="ghLatestRelease && ghLatestRelease != currentRelease" class="alert alert-warning text-center border-0 rounded-0 mb-0" role="alert">
                     <small>{{ $t('ghLatestVersion') }}</small>
-                    <small class="mx-2">v{{ ghLatestRelease }}</small>
+                    <small class="mx-2">{{ ghLatestRelease }}</small>
                     <button class="btn" @click="onRefresh()">{{ $t('update') }}</button>
                 </div>
                 
-                <div class="tab-content" style="padding-bottom: 65px;">
+                <div class="tab-content pt-3 px-3" style="padding-bottom: 65px;">
                     
                     <!-- ENERGY PANE -->
                     <pane id="energyPane" icon="energy.png" :descs="['energyPane_desc']" pinnable="energy">
@@ -930,7 +923,7 @@
                     
                     <!-- DONATING PANE -->
                     <pane id="donatingPane" icon="donating.png" :descs="['donatingPane_desc1', 'donatingPane_desc2']">
-                        <card id="donatingPane_desc3" checked="true">
+                        <card id="donatingPane_desc3" class="col-12 col-sm-4">
                             <div class="col-12 small">
                                 <span>{{ $t('donatingPane_desc5') }}</span>
                             </div>
@@ -939,7 +932,8 @@
                                     <input type="hidden" name="cmd" value="_s-xclick">
                                     <input type="hidden" name="hosted_button_id" value="7XYD7SJFKQ8M4">
                                     <div class="col-12 text-end">
-                                        <small>{{ $t('donatingPane_desc4') }}</small>
+                                        <div class="small">{{ $t('donatingPane_desc4') }}</div>
+                                        <div class="small">{{ $t('donatingPane_desc6') }}</div>
                                     </div>
                                     <div class="col-12 text-end">
                                         <button type="submit" class="btn">
@@ -1930,6 +1924,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.31.3 - 2021-07-29</div>
+                            <ul class="small">
+                                <li>CHANGE: some UI changes</li>
+                                <li>FIX: now titans are applied once only on probe, terraformer and statue costs costs</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.31.2 - 2021-07-28</div>
                             <ul class="small">
                                 <li>FIX: now overlord statue will give you 5 ultrite</li>
@@ -2057,7 +2058,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.31.2',
+            currentRelease: '1.31.3',
             ghLatestRelease: null,
             
             login: null,
