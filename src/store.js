@@ -108,6 +108,10 @@ export const store = createStore({
                 starOwned: { current:0, allTime:0 },
             },
             /*----------------------------------------------------------------*/
+            context: {
+                count: {},
+            },
+            /*----------------------------------------------------------------*/
         }
     },
     getters: {
@@ -342,6 +346,8 @@ export const store = createStore({
             return ownedStarCount
         },
         /*--------------------------------------------------------------------*/
+        getCtxCount: (state) => (id) => { return state.context.count[id] },
+        /*--------------------------------------------------------------------*/
     },
     mutations: {
     
@@ -424,14 +430,14 @@ export const store = createStore({
             
             if (item.terraformBaseCosts) {
                 item.terraformCosts = JSON.parse(JSON.stringify(item.terraformBaseCosts))
-                item.terraformBaseCosts.forEach(cost => {
+                item.terraformCosts.forEach(cost => {
                     if (state.data[cost.id].titan == true) cost.count *= 0.1
                 })
             }
             
             if (item.statueBaseCosts) {
                 item.statueCosts = JSON.parse(JSON.stringify(item.statueBaseCosts))
-                item.statueBaseCosts.forEach(cost => {
+                item.statueCosts.forEach(cost => {
                     if (state.data[cost.id].titan == true) cost.count *= 0.1
                 })
             }
@@ -1935,7 +1941,6 @@ export const store = createStore({
             state.resources.forEach(item => {
                 if (item.unlocked) {
                     let newValue = item.count + (item.prod * delta)
-                    if ('storage' in item) newValue = Math.min(newValue, item.storage * state.storageExcess)
                     newValue = Math.max(0, newValue)
                     commit('setDataCount', { id:item.id, count:newValue })
                 }
@@ -2049,6 +2054,25 @@ export const store = createStore({
                     if (building.auto == true && state.data[building.storage.id].count >= getters.getStorageCap(building.storage.id)) dispatch('build', { id:building.id, count:1 })
                 })
             }
+        },
+        /*--------------------------------------------------------------------*/
+        refreshStorage({ state, commit }) {
+            
+            state.resources.forEach(item => {
+                if (item.unlocked) {
+                    let newValue = item.count
+                    if ('storage' in item) newValue = Math.min(newValue, item.storage * state.storageExcess)
+                    newValue = Math.max(0, newValue)
+                    commit('setDataCount', { id:item.id, count:newValue })
+                }
+            })
+        },
+        /*--------------------------------------------------------------------*/
+        refreshContext({ state }) {
+            
+            state.resources.forEach(item => {
+                state.context.count[item.id] = item.count
+            })
         },
         /*--------------------------------------------------------------------*/
         
@@ -2771,7 +2795,7 @@ export const store = createStore({
             if (canBuild) {
             
                 if ('costs' in item) {
-                    item['terraformBaseCosts'].forEach(cost => {
+                    item['terraformCosts'].forEach(cost => {
                         state.data[cost.id].count -= cost.count
                     })
                 }
@@ -2790,7 +2814,7 @@ export const store = createStore({
             
             if ('subStatus' in item && item.subStatus != 'terraformed') canBuild = false
 
-            if ('statueBaseCosts' in item) {
+            if ('statueCosts' in item) {
                 item['statueCosts'].forEach(cost => {
                     if (state.data[cost.id].count - cost.count < 0) {
                         canBuild = false

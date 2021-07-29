@@ -20,11 +20,13 @@
                             </span>
                             <small class="text-normal ms-1">/s</small>
                         </div>
+                        
                         <div v-if="count != null" class="col-auto text-end small" style="width:100px;">
-                            <span class="text-uppercase" :class="{ 'text-light':(count > 0 && (!cap || count < cap)), 'text-normal':count == 0, 'text-danger':count < 0, 'text-excess':cap && count >= cap && count < storage, 'text-success':storage && count >= storage }">{{ numeralFormat(count.toPrecision(4), '0.[000]a') }}</span>
+                            <span class="text-uppercase" :class="{ 'text-light':(ctxCount > 0 && (!cap || ctxCount < cap)), 'text-normal':ctxCount == 0, 'text-danger':ctxCount < 0, 'text-excess':cap && ctxCount >= cap && ctxCount < storage, 'text-success':storage && ctxCount >= storage }">{{ numeralFormat(ctxCount.toPrecision(4), '0.[000]a') }}</span>
                             <small v-if="storage" class="text-uppercase text-normal ms-1">/{{ numeralFormat(storage.toPrecision(4), '0.[000]a') }}</small>
                             <span v-if="potential >= 0" class="text-normal ms-1">({{ potential }})</span>
                         </div>
+                        
                         <div v-if="opinion != null" class="col-auto text-end small">
                             <span :class="{ 'text-light':opinion > 0, 'text-normal':opinion == 0, 'text-danger':opinion < 0 }">{{ opinion }}</span>
                         </div>
@@ -71,8 +73,9 @@ export default {
             'data', 'activePane',
         ]),
         ...mapGetters([  
-            'isNotif', 'canBuild',
+            'isNotif', 'canBuild', 'getCtxCount',
         ]),
+        ctxCount: function() { return this.getCtxCount(this.count) },
     },
     methods: {
         ...mapMutations([
