@@ -39,7 +39,7 @@
                     
                         <sidenav-item v-if="showRoadmap" id="helpPane" icon="help.png" unlocked="true" />
                         
-                        <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true">
+                        <sidenav-group id="pinnedHeading" :unlocked="displayPinnedItems == true" :pinnable="true">
                             <div v-for="pane in pinned" :key="pane.id">
                                 <sidenav-item v-if="pane.resId != 'dyson' && pane.resId != 'emc' && pane.resId != 'technologies'" :id="pane.id" :icon="pane.icon" unlocked="true" :prod="data[pane.resId].prod" :count="pane.resId" :storage="getStorageCap(pane.resId)" :cap="data[pane.resId].storage" :problem="data[pane.resId].problem" :buildingStorageId="pane.buildingStorageId" />
                                 <sidenav-item v-if="pane.resId == 'dyson'" :id="pane.id" :icon="pane.icon" unlocked="true" />
