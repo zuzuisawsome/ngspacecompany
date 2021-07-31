@@ -36,7 +36,7 @@
 
     .sidenav-group.pinnable {
         display: inline-flex;
-        width: calc(100% - 24px);
+        width: calc(100% - 26px); /* 26px = size of .pin-group.btn */
     }
 
     .pinned-simplebar-item {
@@ -45,12 +45,13 @@
         background-color: #232a35;
         border-bottom: 1px solid rgba(255,255,255,0.1);
         padding-bottom: 5px;
+        padding-top: 5px;
         z-index: 100;
     }
 
     .pin-group-btn {
         width: 16px;
-        margin-right: 8px;
+        margin: 0 6px 0 4px;
         padding: 0;
     }
 
@@ -73,7 +74,6 @@ export default {
         ...mapMutations([
             'toggleCollapsed',
         ]),
-        togglePinned: () => this.pinned = !this.pinned
     },
 }
 </script>
