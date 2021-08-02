@@ -2070,9 +2070,10 @@ export const store = createStore({
         /*--------------------------------------------------------------------*/
         refreshContext({ state }) {
             
-            state.resources.forEach(item => {
-                state.context.count[item.id] = item.count
-            })
+            state.resources.forEach(item => { state.context.count[item.id] = item.count })
+            
+            state.context.count['ultrite'] = state.data['ultrite'].count
+            state.context.count['darkmatter'] = state.data['darkmatter'].count
         },
         /*--------------------------------------------------------------------*/
         

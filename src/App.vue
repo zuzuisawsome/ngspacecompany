@@ -151,7 +151,7 @@
                         <div v-if="hasNotif" class="position-absolute top-0 end-0" style="line-height:1">
                             <i class="fas fa-fw fa-certificate text-success small"></i>
                         </div>
-                        <img :src="require('./assets/whiteLogo.png')" width="36" height="36" alt="Game logo" />
+                        <img src="https://ngspacecompany.exileng.com/whiteLogo.png" width="36" height="36" alt="Game logo" />
                     </button>
                 </div>
                 
@@ -164,6 +164,7 @@
                 <div class="col-auto" data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('donatingPane')">
                     <button @click="setActivePane('donatingPane')">
                         <img :src="require('./assets/interface/donating.png')" width="16" height="16" alt="Donating" />
+                        <span class="ms-1 d-none d-sm-inline text-light">{{ $t('donatingPane') }}</span>
                     </button>
                 </div>
                 

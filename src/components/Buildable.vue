@@ -105,6 +105,12 @@
                             </div>
                         </div>
                     
+                        <div v-if="data[id].problem" class="col-12 small">
+                            <i class="fas fa-fw fa-exclamation-triangle text-danger"></i>
+                            <span class="text-danger ms-1">{{ $t(data[id].problem.type) }}</span>
+                            <span class="text-light ms-1">{{ $t(data[id].problem.id) }}</span>
+                        </div>
+                            
                         <div v-if="id == 'nanoswarm'" class="col-12">
                             <div class="small">{{ $t('selectResource') }}</div>
                             <select class="form-control" v-model="selected" @change="switchNano(selected)">
@@ -217,11 +223,6 @@
                                     <small v-if="input.id != 'energy'" class="text-warning text-uppercase">-{{ numeralFormat(input.count.toPrecision(4), '0.[000]a') }}</small>
                                     <small class="text-normal ms-1">/s</small>
                                 </div>
-                            </div>
-                            <div v-if="data[id].problem" class="mt-2 small">
-                                <i class="fas fa-fw fa-exclamation-triangle text-danger"></i>
-                                <span class="text-danger ms-1">{{ $t(data[id].problem.type) }}</span>
-                                <span class="text-light ms-1">{{ $t(data[id].problem.id) }}</span>
                             </div>
                         </div>
 					
