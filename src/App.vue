@@ -580,6 +580,9 @@
                                             <option value="1000">{{ numeralFormat(1000, '0a') }}</option>
                                             <option value="10000">{{ numeralFormat(10000, '0a') }}</option>
                                             <option value="100000">{{ numeralFormat(100000, '0a') }}</option>
+                                            <option value="1000000">{{ numeralFormat(1000000, '0a') }}</option>
+                                            <option value="10000000">{{ numeralFormat(10000000, '0a') }}</option>
+                                            <option value="100000000">{{ numeralFormat(100000000, '0a') }}</option>
                                         </select>
                                     </div>
                                     <div v-if="data['autoEmc'].count > 0" class="col">
@@ -1925,6 +1928,14 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.32.0 - 2021-08-02</div>
+                            <ul class="small">
+                                <li>NEW: pinned pinned-tabs (by Élianne Lavoie)</li>
+                                <li>NEW: three more options for EMC conversion</li>
+                                <li>CHANGE: now red message when production is stopped is displayed on left side to avoid flickering</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.31.5 - 2021-07-29</div>
                             <ul class="small">
                                 <li>CHANGE: some UI changes</li>
@@ -2073,7 +2084,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.31.5',
+            currentRelease: '1.32.0',
             ghLatestRelease: null,
             
             login: null,
