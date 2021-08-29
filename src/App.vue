@@ -1928,6 +1928,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.33.0 - 2021-08-21</div>
+                            <ul class="small">
+                                <li>NEW: now you could enlighten without chossing a Titan</li>
+                                <li>CHANGE: now "Rocket Discount" is renamed to "Spaceship Discount"</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.32.0 - 2021-08-02</div>
                             <ul class="small">
                                 <li>NEW: pinned pinned-tabs (by Élianne Lavoie)</li>
@@ -2084,7 +2091,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.32.0',
+            currentRelease: '1.33.0',
             ghLatestRelease: null,
             
             login: null,

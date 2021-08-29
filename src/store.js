@@ -2675,8 +2675,10 @@ export const store = createStore({
             }
             if (ownedStarCount < 10) return false
             
-            if (state.data[payload].titan == true) return false
-            state.data[payload].titan = true
+            if (payload) {
+                if (state.data[payload].titan == true) return false
+                state.data[payload].titan = true
+            }
             
             state.data['ultrite'].count += getters.getPotentialUL
             state.stats.allTimeUltrite += getters.getPotentialUL
