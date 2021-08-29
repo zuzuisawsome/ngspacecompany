@@ -6,7 +6,7 @@
     "donatingPane_desc4": "'ExileNG' is the name of my Paypal account.",
     "donatingPane_desc5": "To make a donation will allow to have a specific role on Discord server, to be credit in Donators pane in the game and to call a Star as you want :)",
     "donatingPane_desc6": "'freddec.exileng at gmail.com' is my Paypal email.",
-
+    
     "achievementPane": "Achievements",
     "achievementPane_desc": "This is where you can see your rank and all of your achievements.",
     "statistics": "Statistics",
@@ -52,7 +52,7 @@
     "rank_16": "The Prestiged",
     "resources": "Produced Resources",
     "producers": "Built Machines",
-
+    
     "rankPane": "Ranking",
     "rankPane_desc": "Here are the current player ranking. To be part of it, you just have to register an account then all is automated.",
     "rankPane_nodata": "Just waiting for next auto-save to see ranking.",
@@ -84,7 +84,7 @@
     "helpStep7Text1": "This is the second layer of prestige. You will gather Ultrite by accomplishing some tasks and then purchase upgrades with Ultrite. Moreover you will discover the power of Titans that will really help you to go faster.",
     "helpStep7Tip1": "Enlightenment is unlocked by conquering 10 stars at least",
     "helpStep8Title": "Step #8 - Meet the Overlord",
-    "helpStep8Text1": "The final goal of your life : to meet the Overlord. To meet the Overlord you will have to build Statues on conquered stars. Nobody knows what happens when you will meet him ...",
+    "helpStep8Text1": "The final goal of you life : to meet the Overlord. To meet the Overlord you will have to build Statues on conquered stars. Nobody knows what happens when you will meet him ...",
     "helpStep8Tip1": "Ability to terraform and build Statues is unlocked by Overlord Appreciation Program",
 
     "settingsPane": "Options",
@@ -113,7 +113,7 @@
     "off": "Off",
     "hardReset": "Hard Reset",
     "hardReset_confirm": "Are you sure? This is non-reversible after you reset.",
-
+    
     "aboutPane": "About",
     "aboutPane_desc": "This game is made by me, Freddec, as a remake of the original game from Sparticle999. Of course I have the authorization from Sparticle999 to do it. I made this game to improve my skills in VueJS and to get knowledge about incremental games.",
     "currentVersion": "Current version",
@@ -127,11 +127,11 @@
     "about3": "Icons",
     "about3_desc1": "All icons come from ",
     "about4": "Donors",
-
+    
     "pinnedHeading": "Pinned",
-
+    
     "energyHeading": "Energy",
-
+            
     "energy": "Energy",
     "energyPane": "Energy",
     "energyPane_desc": "Energy is created by power sources such as steam engines and solar panels, eventually advancing to fusion and nuclear energy.",
@@ -162,9 +162,9 @@
     "energyS5_desc": "Using nanotechnology, the Clustered Battery model has been improved at near-atomic scales to allow for overlapping Electric Fields to occur, exponentially increasing the amount of energy it can hold.",
     "energyS6": "VoidTech Batteries",
     "energyS6_desc": "Using Vacuum Casting, the battery traps electrons within a vacuum inside itself, allowing never-before-seen levels of energy storage.",
-
+    
     "fabricatedHeading": "Fabricated",
-
+    
     "plasma": "Plasma",
     "plasmaPane": "Plasma",
     "plasmaPane_desc": "Plasma is the 4th state of matter and is used by Tier 4 machines and large space structures as an extreme power source for your company.",
@@ -184,7 +184,7 @@
     "plasmaS3_desc": "The Localised Vacuum Caster separates the container itself from the inserted plasma, allowing for even more condensation of plasma due to the isolating strength of the vacuum.",
     "plasmaS4": "Plasma Compression Chamber",
     "plasmaS4_desc": "The intense pressure created in this mechanical beast can reduce plasma to a tenth the volume, using gas as a stabiliser.",
-
+    
     "meteorite": "Meteorite",
     "meteoritePane": "Meteorite",
     "meteoritePane_desc": "Creating Meteorite is only possible from purer forms of energy than those created with earth technology. Therefore, Plasma is necessary to make the strong resource.",
@@ -198,7 +198,7 @@
     "meteoriteT3_desc": "Get meteorites the old-fashioned way: demolishing uninhabited exoplanets by firing high-energy particle beams at them, then collect the debris.",
     "meteoriteT4": "Nebulous Synthesizer",
     "meteoriteT4_desc": "Bypass the need for demolishing planets entirely by building your own nebula to create meteorites instead!",
-
+    
     "carbon": "Carbon",
     "carbonPane": "Carbon",
     "carbonPane_desc": "Carbon is a secondary tier resource and is used by Engines to produce power for your company. Carbon is created by burning wood.",
@@ -214,9 +214,9 @@
     "carbonT4_desc": "This plasma-fueled furnace burns so hot it turns wood into almost perfectly pure carbon, ready to be turned into high-purity carbon materials such as graphene.",
     "carbonT5": "Super Massive Pencil Sharpener",
     "carbonT5_desc": "Who knew broken pencil tips would yield this much carbon?",
-
+    
     "earthResourcesHeading": "Earth Resources",
-
+    
     "oil": "Oil",
     "oilPane": "Oil",
     "oilPane_desc": "Oil is pumped up from the ground and is used to build Tier 2 resource gatherers.",
@@ -248,7 +248,7 @@
     "metalT4_desc": "Quantum Drills bend the space-time continuum to get metal faster than physically possible.",
     "metalT5": "Multiverse Drill",
     "metalT5_desc": "Drills metal from alternate realities where metal is plentiful.",
-
+    
     "gem": "Gem",
     "gemPane": "Gem",
     "gemPane_desc": "Gems are one of the primary resources. They are used for advanced machines and for powerful tools and components. They are more useful in later game.",
@@ -264,7 +264,7 @@
     "gemT4_desc": "Carbyne Drills one of the strongest drills in the solar system, and as such, can collect Gems faster than anything before it.",
     "gemT5": "Diamond Accretion Chamber",
     "gemT5_desc": "This special container condenses carbon dioxide gas into diamonds, creating gems at a faster rate than any drill.",
-
+    
     "wood": "Wood",
     "woodPane": "Wood",
     "woodPane_desc": "Wood is one of the primary resources. It is used more often in early game for tools and buildings.",
@@ -296,7 +296,7 @@
     "siliconT4_desc": "This large ship orbits around the planet, focused in the Sahara Desert, tearing up sand from Earth and turning it into Silicon under intense heat.",
     "siliconT5": "Time And Relative Dimensions In Sand",
     "siliconT5_desc": "The TARDIS, for short, harnesses the power of stars from far away in space-time to heat sand into Silicon at record speeds. Don't ask why it has a polished wooden interior.",
-
+    
     "uranium": "Uranium",
     "uraniumPane": "Uranium",
     "uraniumPane_desc": "Uranium is used for nuclear power generation because when it is split, it releases huge amounts of Energy. For this reason, it is prominent in many advanced machines and for propulsion technology as it is useful for inter-star-system travel. Unfortunately, it is hard to get and it requires a lot of resources to radiation-proof equipment.",
@@ -312,7 +312,7 @@
     "uraniumT4_desc": "Recycles used-up Uranium to provide the resources with a second use. This greatly increases the amount of Uranium you can use per second.",
     "uraniumT5": "Planetary Nuclear Plant",
     "uraniumT5_desc": "This huge factory is as large as a planet, fusing together Uranium from common elements.",
-
+    
     "lava": "Lava",
     "lavaPane": "Lava",
     "lavaPane_desc": "Hard to handle and only found in volcanoes, Lava is one of the hardest resources to get.",
@@ -328,9 +328,9 @@
     "lavaT4_desc": "A melting pot of misery, pouring lava out from mined rock.",
     "lavaT5": "Jupitonian Condensator",
     "lavaT5_desc": "Condenses gases from the heart of Jupiter into liquid magma.",
-
+    
     "innerResourcesHeading": "Inner Planetary Resources",
-
+    
     "lunarite": "Lunarite",
     "lunaritePane": "Lunarite",
     "lunaritePane_desc": "Lunarite is found on the Moon and is a rare type of resource not found on Earth. It is much stronger than regular metal but is a lot harder to get.",
@@ -362,7 +362,7 @@
     "methaneT4_desc": "Collect gas from deep sea vents on the ocean floor of Titan.",
     "methaneT5": "Interstellar Cow",
     "methaneT5_desc": "An interdimoonsional bovine.",
-
+        
     "titanium": "Titanium",
     "titaniumPane": "Titanium",
     "titaniumPane_desc": "Titanium is a metal found mostly on Mars. It is used for building strong machines and methane power plants.",
@@ -378,7 +378,7 @@
     "titaniumT4_desc": "This mighty drill is said to have been wielded by Titans themselves, many milennia ago.",
     "titaniumT5": "David Guetta's Club",
     "titaniumT5_desc": "You shoot me down, but I won't fall. I am Titanium.",
-
+        
     "gold": "Gold",
     "goldPane": "Gold",
     "goldPane_desc": "Gold is a metal found inside asteroids. It is used to build some Wonders and for complex machinery.",
@@ -394,7 +394,7 @@
     "goldT4_desc": "Speeds up time through quantum physics in order to produce even more Gold.",
     "goldT5": "Philosopher's stone",
     "goldT5_desc": "Transmutation has progressed to being able to turn thin air into gold!",
-
+    
     "silver": "Silver",
     "silverPane": "Silver",
     "silverPane_desc": "Silver is another metal most commonly found in the asteroid belt.",
@@ -410,9 +410,9 @@
     "silverT4_desc": "This powerful cannon orbits Neptune and can atomise the surface of asteroids, revealing the silver within.",
     "silverT5": "Dead Werewolf Finder",
     "silverT5_desc": "The Silver bullets used to kill werewolfs are made from silver that has been compressed well over 1000 times. Extracting them will prove beneficial for your production.",
-
+    
     "outerResourcesHeading": "Outer Planetary Resources",
-
+    
     "hydrogen": "Hydrogen",
     "hydrogenPane": "Hydrogen",
     "hydrogenPane_desc": "Hydrogen is extremely common on gas giants such as Jupiter and Saturn.",
@@ -428,7 +428,7 @@
     "hydrogenT4_desc": "Somehow, it works.",
     "hydrogenT5": "Star Harvester",
     "hydrogenT5_desc": "'Stealing' is such a strong word. I prefer 'borrowing without return' when we harvest the outer regions of stars.",
-
+    
     "helium": "Helium",
     "heliumPane": "Helium",
     "heliumPane_desc": "Helium is the second most common element on gas giants such as Jupiter and Saturn.",
@@ -460,7 +460,7 @@
     "iceT4_desc": "This robot is the coolest guy in the solar system.",
     "iceT5": "Overexchange Condenser",
     "iceT5_desc": "Drain heat out of the ingredients so fast that you're not sure how to process it safely, but you managed to do it properly anyway.",
-
+    
     "science": "Science",
     "sciencePane": "Science",
     "sciencePane_desc": "Science is used for researching new technologies to further your progress in the game.",
@@ -474,9 +474,9 @@
     "scienceT4_desc": "Create an observatory to gaze upon the stars and acquire knowledge from them.",
     "scienceT5": "Space Scientific Satellite Station",
     "scienceT5_desc": "From outside Earth's orbit, the universe can be understood much more efficiently without an atmosphere obstructing the lab's view.",
-
+    
     "researchesHeading": "Researches",
-
+    
     "technologiesPane": "Technologies",
     "technologiesPane_desc": "Research new technologies to unlock more mechanics and advance through the game.",
     "techStorage": "Storage Upgrades",
@@ -547,16 +547,16 @@
     "boostEnergy_desc": "Energy Efficiency decreases the energy consumption of all machines by 1%/s per purchase.",
     "boostEnergyStorage": "Battery Efficiency",
     "boostEnergyStorage_desc": "Battery Efficiency improves the storage capabilities of your batteries by 1% per upgrade.",
-
+    
     "solSytemHeading": "Solar System",
-
+    
     "rocketPane": "Rocket",
     "rocketPane_desc": "Building a rocket will allow for exploration around the solar system and will allow you to gather resources in space.",
     "rocket1": "Rocket",
     "rocket1_desc": "To launch the rocket into space, it must first be built.",
     "rocket2": "Launch Rocket",
     "rocket2_desc": "Launching the rocket into space will unlock space mining, exploration and other planets. This requires a satellite for navigation.",
-
+    
     "fuel": "Fuel",
     "fuelPane": "Fuel",
     "fuelPane_desc": "Fuel is created in chemical plants and is used to allow rockets to launch off into space and to travel to other planets and star systems.",
@@ -566,7 +566,7 @@
     "fuelT2_desc": "Oxidisation Chambers make rocket fuel faster and more efficiently than chemical plants.",
     "fuelT3": "Hydrazine Catalyst",
     "fuelT3_desc": "These speed up the chemical reactions needed to make rocket fuel by using greenhouse gases such as methane.",
-
+    
     "innerSolarSystemPane": "Inner Solar System",
     "innerSolarSystemPane_desc": "",
     "moon": "The Moon",
@@ -581,7 +581,7 @@
     "asteroid_desc": "The asteroid belt is a vast space with nearly 2 million asteroids. There you can harvest rare metals on Earth more easily, such as Gold and Silver.",
     "wonderStation": "Wonder Station",
     "wonderStation_desc": "The Wonder Station is a large, mysterious construct. What it contains isn't known exactly, but carvings on ancient artifacts depict something similar. They say that there, you will learn about an almost supernatural, extra-terrestrial overlord, commanding over the galaxy. They say that he will be able to teach you many things on your journey to inter-star and galactic exploration.",
-
+    
     "outerSolarSystemPane": "Outer Solar System",
     "outerSolarSystemPane_desc": "",
     "jupiter": "Jupiter",
@@ -598,9 +598,9 @@
     "solCenter0_desc": "Vast stretches of space separate lonely rocks floating in a 300 year orbit around the sun. Still, there is something of great importance to be found here.",
     "solCenter1": "Sol Scientific Center",
     "solCenter1_desc": "Welcome to our home. Our race is dedicated to scientific progress and interacting with others. If you wish to trade with us, we can provide you blueprints for technology that few in the galaxy have ever seen.",
-
+    
     "wondersHeading": "Wonders",
-
+    
     "wonderStationPane": "Wonder Station",
     "wonderStationPane_desc": "As you enter the revolving pyramids, floating through space, you feel a small tug on your spacecraft as it gravitates towards an opening doorway in the side of the lowest section. Exiting your spacecraft, you experience the artificial gravity and walk to the large hallway ahead. Adorning the walls are four huge paintings of monolithic structures in the corners of the room with descriptions underneath. At the far end of the room is a giant door, closed without any indication of being able to open. You feel that there is a higher being watching over you as you walk through the room. NB: You must activate the wonders after building them to receive their effects.",
     "wonderPrecious0": "Precious Wonder",
@@ -611,7 +611,7 @@
     "wonderTechnological0_desc": "A green-tinted picture shows the inside of some computer system. 'With my technological superiority over anyone in the cosmos, I want a monument dedicated to the advanced computer systems I control. As a reward, I will teach you about computerized machines and give you the ability to make more advanced resource gatherers.'",
     "wonderMeteorite0": "Meteorite Wonder",
     "wonderMeteorite0_desc": "A blazing red portrait depicts a futuristic set of machines. 'You have accomplished much so far, but now you face building a great structure to last generations. For my next monument, I will gift you with a new type of machine only seen in science-fiction. Meteorite machines use the energy installed in them to convert plasma into raw power useful in extracting resources.'",
-
+    
     "floor1Pane": "Floor #1",
     "floor1Pane_desc": "",
     "wonderPrecious1": "Precious Wonder",
@@ -622,7 +622,7 @@
     "wonderTechnological1_desc": "Proud of his new monument, the Overlord teaches you the ways of computerized machines and advanced gathering of resources. Activating this wonder will allow you to build Tier 3 Machines, a much more effective method of collecting resources.",
     "wonderMeteorite1": "Meteorite Wonder",
     "wonderMeteorite1_desc": "The Overlord, watching his newly built wonder, offers you the possibility for a new wave of machines that best any before them. Activating this wonder gives you the ability to construct 4th Tier resource gathering machines, which are better and more efficient than anything before it.",
-
+    
     "floor2Pane": "Floor #2",
     "floor2Pane_desc": "",
     "wonderComm": "Comms Wonder",
@@ -633,14 +633,14 @@
     "wonderAntimatter_desc": "In the corner of the floor, you see a faintly glowing, large canister, propped up against the walls. The announcing message plays after pressing a red button next to it: 'This was my first antimatter tank for the maiden voyage of 'The Interstellar', on my first trip to another star system. For repairing it and bringing back the memories, I will teach you about your own antimatter production to fuel your dreams of escaping your small piece of the universe.' For rebuilding the Antimatter Wonder, you will gain access to antimatter production and storage.",
     "wonderPortal": "Portal Room",
     "wonderPortal_desc": "An obsidian-looking giant-sized frame stands out in the room, mounted on the far wall of the floor. It's plaque reads: 'This is the pathway to the third and final floor of my mystical Wonder Station. It takes many resources to activate it, but once completed, will grant you access to the Stargate Room: The only way you will find your way out of this pathetic solar system and explore the cosmos.' Activating the Portal will allow you to go through it to get to the Third Floor of the Wonder Station, detached from the rest of the tetrahedral monolith.",
-
+    
     "floor3Pane": "Floor #3",
     "floor3Pane_desc": "The final floor, despite being the smallest of the three, appears to be the trophy room, displaying an imposing control panel and a large table.",
     "wonderStargate": "Stargate",
     "wonderStargate_desc": "For rebuilding the Stargate, you will be able to explore outer space, beyond your own solar system.",
-
+    
     "solCenterHeading": "Sol Center",
-
+    
     "solCenterPane": "Alien Technologies",
     "techPlasma0": "Plasma Technology",
     "techPlasma0_desc": "Plasma being a state of extreme energy, it can be used as a storage of large amounts and provides the ability to use higher tier machines and transmutations.",
@@ -648,7 +648,7 @@
     "techEmc0_desc": "EMC is a technology only dreamt about back on Earth. Here, it's a reality. You can turn energy and plasma into regular resources, or, with large amounts, you can turn it into rare ones, which you are unable to find and have to make to acquire.",
     "techDyson0": "Dyson Technology",
     "techDyson0_desc": "This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost? NB: Dyson Sections' costs are based on the number you have, and are thus reset, when you use them all, or lowered if only partially spent.",
-
+    
     "emcPane": "Energy-Mass Conversion",
     "emcPane_desc": "EMC is a technology only dreamt about back on Earth. Here, it's a reality. You can turn energy and plasma into regular resources, or, with large amounts, you can turn it into rare ones, which you are unable to find and have to make to acquire.",
     "auto": "Auto",
@@ -656,7 +656,7 @@
     "1second": "1 second",
     "10second": "10 seconds",
     "1minute": "1 minute",
-
+    
     "dysonPane": "Dyson",
     "dysonPane_desc": "This technology, unheard of previously, is now a reality, thanks to those in the Sol Scientific Center. The Sphere can provide much energy for millions of years, but at what cost? NB: Dyson Sections' costs are based on the number you have, and are thus reset, when you use them all, or lowered if only partially spent.",
     "segment": "Segment",
@@ -667,21 +667,21 @@
     "dysonT2_desc": "The swarm is an array of solar stations orbiting the sun, and once built, it can produce 25,000 energy per second. However, it requires 250,000 rocket fuel in total to put the sections in place.",
     "dysonT3": "Sphere",
     "dysonT3_desc": "The entire sphere is a monolithic structure completely surrounding the sun. It will allow for enough energy to get interstellar travel and finally escape this Solar System. It will produce 1,000,000 energy per second.",
-
+    
     "nanoswarmPane": "Nanoswarm",
     "nanoswarm": "Nanoswarm",
     "nanoswarm_desc": "Imagine bedbugs, but worse. These critters amplify your production by double every ten nanoswarms! They are capable of copying other machines' forms and taking up their role in resource production. You can select one resource to be amplified, and change it at any time.",
     "selectResource": "Select Resource",
 
     "interstellarHeading": "Interstellar",
-
+    
     "communicationPane": "Communication",
     "communicationPane_desc": "This is where you learn about other systems to travel to. NB: The first star, Alpha Centauri is 4.3 LY away. 1 IRS will not get you there.",
     "radarT1": "Astronomical Breakthrough",
     "radarT1_desc": "A huge problem with the theory of interstellar space travel is on the verge of being broken. Make it happen with this upgrade. This is a one time upgrade, increasing your exploration range by 5 Light Years.",
     "radarT2": "Interstellar Radar Scanner",
     "radarT2_desc": "The Overlord gifts you with the technology to discover stars in outer space by using the IRS. Each one increases the exploration range by 1 Light Year.",
-
+    
     "spaceshipPane": "Spaceship",
     "spaceshipPane_desc": "This is where you can construct your transport to the stars.",
     "spaceship": "Spaceship",
@@ -692,7 +692,7 @@
     "engine_desc": "These combine antimatter with matter in a controlled reaction to create propulsion that will carry you to the stars.",
     "aero": "Aerodynamic Sections",
     "aero_desc": "These allow for easy takeoffs and landings out of atmospheres so that you don't have to worry about air resistance.",
-
+    
     "antimatterPane": "Antimatter",
     "antimatterPane_desc": "Your fuel for interstellar travel is produced here. Unfortunately, you can only handle 100k Antimatter per Star System as it is incredibly volatile.",
     "antimatter": "Antimatter",
@@ -722,7 +722,7 @@
     "probe_desc": "Small, fast and light ship, packed with sensors to analyze whether terraforming is possible or not.",
     "terraformer": "Terraformer",
     "terraformer_desc": "Huge flying factory carrying giant atmospheric reactors capable of producing any atmosphere from the primary elements present in the star system.",
-
+    
     "interstellarCarnelianPane": "Carnelian Resistance",
     "interstellarCarnelianPane_desc": "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
 
@@ -737,7 +737,7 @@
 
     "interstellarMovitonPane": "Moviton Syndicate",
     "interstellarMovitonPane_desc": "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
-
+    
     "interstellarOverlordPane": "Overlord Cult",
     "interstellarOverlordPane_desc": "To meet the Overlord, you have to build 150 statues. Overlord statues must be built on terraformed star system.",
     "overlordStatues": "Statues",
@@ -749,7 +749,7 @@
     "overlordModal_text3": "You now look back across your realm, pure energy coursing through your veins. You feel supernatural. As the new overlord, it is your duty to care for and oversee the domain under your control, protecting the order within the dimension. You see a tiny person, living their humble beginnings on a tiny planet and decide to give them a helping hand. They wish to start their own new company. An NG Space Company!",
     "next": "Next",
     "endOfGame": "End of Game",
-
+    
     "distance": "Distance",
     "planets": "Planets",
     "beforeChecking": "Before terraforming, we need to check if there is atmosphere.",
@@ -760,7 +760,7 @@
     "beforeStatue": "Now an Overlord Statue can be built to celebrate our master!",
     "buildStatue": "Build Statue",
     "statueBuilt": "Overlord Statue Built",
-
+    
     "star201": "Alpha Centauri",
     "star301": "Barnard's Star",
     "star401": "CN Leonis",
@@ -942,9 +942,9 @@
     "star32201": "BD -11°916",
     "star74801": "CD -23°976",
     "star205201": "V645 Herculis",
-
+    
     "stargazeHeading": "Stargaze",
-
+    
     "darkmatterPane": "Dark Matter",
     "darkmatterPane_desc1": "So here we are, at what seems like the end of your journey, but what you don't realise... is that this is just the beginning. Gazing up at the stars, you wonder what you could do with all of your newfound wealth and your empire in the solar system.",
     "darkmatterPane_desc2": "Suddenly, the Overlord reaches out to you and says: 'You have come far in your time, and I feel that your life is slowing to an end after a long life of empire building. However, you have not met the expectations I thought you would.'",
@@ -968,7 +968,7 @@
     "rebirth_nb1": "NB: You will keep all upgrades purchased in your previous life.",
     "rebirth_nb2": "NB: You cannot rebirth without a sphere, even on second runs.",
     "rebirth_confirm": "Are you sure? This is non-reversible after you reset and save.",
-
+    
     "stargazeCarnelianPane": "Carnelian Resistance",
     "stargazeCarnelianPane_desc": "A ruthless faction with a fierce anger towards the ones in power, most notable, the Prasnian Empire. They are incessant in their opposition and focus their whole force towards attacking their enemies. Because of this, what they offer comprises mostly of upgrades tending towards a more active gameplay.",
     "upgradeGain": "Empower Manual Gains",
@@ -981,7 +981,7 @@
     "techEnergyStorage6_desc": "Unlock Void Batteries. Improves relationship by 15.",
     "upgradeStorage3": "Dimensional Rift",
     "upgradeStorage3_desc": "Opens a rift in the fabric of the multiverse, allowing you to store your resources in another dimension past your default capacity, up to 10x. Improves relationship by 26.",
-
+    
     "stargazePrasnianPane": "Prasnian Empire",
     "stargazePrasnianPane_desc": "The current leader in the galaxy and the faction most focused on keeping things as they are. Opposed to change, they have an authoritarian regime and offer mainly upgrades concerning structures such as the Dysons or Wonders",
     "techPlasma3": "Tier 3 Plasma",
@@ -998,7 +998,7 @@
     "techPlasmaStorage3_desc": "Unlock the Localised Vacuum Caster PSU. Improves relationship by 12.",
     "autoEmc": "Automated EMC",
     "autoEmc_desc": "Activate it on an EMC resource and have that resource be 'EMCed' according to frequency. Improves relationship by 17.",
-
+    
     "stargazeHyacinitePane": "Hyacinite Congregation",
     "stargazeHyacinitePane_desc": "The Hyacinite Congregation is a science loving society, proud of all advances in technology and always looking to the future. They fight for the truth and are welcoming to anyone who shares their beliefs.",
     "upgradeScience1": "Starting Labs",
@@ -1009,7 +1009,7 @@
     "techScience5_desc": "Unlock the Space Scientific Satellite Station. Improves relationship by 14.",
     "upgradeEnergyBoost": "Energy Efficiency Cap",
     "upgradeEnergyBoost_desc": "Increase Energy Efficiency research cap to 50% instead of 25%. Improves relationship by 25.",
-
+    
     "stargazeKitrinosPane": "Kitrinos Corporation",
     "stargazeKitrinosPane_desc": "This private company has grown powerful over the galaxy and is inspired by profits, with allies to those who can support their aims. Upgrades offered focus on passive gains, with a large amount of automation.",
     "upgradeTier1": "Tier 1 Machine Discount",
@@ -1022,7 +1022,7 @@
     "boostCapital_desc": "For every resource at max storage, every other resource gets a 5% production boost. Improves relationship by 18.",
     "techTier5": "Tier 5 Machine Research",
     "techTier5_desc": "Gain access to the research for fifth tier of resource machines. These are unlocked after activating the T4 Meteorite Wonder. Improves relationship by 20.",
-
+    
     "stargazeMovitonPane": "Moviton Syndicate",
     "stargazeMovitonPane_desc": "The Moviton Syndicate is an expansionist centred faction, with a goal of conquest over the galaxy. They often play both sides of a conflict, hoping to gain from the chaos. They offer improvements in your travel, including rocket building and interstellar travel.",
     "upgradeFuel1": "Chemical Plant Boost",
@@ -1035,7 +1035,7 @@
     "techMeteorite3_desc": "Unlock the Planet Smasher building. Improves relationship by 29.",
     "techMeteorite4": "Meteorite Tier 4",
     "techMeteorite4_desc": "Unlock the Nebulous Synthesizer building. Improves relationship by 36.",
-
+    
     "stargazeOverlordPane": "Overlord Cult",
     "stargazeOverlordPane_desc": "This faction is shrouded in mystery. While not much is known, a great sense of power overlooks the whole galaxy, seemingly above the other 5 factions and their 'petty' squabbles. The upgrades from your loyalty to the Overlord are not constrained to a type and vary greatly.",
     "boostDarkmatter": "Dark Matter Boost",
@@ -1044,9 +1044,9 @@
     "techNanoswarm0_desc": "Imagine bedbugs, but worse. These critters amplify your production by double every ten nanoswarms! They are capable of copying other machines' forms and taking up their role in resource production. You can select one resource to be amplified, and change it at any time. NB: Shows up in the Sol Center when unlocked.",
     "upgradeFaction": "Bribery",
     "upgradeFaction_desc": "Increases All Factions' Relationship by 20. Improves relationship by 20.",
-
+    
     "enlightenmentHeading": "Enlightenment",
-
+    
     "ultritePane": "Ultrite",
     "ultritePane_desc1": "With your vast amounts of dark matter, you find you have fulfilled your company to great success. Watching your interstellar empire, commanded by you, yourself, you feel the Overlord's presence come upon you. This is to be the next stage in your long journey for galactic supremacy.",
     "ultritePane_desc2": "'You have come far in your many lives, my loyal subject, but I know you can do more. Do not worry, you have not failed me yet. I will start you in a new dimension, almost identical to this one, where you may start afresh.'",
@@ -1067,7 +1067,7 @@
     "enlighten_confirm": "Are you sure? This is non-reversible after you reset and save.",
     "titanChoice": "Choose the Titan you want to activate",
     "alreadyActivated": "(Already activated)",
-
+    
     "titansPane": "Resource Titans",
     "titansPane_desc": "These are mystical beings, almost rivalling that of the Overlord. Resource Titans are wondrous beings, who smile fortunately on those who idolise them. Enlightening for a titan will decrease the cost of a single resource, on every machine, upgrade, wonder and building by 90%, rounded down to the nearest integer.",
     "titans": "Activated Resource Titans",
@@ -1111,12 +1111,12 @@
     "totalProduction": "Production",
     "totalConsumption": "Consumption",
     "totalBalance": "Balance",
-
+    
     "launched": "Launched",
     "explored": "Explored",
     "done": "Done",
     "built": "Built",
-
+    
     "gain": "Gain",
     "toggleon": "Toggle Off",
     "toggleoff": "Toggle On",
@@ -1136,35 +1136,35 @@
     "spy": "Spy",
     "invade": "Invade",
     "absorb": "Absorb",
-
+    
     "btnDysonT1": "= 50 + Ring",
     "btnDysonT2": "= 100 + Swarm",
     "btnDysonT3": "= 250 + Sphere",
-
+    
     "toastAchievement_title": "New Achievement",
     "toastAchievement_text": "You have reached a new achievement.",
-
+    
     "toastAutoSave_title": "Game Saved",
     "toastAutoSave_text": "Your save data has been stored in localStorage on your computer.",
-
+    
     "toastSpySuccess_title": "Successful Spy",
     "toastSpySuccess_text": "You have found out more about the star system.",
-
+    
     "toastSpyFailed_title": "Spy Failed",
     "toastSpyFailed_text": "You lost all of your active scouts.",
-
+    
     "toastInvadeSuccess_title": "Successful Invasion",
     "toastInvadeSuccess_text": "You have conquered and now gain production boosts from star.",
-
+    
     "toastInvadeFailed_title": "Failed Invasion",
     "toastInvadeFailed_text": "Unfortunately, the enemy forces were too strong for you. They have destroyed all of your active ships.",
-
+    
     "toastAbsorbSuccess_title": "Successful Absorption",
     "toastAbsorbSuccess_text": "You have conquered peacefully and now gain production boosts from star.",
-
+    
     "threat": "Threat",
     "chance": "Chance",
-
+    
     "threat0": "•",
     "threat1": "••",
     "threat2": "•••",
@@ -1181,7 +1181,7 @@
     "spy_desc": "This is where you can send ships to find information about your enemies' fleets. At the first level, you will be able to see the number of digits in the enemy fleet statistics, with the second revealing the first digit in all three stats and each successive level will reveal the next digit.",
     "invade_desc": "Here, you can activate ships within your fleet and attempt to invade the faction' star system. You reputation with them affects how prepared they are to a possible invasion. The star system' fleet statistics take this into account already, so no extra calculation is needed. Invading has a bad effect on your reputation with the faction in question, reducing it by 10 for a successful invasion. However, due to their large ego, they take pity on failed attempts and reputation is not changed in the result of a loss.",
     "absorb_desc": "Absorbing is the simplest way of conquering a star system. Unfortunately, you must be on good terms with the faction in control, with over 60 reputation with them. When Absorbing, you will lose 5 reputation in doing so, which is half the amount you would lose in an invasion.",
-
+    
     "costTo5": "Costs to 5",
     "costTo15": "Costs to 15",
     "costTo25": "Costs to 25",
@@ -1190,8 +1190,8 @@
     "costTo100": "Costs to 100",
     "costTo150": "Costs to 150",
     "costTo250": "Costs to 250",
-
-    "max": "Max",
-    "calcModal": "Machine Cost Calculator",
+    
+    "max": "Max",    
+    "calcModal": "Machine Cost Calculator",    
     "segmentModal": "Dyson Segment Cost Calculator"
 }
