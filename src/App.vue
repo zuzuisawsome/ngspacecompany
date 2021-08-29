@@ -1931,7 +1931,9 @@
                             <div class="text-light">v1.33.0 - 2021-08-21</div>
                             <ul class="small">
                                 <li>NEW: now you could enlighten without chossing a Titan</li>
+                                <li>CHANGE: new donor star (Asimov)</li>
                                 <li>CHANGE: now "Rocket Discount" is renamed to "Spaceship Discount"</li>
+                                <li>FIX: spelling error and Spaceship parts buttons (by brandonhawi)</li>
                             </ul>
                         </div>
                         <div class="col-12 border-top">

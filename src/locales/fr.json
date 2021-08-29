@@ -815,7 +815,7 @@
     "star74001": "AC +23°468",
     "star199602": "Xi Boötis",
     "star148101": "AC +17°534",
-    "star224201": "A",
+    "star224201": "Asimov",
     "star224202": "B",
     "star157301": "BD +15°473",
     "star72601": "Wolf 358",
@@ -1160,5 +1160,6 @@
     
     "max": "Max",    
     "calcModal": "Machine calculateur de coûts",
-    "segmentModal": "Segment Dyson calculateur de coûts"
+    "segmentModal": "Segment Dyson calculateur de coûts",
+    "language": "Langue"
 }
