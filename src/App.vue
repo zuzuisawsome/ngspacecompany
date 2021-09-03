@@ -1933,6 +1933,7 @@
                             <ul class="small">
                                 <li>CHANGE: new donor star (C8H10N4O2)</li>
                                 <li>CHANGE: now you can enlignten even with all titans (you just have to choose a titan that is already activated)</li>
+                                <li>FIX: now no star has twice same resource</li>
                             </ul>
                         </div>
                         <div class="col-12 border-top">
