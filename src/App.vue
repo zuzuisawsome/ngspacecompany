@@ -860,6 +860,7 @@
                         <card id="enlighten" :descs="['enlighten_desc']" checked="true">
                             <div class="col-12 small">
                                 <div :class="{ 'text-white':getOwnedStarCount >= 10, 'text-danger':getOwnedStarCount < 10 }">{{ $t('enlighten_nb1') }}</div>
+                                <div class="text-white">{{ $t('enlighten_nb2') }}</div>
                             </div>
                             <div class="col-12">
                                 <div class="row g-1 justify-content-end">
@@ -1928,6 +1929,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.34.0 - 2021-09-03</div>
+                            <ul class="small">
+                                <li>CHANGE: new donor star (C8H10N4O2)</li>
+                                <li>CHANGE: now you can enlignten even with all titans (you just have to choose a titan that is already activated)</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.33.0 - 2021-08-21</div>
                             <ul class="small">
                                 <li>NEW: now you could enlighten without chossing a Titan</li>
@@ -1942,59 +1950,6 @@
                                 <li>NEW: pinned pinned-tabs (by Élianne Lavoie)</li>
                                 <li>NEW: three more options for EMC conversion</li>
                                 <li>CHANGE: now red message when production is stopped is displayed on left side to avoid flickering</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.31.5 - 2021-07-29</div>
-                            <ul class="small">
-                                <li>CHANGE: some UI changes</li>
-                                <li>FIX: now offline gains are well managed, including auto EMC and auto storage</li>
-                                <li>FIX: now titans are well applied to probe, terraformer and statue costs</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.31.4 - 2021-07-29</div>
-                            <ul class="small">
-                                <li>CHANGE: some UI changes</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.31.3 - 2021-07-29</div>
-                            <ul class="small">
-                                <li>CHANGE: some UI changes</li>
-                                <li>FIX: now titans are applied once only on probe, terraformer and statue costs</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.31.2 - 2021-07-28</div>
-                            <ul class="small">
-                                <li>FIX: now overlord statue will give you 5 ultrite</li>
-                                <li>FIX: now calculators don't display 00:00:60 anymore</li>
-                                <li>FIX: now terraformer and probe costs are re-computed</li>
-                                <li>FIX: now titans are applied on terraforming costs</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.31.1 - 2021-07-27</div>
-                            <ul class="small">
-                                <li>FIX: now timers display value greater than 24 hours</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.31.0 - 2021-07-24</div>
-                            <ul class="small">
-                                <li>NEW: now Technologies panes is pinnable</li>
-                                <li>FIX: now 'Max' computing perfomance is better</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.30.0 - 2021-07-24</div>
-                            <ul class="small">
-                                <li>NEW: now Dyson and EMC panes are pinnable</li>
-                                <li>NEW: now a max value is dispayed on each buildable item</li>
-                                <li>CHANGE: now displaying of item current count is not rounded</li>
-                                <li>CHANGE: now donor stars give +50% bonus instead of +25%</li>
-                                <li>FIX: now timers won't display 'NaN' anymore</li>
                             </ul>
                         </div>
                     </div>
@@ -2093,7 +2048,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.33.0',
+            currentRelease: '1.34.0',
             ghLatestRelease: null,
             
             login: null,
