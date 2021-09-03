@@ -1929,6 +1929,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.34.1 - 2021-09-03</div>
+                            <ul class="small">
+                                <li>FIX: typo on star resources</li>
+                                <li>FIX: now auto-storage should be worked offline</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.34.0 - 2021-09-03</div>
                             <ul class="small">
                                 <li>CHANGE: new donor star (C8H10N4O2)</li>
@@ -2049,7 +2056,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.34.0',
+            currentRelease: '1.34.1',
             ghLatestRelease: null,
             
             login: null,
@@ -2215,8 +2222,8 @@ export default {
             this.setTimeSinceAutoEmc(this.timeSinceAutoEmc + delta)
             
             this.computeProdValues()
-            this.performAutoStorageUpgrade()
             this.produceResources(delta)
+            this.performAutoStorageUpgrade()
             this.updateTimers()
             this.checkBoosts()
             
