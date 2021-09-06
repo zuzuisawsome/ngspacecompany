@@ -1929,6 +1929,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.35.0 - 2021-09-06</div>
+                            <ul class="small">
+                                <li>NEW: now auto-storage option on each resource is saved after rebirth and enlightenment</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.34.1 - 2021-09-03</div>
                             <ul class="small">
                                 <li>FIX: typo on star resources</li>
@@ -1950,14 +1956,6 @@
                                 <li>CHANGE: new donor star (Asimov)</li>
                                 <li>CHANGE: now "Rocket Discount" is renamed to "Spaceship Discount"</li>
                                 <li>FIX: spelling error and Spaceship parts buttons (by brandonhawi)</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.32.0 - 2021-08-02</div>
-                            <ul class="small">
-                                <li>NEW: pinned pinned-tabs (by Élianne Lavoie)</li>
-                                <li>NEW: three more options for EMC conversion</li>
-                                <li>CHANGE: now red message when production is stopped is displayed on left side to avoid flickering</li>
                             </ul>
                         </div>
                     </div>
@@ -2056,7 +2054,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.34.1',
+            currentRelease: '1.35.0',
             ghLatestRelease: null,
             
             login: null,

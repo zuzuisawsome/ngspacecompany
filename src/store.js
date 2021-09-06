@@ -1803,7 +1803,7 @@ export const store = createStore({
             
             for (let i in state.data) {
                 let item = state.data[i]
-                if (item.unlocked == true || ('titan' in item && item.titan == true)) {
+                if (item.unlocked == true || ('titan' in item && item.titan == true) || ('auto' in item && item.auto == true)) {
                     saveddata.entries[i] = {}
                     
                     if ('unlocked' in item && item.unlocked != false) saveddata.entries[i].unlocked = item.unlocked
