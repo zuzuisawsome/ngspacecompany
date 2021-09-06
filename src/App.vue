@@ -1929,6 +1929,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.35.1 - 2021-09-06</div>
+                            <ul class="small">
+                                <li>FIX: now all stars have different resource bonuses</li>
+                                <li>FIX: now all statue costs are aligned on resource bonuses</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.35.0 - 2021-09-06</div>
                             <ul class="small">
                                 <li>NEW: now auto-storage option on each resource is saved after rebirth and enlightenment</li>
@@ -2054,7 +2061,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.35.0',
+            currentRelease: '1.35.1',
             ghLatestRelease: null,
             
             login: null,
