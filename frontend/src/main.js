@@ -16,5 +16,5 @@ import App from './App.vue'
 createApp(App)
     .use(store)
     .use(i18n)
-    .use(VueGtag, { config: { id:'G-7MZR4NX0GD' } })
+    .use(VueGtag, { config: { id:'G-Q1C1RTM5F4' } })
     .mount('#app')

@@ -917,26 +917,54 @@
                     <!-- DONATING PANE -->
                     <pane id="donatingPane" icon="donating.png" :descs="['donatingPane_desc1', 'donatingPane_desc2']">
                         <card id="donatingPane_desc3" class="col-12">
-                            <div class="col-12 small">
-                                <span>{{ $t('donatingPane_desc5') }}</span>
-                            </div>
                             <div class="col-12">
                                 <form class="row g-2 justify-content-end align-items-end" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                                     <input type="hidden" name="cmd" value="_s-xclick">
                                     <input type="hidden" name="hosted_button_id" value="7XYD7SJFKQ8M4">
                                     <div class="col-12 text-end">
+                                        <div class="small">{{ $t('donatingPane_desc5') }}</div>
                                         <div class="small">{{ $t('donatingPane_desc4') }}</div>
                                         <div class="small">{{ $t('donatingPane_desc6') }}</div>
                                     </div>
                                     <div class="col-12 text-end">
-                                        <button type="submit" class="btn">
+                                        <button type="submit" class="btn" style="width: 95px;">
                                             <div class="row gx-2 align-items-center">
                                                 <div class="col-auto d-flex align-items-center"><img :src="require('./assets/interface/paypal.png')" width="16" height="16" /></div>
-                                                <div class="col-auto">{{ $t('donate') }}</div>
+                                                <div class="col-auto">Paypal</div>
                                             </div>
                                         </button>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="col-12">
+                                <div class="row g-2 justify-content-end align-items-end">
+                                    <div class="col-12 text-end">
+                                        <div class="small">{{ $t('donatingPane_desc7') }}</div>
+                                    </div>
+                                    <div class="col-12 text-end">                                    
+                                        <a class="btn" href="https://www.patreon.com/bePatron?u=61283131" target="_blank" style="width: 95px;">
+                                            <div class="row gx-2 align-items-center">
+                                                <div class="col-auto d-flex align-items-center"><img :src="require('./assets/interface/patreon.png')" width="16" height="16" /></div>
+                                                <div class="col-auto">Patreon</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row g-2 justify-content-end align-items-end">
+                                    <div class="col-12 text-end">
+                                        <div class="small">{{ $t('donatingPane_desc8') }}</div>
+                                    </div>
+                                    <div class="col-12 text-end">                                    
+                                        <a class="btn" href="https://ko-fi.com/freddecgames" target="_blank" style="width: 95px;">
+                                            <div class="row gx-2 align-items-center">
+                                                <div class="col-auto d-flex align-items-center"><img :src="require('./assets/interface/kofi.png')" width="16" height="16" /></div>
+                                                <div class="col-auto">Ko-fi</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </card>
                     </pane>
@@ -963,11 +991,11 @@
                                     <tbody>
                                         <tr>
                                             <td><small class="text-normal">{{ $t('startDate') }}</small></td>
-                                            <td class="text-end"><small class="text-light">{{ stats.startDate }}</small></td>
+                                            <td class="text-end"><small class="text-light"><format-date :value="stats.startDate" /></small></td>
                                         </tr>
                                         <tr>
                                             <td><small class="text-normal">{{ $t('lastEnlightenDate') }}</small></td>
-                                            <td class="text-end"><small class="text-light">{{ stats.lastEnlightenDate }}</small></td>
+                                            <td class="text-end"><small class="text-light"><format-date :value="stats.lastEnlightenDate" /></small></td>
                                         </tr>
                                         <tr>
                                             <td><small class="text-normal">{{ $t('enlightenCount') }}</small></td>
@@ -975,7 +1003,7 @@
                                         </tr>
                                         <tr>
                                             <td><small class="text-normal">{{ $t('lastRebirthDate') }}</small></td>
-                                            <td class="text-end"><small class="text-light">{{ stats.lastRebirthDate }}</small></td>
+                                            <td class="text-end"><small class="text-light"><format-date :value="stats.lastRebirthDate" /></small></td>
                                         </tr>
                                         <tr>
                                             <td><small class="text-normal">{{ $t('rebirthCount') }}</small></td>
@@ -1353,92 +1381,6 @@
                         </card>
                     </pane>
                     
-                    <!-- RANK PANE -->
-                    <pane id="rankPane" icon="rank.png" :descs="['rankPane_desc']">
-                        <card id="account" :checked="token != null">
-                            <div v-if="token" class="col-12">
-                                <div class="row gx-3 gy-2 align-items-center">
-                                    <div class="col-12 col-md-auto small">
-                                        <span>{{ $t('connected') }} <span class="text-light">{{ username }}</span></span>
-                                    </div>
-                                    <div class="col-12 col-md-auto text-end">
-                                        <button class="btn" @click="onDisconnect()">{{ $t('disconnect') }}</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div v-if="!token" class="col-12">
-                                <div class="row gx-3 gy-2 align-items-end">
-                                    <div class="col-12 small">
-                                        <span>{{ $t('account_desc') }}</span>
-                                    </div>
-                                    <div class="col-12 col-md-auto">
-                                        <small>{{ $t('login') }}</small>
-                                        <input type="text" class="form-control" v-model="login" />
-                                    </div>
-                                    <div class="col-12 col-md-auto">
-                                        <small>{{ $t('password') }}</small>
-                                        <input type="password" class="form-control" v-model="password" />
-                                    </div>
-                                    <div class="col-12 col-md-auto text-end">
-                                        <button class="btn" @click="onConnect(login, password)">{{ $t('connect') }}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </card>
-                        <card v-if="!leaderboard_ranks" :descs="['rankPane_nodata']">
-                        </card>
-                        <card v-if="leaderboard_ranks" :checked="token != null">
-                            <div class="row g-1">
-                                <div v-for="(item, index) in leaderboard_stats" :key="item.user_id" class="col-12 col-md-4">
-                                    <div class="btn text-start w-100" :class="{ 'border-success':item.username==username }">
-                                        <div class="row g-0">
-                                            <div class="col-12 mb-2">
-                                                <div class="row gx-2">
-                                                    <div class="col text-truncate">
-                                                        <span class="h6 text-light">{{ item.username }}</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <span class="text-light d-inline w-100 text-truncate">{{ index + 1 }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 small">
-                                                <div class="row gx-2">
-                                                    <div class="col">
-                                                        <span class="text-muted">{{ $t('statsUltrite') }}</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <span class="text-normal"><format-number :value="item.ultrite" /></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 small">
-                                                <div class="row gx-2">
-                                                    <div class="col">
-                                                        <span class="text-muted">{{ $t('statsDarkmatter') }}</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <span class="text-normal"><format-number :value="item.darkmatter" /></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 small">
-                                                <div class="row gx-2">
-                                                    <div class="col">
-                                                        <span class="text-muted">{{ $t('statsXP') }}</span>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <span class="text-normal"><format-number :value="item.xp" /></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </card>
-                    </pane>
-
                 </div>
             </inner-content>
         </div>
@@ -1917,6 +1859,14 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.35.3 - 2021-11-17</div>
+                            <ul class="small">
+                                <li>CHANGE: added Patreon and Ko-fi links into donating page</li>
+                                <li>FIX: number formatting</li>
+                                <li>FIX: date formatting</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.35.2 - 2021-11-17</div>
                             <ul class="small">
                                 <li>CHANGE: moved to new url <a href="https://ngspacecompany.freddecgames.com/">https://ngspacecompany.freddecgames.com/</a></li>
@@ -1943,14 +1893,6 @@
                                 <li>FIX: now auto-storage should be worked offline</li>
                             </ul>
                         </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.34.0 - 2021-09-03</div>
-                            <ul class="small">
-                                <li>CHANGE: new donor star (C8H10N4O2)</li>
-                                <li>CHANGE: now you can enlignten even with all titans (you just have to choose a titan that is already activated)</li>
-                                <li>FIX: now no star has twice same resource</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1974,6 +1916,7 @@ import Fleet from './components/Fleet.vue'
 import CalcSegment from './components/CalcSegment.vue'
 import CalcBuilding from './components/CalcBuilding.vue'
 import FormatNumber from './components/FormatNumber.vue'
+import FormatDate from './components/FormatDate.vue'
 
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
@@ -1996,6 +1939,7 @@ export default {
         'calc-segment': CalcSegment,
         'calc-building': CalcBuilding,
         'format-number': FormatNumber,
+        'format-date': FormatDate,
     },
     data() {
         return {
@@ -2044,7 +1988,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.35.2',
+            currentRelease: '1.35.3',
             ghLatestRelease: null,
             
             login: null,
