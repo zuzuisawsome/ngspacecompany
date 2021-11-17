@@ -1782,6 +1782,8 @@ export const store = createStore({
                 ]
                 list.forEach(item => { dispatch('unlock', item) })
             }
+            
+            console.log(state.data)
         },
         /*--------------------------------------------------------------------*/
         save({ state }) {
