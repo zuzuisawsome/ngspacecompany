@@ -1859,6 +1859,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.35.4 - 2021-11-18</div>
+                            <ul class="small">
+                                <li>CHANGE: Now titanium is unlocked with Venus</li> 
+                                <li>FIX: minus sign in number formatting</li>                                
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.35.3 - 2021-11-17</div>
                             <ul class="small">
                                 <li>CHANGE: added Patreon and Ko-fi links into donating page</li>
@@ -1884,13 +1891,6 @@
                             <div class="text-light">v1.35.0 - 2021-09-06</div>
                             <ul class="small">
                                 <li>NEW: now auto-storage option on each resource is saved after rebirth and enlightenment</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.34.1 - 2021-09-03</div>
-                            <ul class="small">
-                                <li>FIX: typo on star resources</li>
-                                <li>FIX: now auto-storage should be worked offline</li>
                             </ul>
                         </div>
                     </div>
@@ -1988,7 +1988,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.35.3',
+            currentRelease: '1.35.4',
             ghLatestRelease: null,
             
             login: null,
