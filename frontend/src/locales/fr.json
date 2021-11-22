@@ -1069,6 +1069,7 @@
     "by": "par",
     "costs": "Coûts",
     "bigTimer": "> 48h",
+    "showNanoswarmShortcut": "Afficher le raccourci Nanoswarm",
     "selectEmcAmount": "Choisissez un montant",
     "showEmcShortcut": "Afficher le raccourci CEM",
     "changeLog": "Change Log",

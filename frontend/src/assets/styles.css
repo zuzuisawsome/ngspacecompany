@@ -82,7 +82,7 @@ body {
 @media (min-width: 992px) {
     #sidebar {
         z-index: auto;
-        width: 320px;
+        width: 340px;
         transform: translateX(0) translateY(0) translateZ(0);
     }
 }

@@ -75,6 +75,7 @@ export const store = createStore({
             displayDoneTechs: true,
             displayRoadmap: true,
             displayEmcShortcut: false,
+            displayNanoswarmShortcut: false,
             collapsed: [],
             pinned: [],
             /*----------------------------------------------------------------*/
@@ -368,6 +369,7 @@ export const store = createStore({
         setAutoResource(state, payload) { state.autoResource = payload },
         setAutoEmcInterval(state, payload) { state.autoEmcInterval = payload * 1000 },
         setDisplayEmcShortcut(state, payload) { state.displayEmcShortcut = payload },
+        setDisplayNanoswarmShortcut(state, payload) { state.displayNanoswarmShortcut = payload },
         /*--------------------------------------------------------------------*/
         setActivePane(state, payload) {
 
@@ -1609,6 +1611,7 @@ export const store = createStore({
                 state.autoEmcInterval = data.autoEmcInterval || 1 * 1000
                 state.displayEmcShortcut = data.displayEmcShortcut || false,
                 state.collapsed = data.collapsed || []
+                state.displayNanoswarmShortcut = data.displayNanoswarmShortcut || false,
                 state.pinned = data.pinned || []
                 state.titanSwapingCount = data.titanSwapingCount || 0
                 
@@ -1810,6 +1813,7 @@ export const store = createStore({
                 collapsed: state.collapsed,
                 pinned: state.pinned,
                 titanSwapingCount: state.titanSwapingCount,
+                displayNanoswarmShortcut: state.displayNanoswarmShortcut,
                 
                 entries: {},
             }
@@ -2035,7 +2039,13 @@ export const store = createStore({
                 if (item.count < item.brackets.length) {
                 
                     let limit = item.brackets[item.count]
-                    item.progress = 100 * state.data[item.data].count / limit
+                    if (item.count === 0) {
+                      item.progress = (100 * state.data[item.data].count) / limit
+                    } else {
+                      const prev = item.brackets[item.count - 1]
+                      item.progress =
+                        (100 * (state.data[item.data].count - prev)) / (limit - prev)
+                    }
                     if (item.progress >= 100) {
                         item.count += 1
                         commit('addNotif', 'achievementPane')
@@ -2620,6 +2630,7 @@ export const store = createStore({
             state.autoResource = null
             state.autoEmcInterval = 1 * 1000
             state.displayEmcShortcut = false
+            state.displayNanoswarmShortcut = false
             
             let exludedList = [
                 'darkmatter',
@@ -2707,6 +2718,7 @@ export const store = createStore({
             state.autoResource = null
             state.autoEmcInterval = 1 * 1000
             state.displayEmcShortcut = false
+            state.displayNanoswarmShortcut = false
             
             let exludedList = [
                 'darkmatter',

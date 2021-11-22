@@ -1104,6 +1104,7 @@
     "by": "by",
     "costs": "Costs",
     "bigTimer": "> 48h",
+    "showNanoswarmShortcut": "Display Nanoswarm shortcut",
     "selectEmcAmount": "Select Amount",
     "showEmcShortcut": "Display EMC shortcut",
     "changeLog": "Change Log",

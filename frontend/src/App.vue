@@ -1859,6 +1859,14 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.36.0 - 2021-11-22</div>
+                            <ul class="small">
+                                <li>MERGED: cleanup Segment Calculation Code (X-sam)</li>
+                                <li>MERGED: add nanoswarm shortcut (X-sam)</li>
+                                <li>MERGED: accurately represent progress on milestone achievements (X-sam)</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.35.4 - 2021-11-18</div>
                             <ul class="small">
                                 <li>CHANGE: Now titanium is unlocked with Venus</li> 
@@ -1885,12 +1893,6 @@
                             <ul class="small">
                                 <li>FIX: now all stars have different resource bonuses</li>
                                 <li>FIX: now all statue costs are aligned on resource bonuses</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.35.0 - 2021-09-06</div>
-                            <ul class="small">
-                                <li>NEW: now auto-storage option on each resource is saved after rebirth and enlightenment</li>
                             </ul>
                         </div>
                     </div>
@@ -1988,7 +1990,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.35.4',
+            currentRelease: '1.36.0',
             ghLatestRelease: null,
             
             login: null,
