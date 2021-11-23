@@ -12,6 +12,9 @@
                 <div class="col">
                     <small class="text-light">{{ $t(resource) }}</small>
                 </div>
+                <div class="col-auto" v-if="maxCount.store[resource].count > data[resource].count">
+                    <nanoswarm-shortcut :resource="resource" />
+                </div> 
                 <div class="col-auto">
                     <small class="text-uppercase" :class="{ 'text-light':maxCount.store[resource].count <= data[resource].storage, 'text-excess':maxCount.store[resource].count <= getStorageCap(resource) && maxCount.store[resource].count > data[resource].storage, 'text-danger':maxCount.store[resource].count > getStorageCap(resource) }"><format-number :value="maxCount.store[resource].count" /></small>
                 </div>
@@ -30,6 +33,7 @@
 <script>
 import Timer from './Timer.vue'
 import FormatNumber from './FormatNumber.vue'
+import NanoswarmShortcut from './NanoswarmShortcut.vue'
 
 import { mapState, mapGetters } from 'vuex'
 
@@ -38,6 +42,7 @@ export default {
     
         'timer': Timer,
         'format-number': FormatNumber,
+        'nanoswarm-shortcut': NanoswarmShortcut,
     },
     computed: {
     
@@ -81,7 +86,7 @@ export default {
                 meteorite: { count: costMeteorite, timer: this.data['meteorite'].prod > 0 ? (costMeteorite - this.data['meteorite'].count) / this.data['meteorite'].prod : 0 },
                 ice: { count: costIce, timer: this.data['ice'].prod > 0 ? (costIce - this.data['ice'].count) / this.data['ice'].prod : 0 },
             }
-        }
+        },
     },
 }
 </script>
