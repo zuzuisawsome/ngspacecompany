@@ -11,6 +11,9 @@
                 <div class="col">
                     <small class="text-light">{{ $t(cost.id) }}</small>
                 </div>
+                <div class="col-auto" v-if="costTo(bracket, cost.count, data[id].count, cost.id) > data[cost.id].count">
+                    <nanoswarm-shortcut :resource="cost.id" />
+                </div> 
                 <div class="col-auto">
                     <small class="text-uppercase" :class="{ 'text-light':costTo(bracket, cost.count, data[id].count, cost.id) <= data[cost.id].storage, 'text-excess':costTo(bracket, cost.count, data[id].count, cost.id) <= getStorageCap(cost.id) && costTo(bracket, cost.count, data[id].count, cost.id) > data[cost.id].storage, 'text-danger':costTo(bracket, cost.count, data[id].count, cost.id) > getStorageCap(cost.id) }"><format-number :value="costTo(bracket, cost.count, data[id].count, cost.id)" /></small>
                 </div>
@@ -28,6 +31,7 @@
 <script>
 import Timer from './Timer.vue'
 import FormatNumber from './FormatNumber.vue'
+import NanoswarmShortcut from './NanoswarmShortcut.vue'
 
 import { mapState, mapGetters } from 'vuex'
 
@@ -35,6 +39,7 @@ export default {
     components: {
         'timer': Timer,
         'format-number': FormatNumber,
+        'nanoswarm-shortcut': NanoswarmShortcut,
     },
     props: [ 'id' ],
     computed: {

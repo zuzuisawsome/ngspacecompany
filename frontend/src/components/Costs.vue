@@ -37,6 +37,9 @@
                     </div>
                 </button>
             </div>
+            <div class="col-auto" v-if="cost.timer > 0">
+                <nanoswarm-shortcut :resource="cost.id" />
+            </div>
             <div class="col-auto">
                 <button v-if="displayEmcShortcut && data['emc'].unlocked == true && cost.timer > 0 && isEmcResource(data, getEmcId(cost.id))" class="me-3" @click="if (cost.id != 'segment' && data[cost.id].unlocked == true) { convert(getEmcId(cost.id)); }">
                     <img v-if="cost.id !== 'meteorite'" :src="require(`../assets/interface/energy.png`)" width="12" height="12" :alt="$t('energy') + ' icon'" />
@@ -62,6 +65,7 @@
 <script>
 import Timer from './Timer.vue'
 import FormatNumber from './FormatNumber.vue'
+import NanoswarmShortcut from './NanoswarmShortcut.vue'
 
 import { mapState, mapActions, mapMutations } from 'vuex'
 
@@ -69,11 +73,12 @@ export default {
     components: {
         'timer': Timer,
         'format-number': FormatNumber,
+        'nanoswarm-shortcut': NanoswarmShortcut,
     },
     props: [ 'costs', 'mod', 'id', 'calc' ],
     computed: {
         ...mapState([
-            'data', 'displayEmcShortcut'
+            'data', 'displayEmcShortcut',
         ]),
         maxBuildable: function() {
             
