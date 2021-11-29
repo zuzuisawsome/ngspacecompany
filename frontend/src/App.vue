@@ -1859,6 +1859,13 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.37.0 - 2021-11-29</div>
+                            <ul class="small">
+                                <li>MERGED: fix nanoswarm selection (jarekb84)</li>
+                                <li>MERGED: add Nanoswarm shortcut to upgrade costs breakdown (jarekb84)</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.36.0 - 2021-11-22</div>
                             <ul class="small">
                                 <li>MERGED: cleanup Segment Calculation Code (X-sam)</li>
@@ -1886,13 +1893,6 @@
                             <ul class="small">
                                 <li>CHANGE: moved to new url <a href="https://ngspacecompany.freddecgames.com/">https://ngspacecompany.freddecgames.com/</a></li>
                                 <li>CHANGE: removed leaderboard (at least for the moment)</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 border-top">
-                            <div class="text-light">v1.35.1 - 2021-09-06</div>
-                            <ul class="small">
-                                <li>FIX: now all stars have different resource bonuses</li>
-                                <li>FIX: now all statue costs are aligned on resource bonuses</li>
                             </ul>
                         </div>
                     </div>
@@ -1990,7 +1990,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.36.0',
+            currentRelease: '1.37.0',
             ghLatestRelease: null,
             
             login: null,

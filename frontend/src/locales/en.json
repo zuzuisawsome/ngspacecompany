@@ -1075,7 +1075,7 @@
     "titansPane_desc": "These are mystical beings, almost rivalling that of the Overlord. Resource Titans are wondrous beings, who smile fortunately on those who idolise them. Enlightening for a titan will decrease the cost of a single resource, on every machine, upgrade, wonder and building by 90%, rounded down to the nearest integer.",
     "titans": "Activated Resource Titans",
     "titanSwaping": "Titan Swapping",
-    "titanSwaping_desc": "In its great goodness, and as the Overlord knows you can go wrong, you are given one and only opportunity to change Titan if the need arises.",
+    "titanSwaping_desc": "In its great goodness, and as the Overlord knows you can go wrong, you are given one and only one opportunity to change Titan if the need arises.",
     "titanSource": "Titan to be swapped",
     "titanDestination": "New Titan",
     "swap": "Swap",

@@ -48,7 +48,7 @@
                     <img :src="require(`../assets/interface/${cost.id}.png`)" width="12" height="12" :alt="$t(cost.id) + ' icon'" />
                 </button>
             </div>
-            <div class="col-auto">
+            <div class="col-auto text-end" style="width:50px;">
                 <small v-if="!cost.timer || cost.timer > -2" class="text-uppercase text-light"><format-number :value="cost.count" /></small>
                 <small v-if="cost.timer <= -2" class="text-uppercase text-danger"><format-number :value="cost.count" /></small>
             </div>
