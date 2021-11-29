@@ -113,7 +113,7 @@
                             
                         <div v-if="id == 'nanoswarm'" class="col-12">
                             <div class="small">{{ $t('selectResource') }}</div>
-                            <select class="form-control" v-model="selected" @change="switchNano(selected)">
+                            <select class="form-control" v-model="data['nanoswarm'].resource" @change="onChangeNano">
                                 <option value="energy">{{ $t('energy') }}</option>
                                 <option value="plasma">{{ $t('plasma') }}</option>
                                 <option value="meteorite">{{ $t('meteorite') }}</option>
@@ -278,14 +278,12 @@ export default {
         'format-number': FormatNumber,
     },
     data() {
-        return {
-            selected: null,
+        return {            
             automated: null,
             spaceshipParts: ['shield', 'engine', 'aero'],
         }
     },
-    created() {
-        this.selected = this.id == 'nanoswarm' ? this.data[this.id].resource : null
+    created() {        
         this.automated = this.data[this.id].auto ? this.data[this.id].auto : null
     },
     computed: {
@@ -304,6 +302,9 @@ export default {
         ...mapMutations([
             'toggleCollapsed', 'setAutoStorageUpgrade', 'setActivePane', 'setDisplayNanoswarmShortcut',
         ]),
+        onChangeNano(event) {
+            this.switchNano(event.target.value);
+        }
     },
 }
 </script>
