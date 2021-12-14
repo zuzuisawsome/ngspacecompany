@@ -3,7 +3,7 @@
     <div v-if="!loaded" id="loadScreen">
         <div class="row row-cols-1 g-2 justify-content-center">
             <div class="col text-center"><h1 class="text-light">NG Space Company</h1></div>
-            <div class="col text-center"><img id="loadLogo" style="width:25%; height:auto;" src="https://ngspacecompany.exileng.com/whiteLogo.png" alt="Game logo" /></div>
+            <div class="col text-center"><img id="loadLogo" style="width:25%; height:auto;" src="https://ngspacecompany.freddecgames.com/whiteLogo.png" alt="Game logo" /></div>
             <div class="col text-center"><h5 class="text-light">Reticulating Splines...</h5></div>
         </div>
     </div>
@@ -13,7 +13,7 @@
             <top-header class="px-2">
             
                 <div class="col-auto">
-                    <img src="https://ngspacecompany.exileng.com/whiteLogo.png" width="42" height="42" alt="Game logo" />
+                    <img src="https://ngspacecompany.freddecgames.com/whiteLogo.png" width="42" height="42" alt="Game logo" />
                 </div>
 
                 <div class="col text-truncate px-0">
@@ -1859,6 +1859,12 @@
                             </div>
                         </div>
                         <div class="col-12 border-top">
+                            <div class="text-light">v1.37.1 - 2021-12-14</div>
+                            <ul class="small">
+                                <li>FIX: game logo</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 border-top">
                             <div class="text-light">v1.37.0 - 2021-11-29</div>
                             <ul class="small">
                                 <li>MERGED: fix nanoswarm selection (jarekb84)</li>
@@ -1990,7 +1996,7 @@ export default {
             enlightenSelected: null,
             overlordModal: null,
             
-            currentRelease: '1.37.0',
+            currentRelease: '1.37.1',
             ghLatestRelease: null,
             
             login: null,
